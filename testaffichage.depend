@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1619554074 source:d:\estaca\1a\algoprogrammation\projet\testaffichage\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
