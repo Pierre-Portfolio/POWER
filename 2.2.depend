@@ -19,3 +19,23 @@
 	<stdlib.h>
 	"cases.h"
 
+1619716470 source:c:\users\petil\onedrive\documents\github\power\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619868012 c:\users\petil\onedrive\documents\github\power\cases.h
+
+1619716470 source:c:\users\petil\onedrive\documents\github\power\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+
+1619716470 c:\users\petil\onedrive\documents\github\power\plateau.h
+
+1619867881 source:c:\users\petil\onedrive\documents\github\power\main.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	"cases.h"
+

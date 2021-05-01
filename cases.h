@@ -3,8 +3,8 @@
 
 struct cases
 {
-    char type;
-    char couleur;
+    char* type;
+    char* couleur;
     //Pieces[] troupes;
 };
 typedef struct cases S_cases;
