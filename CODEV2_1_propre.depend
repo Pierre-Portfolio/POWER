@@ -90,3 +90,53 @@
 	"affichage.h"
 	"cases.h"
 
+1619780832 source:c:\users\petil\onedrive\documents\github\power\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1619878232 c:\users\petil\onedrive\documents\github\power\definition.h
+
+1619780832 c:\users\petil\onedrive\documents\github\power\initialisation.h
+
+1619780832 c:\users\petil\onedrive\documents\github\power\affichage.h
+
+1619716470 source:c:\users\petil\onedrive\documents\github\power\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619879333 c:\users\petil\onedrive\documents\github\power\cases.h
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+
+1619880617 source:c:\users\petil\onedrive\documents\github\power\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"cases.h"
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1619780832 c:\users\petil\onedrive\documents\github\power\ordres.h
+
