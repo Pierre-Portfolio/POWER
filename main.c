@@ -7,12 +7,6 @@ int main()
 {
     //INITIALISATION
     S_cases c1={"HG","vert"};
-<<<<<<< HEAD
-    printf("%s ",c1.couleur);
-
-
-=======
->>>>>>> 79808c08be2292613da5de23c58470a85a8c9b49
     S_cases c2={"eau","neutre"};
     S_cases c3={"eau","neutre"};
     S_cases c4={"eau","neutre"};
