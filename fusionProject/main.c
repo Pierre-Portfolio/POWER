@@ -127,7 +127,7 @@ int main(){
                               {c73,c74,c75,c76,c77,c78,c79,c80,c81}};
 
     //printf("DANS MAIN : %d \n",Tabcases[8][8].couleur);
-    //affiche_plateau(Tabcases);
+    affiche_plateau(Tabcases);
 
     return 0;
 }
