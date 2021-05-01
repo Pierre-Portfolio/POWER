@@ -9,7 +9,7 @@ int main()
     S_cases c1={"HG","vert"};
     printf("%s ",c1.couleur);
 
-    /*
+
     S_cases c2={"eau","neutre"};
     S_cases c3={"eau","neutre"};
     S_cases c4={"eau","neutre"};
@@ -95,7 +95,7 @@ int main()
 
 
 
-    S_cases Tabcases[8][8]; //différence entre Tabcases et S_plateau?
+    S_cases Tabcases[lignes][colonnes]; //différence entre Tabcases et S_plateau?
     Tabcases[0][0]=c1;
     Tabcases[0][1]=c2;
     Tabcases[0][2]=c3;
@@ -186,11 +186,10 @@ int main()
     Tabcases[8][7]=c80;
     Tabcases[8][8]=c81;
 
+    printf("DANS MAIN : %s \n",Tabcases[8][8].couleur);
+    affiche_plateau(Tabcases);
 
-    S_plateau p1={5,1,Tabcases}; //a quoi correspond Tabcases?
-    //printf("Nombre de lignes: %d",p1.lignes);
-    //Affiche_plateau(p1);
 
-    */
+
     return 0;
 }

@@ -39,3 +39,24 @@
 	"plateau.h"
 	"cases.h"
 
+1619868332 source:c:\users\kilca\documents\c\power\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619869574 c:\users\kilca\documents\c\power\cases.h
+
+1619875211 source:c:\users\kilca\documents\c\power\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+
+1619875433 c:\users\kilca\documents\c\power\plateau.h
+	"cases.h"
+
+1619875323 source:c:\users\kilca\documents\c\power\main.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	"cases.h"
+

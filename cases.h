@@ -5,6 +5,8 @@ struct cases
 {
     char* type;
     char* couleur;
+    int xpos;
+    int ypos;
     //Pieces[] troupes;
 };
 typedef struct cases S_cases;
