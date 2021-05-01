@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include "plateau.h"
 
-void affiche_plateau(S_cases plateau[lignes][colonnes])
+void affiche_plateau(S_cases p1[lignes][colonnes])
 {
 
-    printf("DANS Plateau.c : %s \n",plateau[7][7].couleur);
+    //printf("DANS Plateau.c : %s \n",plateau[7][7].couleur);
     //printf("\ntest: %d",p1.lignes);
+
     char* resultat="T";
-    /*for(int i=0;i<p1.lignes+1;i++)
+    for(int i=0;i<p1.lignes+1;i++)
     {
         resultat=resultat+"E";
-    }*/
+    }
     printf(resultat);
 
+    /*
     printf("\n\t       1            2        3        4            5           6        7        8            9");
     printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
     printf("\n\t  %c   1.1  %c   %c   1.2  %c   1.3  %c   1.4  %c   %c   1.5  %c   %c   1.6  %c   1.7  %c   1.8  %c   %c   1.9  %c",186,186,179,179,179,179,186,186,179,179,179,179,186,186);
@@ -59,5 +61,5 @@ void affiche_plateau(S_cases plateau[lignes][colonnes])
     printf("\n\t9 %c  ROUGE %c   %c   EAU  %c   EAU  %c   EAU  %c   %c  ILE S %c   %c   EAU  %c   EAU  %c   EAU  %c   %c  JAUNE %c",186,186,179,179,179,179,186,186,179,179,179,179,186,186);
     printf("\n\t  %c   HG   %c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c   HG   %c",186,186,179,179,179,179,186,186,179,179,179,179,186,186);
     printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188);
-
+    */
 }

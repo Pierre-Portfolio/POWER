@@ -42,7 +42,7 @@
 	"Initialisation.h"
 	"affichage.h"
 
-1619780832 c:\users\petil\onedrive\documents\github\power\fusionproject\definition.h
+1619878232 c:\users\petil\onedrive\documents\github\power\fusionproject\definition.h
 
 1619780832 c:\users\petil\onedrive\documents\github\power\fusionproject\initialisation.h
 
@@ -65,4 +65,28 @@
 	"ordres.h"
 
 1619780832 c:\users\petil\onedrive\documents\github\power\fusionproject\ordres.h
+
+1619716470 source:c:\users\petil\onedrive\documents\github\power\fusionproject\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619879333 c:\users\petil\onedrive\documents\github\power\fusionproject\cases.h
+
+1619876269 source:c:\users\petil\onedrive\documents\github\power\fusionproject\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+
+1619876417 c:\users\petil\onedrive\documents\github\power\fusionproject\plateau.h
+	"cases.h"
+
+1619880405 source:c:\users\petil\onedrive\documents\github\power\fusionproject\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"cases.h"
 
