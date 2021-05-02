@@ -120,7 +120,7 @@
 	"definition.h"
 	"Initialisation.h"
 
-1619880617 source:c:\users\petil\onedrive\documents\github\power\main.c
+1619950187 source:c:\users\petil\onedrive\documents\github\power\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -139,4 +139,13 @@
 	"ordres.h"
 
 1619780832 c:\users\petil\onedrive\documents\github\power\ordres.h
+
+1619950067 source:c:\users\petil\onedrive\documents\github\power\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+
+1619880890 c:\users\petil\onedrive\documents\github\power\plateau.h
+	"cases.h"
 
