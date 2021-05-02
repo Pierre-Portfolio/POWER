@@ -126,8 +126,9 @@ int main(){
                               {c64,c65,c66,c67,c68,c69,c70,c71,c72},
                               {c73,c74,c75,c76,c77,c78,c79,c80,c81}};
 
-    //printf("DANS MAIN : %d \n",Tabcases[8][8].couleur);
-    affiche_plateau(Tabcases);
+    //printf("DANS MAIN : %d \n",Tabcases[0][8].terrain);
+    printf("DANS MAIN : %d \n",Tabcases[8][0].terrain);
+    affiche_plateau2(Tabcases);
 
     return 0;
 }
