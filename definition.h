@@ -80,6 +80,7 @@ struct joueur{
 };
 typedef struct joueur S_joueur;
 
+/*
 struct cases{
 
     char type_case[DIMnom_case];
@@ -87,6 +88,7 @@ struct cases{
 
 };
 typedef struct cases S_cases;
+*/
 
 struct feuille_ordre{
 

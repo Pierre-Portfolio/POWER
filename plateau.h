@@ -1,15 +1,11 @@
 #ifndef PLATEAU_H_INCLUDED
 #define PLATEAU_H_INCLUDED
+#include "cases.h"
 
-struct plateau
-{
-    int lignes;
-    int colonnes;
+#define LIGNES 8
+#define COLONNES 8
 
-};
-typedef struct plateau S_plateau;
-
-void Affiche_plateau(S_plateau p1);
+void affiche_plateau(S_cases plateau[LIGNES][COLONNES]);
 
 
 #endif // PLATEAU_H_INCLUDED
