@@ -232,3 +232,86 @@
 	"plateau.h"
 	"game.h"
 
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620157273 c:\users\petil\onedrive\documents\github\power\power-main\definition.h
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\plateau.h
+	"cases.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\cases.h
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\affichage.h
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\game.h
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620157305 source:c:\users\petil\onedrive\documents\github\power\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\ordres.h
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+
+1620157639 source:c:\users\petil\onedrive\documents\github\power\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+

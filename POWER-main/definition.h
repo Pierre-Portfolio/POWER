@@ -76,6 +76,7 @@ struct joueur{
     int numero_joueur;  //1=rouge, 2=vert, 3=jaune; 4=bleu
     int etat;     //1=en jeu, 0=hors jeu
     int deja_donne_ordre;    //1=oui, 0=non
+    int nbactionTour;
     S_unitjoueur * tabpion; //declaration d'un tableau de pions
 };
 typedef struct joueur S_joueur;

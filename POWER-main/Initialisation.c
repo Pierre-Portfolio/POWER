@@ -30,6 +30,7 @@ S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous fo
         tabjoueur[i].numero_joueur=i+1;
         tabjoueur[i].power=10;
         tabjoueur[i].tabpion=initialisation_pieces(); //chaque joueur recoit ses pions
+        tabjoueur[i].nbactionTour = 5;
 
         //printf("\n\njoueur %d initialise**********************************",i+1);
         //printf("\n\tle numero du joueur est :%d",tabjoueur[i].numero_joueur);
