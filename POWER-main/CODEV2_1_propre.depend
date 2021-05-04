@@ -1,0 +1,234 @@
+# depslib dependency file v1.0
+1619734568 source:c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+
+1619740853 c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\definition.h
+
+1619726991 c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\initialisation.h
+
+1619738054 source:c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1619737267 c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\affichage.h
+
+1619629215 source:c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\ordres.c
+
+1619739733 source:c:\users\cbo70\documents\documents\estaca\algo\projet\codev2_propre\codev2_1_propre\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\fusionproject\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1619878232 c:\users\petil\onedrive\documents\github\power\fusionproject\definition.h
+
+1619780832 c:\users\petil\onedrive\documents\github\power\fusionproject\initialisation.h
+
+1619780832 c:\users\petil\onedrive\documents\github\power\fusionproject\affichage.h
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\fusionproject\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\fusionproject\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1619780832 c:\users\petil\onedrive\documents\github\power\fusionproject\ordres.h
+
+1619716470 source:c:\users\petil\onedrive\documents\github\power\fusionproject\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619879333 c:\users\petil\onedrive\documents\github\power\fusionproject\cases.h
+
+1619882674 source:c:\users\petil\onedrive\documents\github\power\fusionproject\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+
+1619880890 c:\users\petil\onedrive\documents\github\power\fusionproject\plateau.h
+	"cases.h"
+
+1619880617 source:c:\users\petil\onedrive\documents\github\power\fusionproject\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"cases.h"
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1619878232 c:\users\petil\onedrive\documents\github\power\definition.h
+
+1619780832 c:\users\petil\onedrive\documents\github\power\initialisation.h
+
+1619780832 c:\users\petil\onedrive\documents\github\power\affichage.h
+
+1619716470 source:c:\users\petil\onedrive\documents\github\power\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619879333 c:\users\petil\onedrive\documents\github\power\cases.h
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+
+1619950187 source:c:\users\petil\onedrive\documents\github\power\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"cases.h"
+
+1619780832 source:c:\users\petil\onedrive\documents\github\power\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1619780832 c:\users\petil\onedrive\documents\github\power\ordres.h
+
+1619950067 source:c:\users\petil\onedrive\documents\github\power\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+
+1619880890 c:\users\petil\onedrive\documents\github\power\plateau.h
+	"cases.h"
+
+1619917932 source:d:\estaca\1a\algoprogrammation\projet\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620155254 d:\estaca\1a\algoprogrammation\projet\power-main\definition.h
+
+1620076618 d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1619917932 d:\estaca\1a\algoprogrammation\projet\power-main\affichage.h
+
+1619917932 source:d:\estaca\1a\algoprogrammation\projet\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1619917932 d:\estaca\1a\algoprogrammation\projet\power-main\cases.h
+
+1620155566 source:d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+
+1620155444 source:d:\estaca\1a\algoprogrammation\projet\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+
+1619917932 source:d:\estaca\1a\algoprogrammation\projet\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1619917932 d:\estaca\1a\algoprogrammation\projet\power-main\ordres.h
+
+1619984906 source:d:\estaca\1a\algoprogrammation\projet\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+
+1619984790 d:\estaca\1a\algoprogrammation\projet\power-main\plateau.h
+	"cases.h"
+
+1619985492 source:d:\estaca\1a\algoprogrammation\projet\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1619988984 d:\estaca\1a\algoprogrammation\projet\power-main\game.h
+
+1620069830 source:d:\estaca\1a\algoprogrammation\projet\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
