@@ -2,7 +2,7 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="CODEV2_1_propre" />
+		<Option title="CODEV2__propre" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -44,6 +44,14 @@
 		</Unit>
 		<Unit filename="cases.h" />
 		<Unit filename="definition.h" />
+		<Unit filename="game.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="game.h" />
+		<Unit filename="ihm.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="ihm.h" />
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
