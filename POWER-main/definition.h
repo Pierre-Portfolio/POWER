@@ -1,8 +1,8 @@
 #ifndef DEFINITION_H_INCLUDED
 #define DEFINITION_H_INCLUDED
 
-#define RCBC 3 //nombre de régiments, croiseurs, bombardiers, chars par joueur
-#define MM 1
+#define CBC 3 //nombre de croiseurs, bombardiers, chars par joueur
+#define NBMEGAMISSILE 1
 #define NBJOUEURS 4
 #define NBCASES 9
 #define CDT 6 //nombre de chasseurs, Destroyers, tanks par joueur
@@ -15,6 +15,9 @@
 #define NB_TYPE_UNITE 9
 #define DIMSTRLONG 50
 #define NBORDRES 5
+#define NBPIECESJOUEUR 37
+
+
 
 
 
@@ -27,14 +30,24 @@ struct coordonnees{
 };
 typedef struct coordonnees S_coordonees;
 
+typedef enum
+{
+    type_chasseur,
+    type_destroyer,
+    type_bombardier,
+    type_croiseur,
+    type_soldat,
+    type_tank,
+    type_char,
+    type_megamissile,
+    type_regiment,
+}enum_type_pion;
 
 struct pions{
     //char type_pion[DIMSTR];
-    char* type_pion;
+    enum_type_pion type_pion; //type des pions est fixe de type enum_type_pion
     S_coordonees positions;
     int puissance;
-    int num_joueur;
-    int num_piece;
     int deja_deplace;  //1=oui, 0=non
     int dans_reserve;  //1=oui, 0=non
     int rcbc_pion;     // 1=oui rcbc in game, 0=non pion normal ou rcbc pas en game
@@ -42,7 +55,7 @@ struct pions{
 typedef struct pions S_pions;
 
 
-struct unitjoueur{
+/*struct unitjoueur{
 
     S_pions chasseurs[CDT+18];
     S_pions destroyers[CDT+18];
@@ -57,7 +70,7 @@ struct unitjoueur{
 };
 typedef struct unitjoueur S_unitjoueur;
 
-/*struct unitjoueur{  //ancien prog juste je garde au cas ou
+struct unitjoueur{  //ancien prog juste je garde au cas ou
     S_pions chasseursD[CDT];
     S_pions destroyersD[CDT];
     S_pions tanksD[CDT];
@@ -71,6 +84,7 @@ typedef struct unitjoueur S_unitjoueur;
 };
 typedef struct reservedepart S_unitjoueur;*/
 
+static const int joueur_vers_couleur[]={4,10,8,1};
 
 struct joueur{
     int power;
@@ -78,7 +92,10 @@ struct joueur{
     int etat;     //1=en jeu, 0=hors jeu
     int deja_donne_ordre;    //1=oui, 0=non
     int nbactionTour;
-    S_unitjoueur * tabpion; //declaration d'un tableau de pions
+    int nbpions;
+    S_pions * tabpion; //declaration d'un tableau de pions
+    int nbpions_reserve;
+    S_pions* tabpion_reserve;
 };
 typedef struct joueur S_joueur;
 

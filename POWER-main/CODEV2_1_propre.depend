@@ -159,9 +159,9 @@
 	"Initialisation.h"
 	"affichage.h"
 
-1620202082 d:\estaca\1a\algoprogrammation\projet\power-main\definition.h
+1620261980 d:\estaca\1a\algoprogrammation\projet\power-main\definition.h
 
-1620127244 d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.h
+1620259356 d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.h
 	"plateau.h"
 	"cases.h"
 
@@ -172,9 +172,9 @@
 	<stdlib.h>
 	"cases.h"
 
-1620202054 d:\estaca\1a\algoprogrammation\projet\power-main\cases.h
+1620260326 d:\estaca\1a\algoprogrammation\projet\power-main\cases.h
 
-1620199262 source:d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.c
+1620260948 source:d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.c
 	"stdio.h"
 	<stdlib.h>
 	<string.h>
@@ -182,14 +182,17 @@
 	"Initialisation.h"
 	"cases.h"
 	"plateau.h"
+	<assert.h>
 
-1620198200 source:d:\estaca\1a\algoprogrammation\projet\power-main\main.c
+1620258386 source:d:\estaca\1a\algoprogrammation\projet\power-main\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<assert.h>
 	"definition.h"
 	"Initialisation.h"
 	"game.h"
+	"util.h"
 
 1620127244 source:d:\estaca\1a\algoprogrammation\projet\power-main\ordres.c
 	"stdio.h"
@@ -202,14 +205,15 @@
 
 1620127244 d:\estaca\1a\algoprogrammation\projet\power-main\ordres.h
 
-1620198550 source:d:\estaca\1a\algoprogrammation\projet\power-main\plateau.c
+1620263232 source:d:\estaca\1a\algoprogrammation\projet\power-main\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	"plateau.h"
 	<windows.h>
 
-1620127244 d:\estaca\1a\algoprogrammation\projet\power-main\plateau.h
+1620252804 d:\estaca\1a\algoprogrammation\projet\power-main\plateau.h
 	"cases.h"
+	"definition.h"
 
 1620127244 source:d:\estaca\1a\algoprogrammation\projet\power-main\ihm.c
 	<stdio.h>
@@ -220,9 +224,9 @@
 	"affichage.h"
 	"plateau.h"
 
-1620127244 d:\estaca\1a\algoprogrammation\projet\power-main\game.h
+1620258304 d:\estaca\1a\algoprogrammation\projet\power-main\game.h
 
-1620127244 source:d:\estaca\1a\algoprogrammation\projet\power-main\game.c
+1620259728 source:d:\estaca\1a\algoprogrammation\projet\power-main\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -314,4 +318,16 @@
 	"definition.h"
 	"Initialisation.h"
 	"game.h"
+
+1620257930 source:d:\estaca\1a\algoprogrammation\projet\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620257890 d:\estaca\1a\algoprogrammation\projet\power-main\util.h
 

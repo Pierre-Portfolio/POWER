@@ -4,7 +4,7 @@
 #include "cases.h"
 
 S_joueur * initialisation_joueurs();
-S_unitjoueur * initialisation_pieces();
+S_pions * initialisation_pieces(int num_joueur);
 S_cases ** initialisation_cases();
 
 #endif // INITIALISATION_H_INCLUDED
