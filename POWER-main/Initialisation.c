@@ -239,7 +239,6 @@ S_pions * initialisation_pieces(int num_joueur)
         tabpions[k]=megamissile(position_x,position_y);
         k++;
     }
-    printf("%d\n",k);
     assert(k==NBPIECESJOUEUR); //verifier que toutes les cases des pieces du joueur sont remplies
     return tabpions;
 

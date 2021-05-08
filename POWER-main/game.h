@@ -12,7 +12,7 @@ typedef struct game S_game;
 
 S_game creer_game();
 int saisieAction(int nbcoup);
-void deplacerPion();
+void * deplacerPion(S_joueur le_joueur);
 void echangePower();
 S_game jouer_game(S_game g1);
 

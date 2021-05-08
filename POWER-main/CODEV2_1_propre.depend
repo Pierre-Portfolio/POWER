@@ -159,7 +159,8 @@
 	"Initialisation.h"
 	"affichage.h"
 
-1620261980 d:\estaca\1a\algoprogrammation\projet\power-main\definition.h
+1620433158 d:\estaca\1a\algoprogrammation\projet\power-main\definition.h
+	<stdbool.h>
 
 1620259356 d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.h
 	"plateau.h"
@@ -174,7 +175,7 @@
 
 1620260326 d:\estaca\1a\algoprogrammation\projet\power-main\cases.h
 
-1620260948 source:d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.c
+1620420706 source:d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.c
 	"stdio.h"
 	<stdlib.h>
 	<string.h>
@@ -184,11 +185,12 @@
 	"plateau.h"
 	<assert.h>
 
-1620258386 source:d:\estaca\1a\algoprogrammation\projet\power-main\main.c
+1620426196 source:d:\estaca\1a\algoprogrammation\projet\power-main\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<assert.h>
+	<stdbool.h>
 	"definition.h"
 	"Initialisation.h"
 	"game.h"
@@ -205,13 +207,14 @@
 
 1620127244 d:\estaca\1a\algoprogrammation\projet\power-main\ordres.h
 
-1620263232 source:d:\estaca\1a\algoprogrammation\projet\power-main\plateau.c
+1620431326 source:d:\estaca\1a\algoprogrammation\projet\power-main\plateau.c
 	<stdio.h>
 	<stdlib.h>
 	"plateau.h"
 	<windows.h>
+	<assert.h>
 
-1620252804 d:\estaca\1a\algoprogrammation\projet\power-main\plateau.h
+1620417008 d:\estaca\1a\algoprogrammation\projet\power-main\plateau.h
 	"cases.h"
 	"definition.h"
 
@@ -224,9 +227,9 @@
 	"affichage.h"
 	"plateau.h"
 
-1620258304 d:\estaca\1a\algoprogrammation\projet\power-main\game.h
+1620431044 d:\estaca\1a\algoprogrammation\projet\power-main\game.h
 
-1620259728 source:d:\estaca\1a\algoprogrammation\projet\power-main\game.c
+1620431946 source:d:\estaca\1a\algoprogrammation\projet\power-main\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

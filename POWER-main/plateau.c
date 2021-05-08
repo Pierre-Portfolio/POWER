@@ -2,9 +2,10 @@
 #include <stdlib.h>
 #include "plateau.h"
 #include <windows.h>
+#include <assert.h>
 
 
-void affiche_plateau(S_plateau p1,S_joueur* joueurs_partie)
+void affiche_plateau(S_plateau p1,S_joueur* joueurs_partie )
 {
     printf("\n\t       1            2        3        4            5           6        7        8            9");
     printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
@@ -59,14 +60,14 @@ void color (int couleurDuTexte, int couleurDuFond)
      SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
 }
 // 0.Noir
-// 1.Bleu foncï¿½
-// 2.Vert foncï¿½
+// 1.Bleu fonc?
+// 2.Vert fonc?
 // 3.Turquoise
-// 4.Rouge foncï¿½
+// 4.Rouge fonc?
 // 5.Violet
 // 6.Vert caca d'oie
 // 7.Gris clair
-// 8.Gris foncï¿½
+// 8.Gris fonc?
 // 9.Bleu fluo
 // 10.Vert fluo
 // 11.Turquoise
@@ -85,7 +86,7 @@ int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int 
         if(joueurs_partie[num_joueur].tabpion[k].positions.position_x==position_x &&
                 joueurs_partie[num_joueur].tabpion[k].positions.position_y==position_y)
         {
-            resultat+=joueurs_partie[num_joueur].tabpion[k].puissance; //resultat+= : rajouter Ã  resultat
+            resultat+=joueurs_partie[num_joueur].tabpion[k].puissance; //resultat+= : rajouter à resultat
         }
     }
     return resultat;
@@ -98,42 +99,44 @@ int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int 
 
 void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie)
 {
+    printf("  ");
     for(int x=1;x<=9;x++){
+
             print_case_num(x);
         }
         printf("\n");
     for(int y=1;y<=9;y++){
         printf("  ");
         for(int x=1;x<=9;x++){
-            print_color(p1.plateaux[y-1][x-1].joueur);
+            print_color(p1.cases[y-1][x-1].joueur);
             print_case_dessus();
             print_color(-1);
         }
         printf("%c\n",255);
         printf("  ");
         for(int x=1;x<=9;x++){
-            print_color(p1.plateaux[y-1][x-1].joueur);
+            print_color(p1.cases[y-1][x-1].joueur);
             print_case_power1(joueurs_partie,x,y);
             print_color(-1);
         }
         printf("%c\n",255);
         printf("%d ",y);
         for(int x=1;x<=9;x++){
-            print_color(p1.plateaux[y-1][x-1].joueur);
-            print_case_terrain(p1.plateaux[y-1][x-1]);
+            print_color(p1.cases[y-1][x-1].joueur);
+            print_case_terrain(p1.cases[y-1][x-1]);
             print_color(-1);
         }
         printf("%c\n",255);
         printf("  ");
         for(int x=1;x<=9;x++){
-            print_color(p1.plateaux[y-1][x-1].joueur);
+            print_color(p1.cases[y-1][x-1].joueur);
             print_case_power2(joueurs_partie,x,y);
             print_color(-1);
         }
         printf("%c\n",255);
         printf("  ");
         for(int x=1;x<=9;x++){
-            print_color(p1.plateaux[y-1][x-1].joueur);
+            print_color(p1.cases[y-1][x-1].joueur);
             print_case_dessous();
             print_color(-1);
         }
@@ -177,3 +180,67 @@ void print_color(int num_joueur)
 void print_case_dessous (){
     printf(" %c%c%c%c%c%c%c%c%c%c%c%c%c%c ",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
 }
+
+
+void affiche_unites(int x,int y,S_joueur* joueurs_partie)
+{
+    printf("Voici les unites presentes sur la case %d.%d\n",x,y);
+
+    for(int i=0;i<NBJOUEURS;i++)
+    {
+        int decompte_unites[taille_enum_pion]={0}; //initialisation du tableau à 0
+        for(int j=0;j<joueurs_partie[i].nbpions;j++)
+        {
+            if(joueurs_partie[i].tabpion[j].positions.position_x==x && joueurs_partie[i].tabpion[j].positions.position_y==y)
+            {
+                decompte_unites[joueurs_partie[i].tabpion[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
+            }
+        }
+        print_color(i);
+        affiche_decompte_unite(decompte_unites,false);
+        print_color(-1);
+    }
+}
+void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur)  //S_joueur* <==> S_joueur[]
+{
+    printf("Voici les unites presentes sur la case %d.%d\n",x,y);
+
+        int decompte_unites[taille_enum_pion]={0}; //initialisation du tableau à 0
+        for(int j=0;j<le_joueur.nbpions;j++)
+        {
+            if(le_joueur.tabpion[j].positions.position_x==x && le_joueur.tabpion[j].positions.position_y==y)
+            {
+                decompte_unites[le_joueur.tabpion[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
+            }
+        }
+        affiche_decompte_unite(decompte_unites,true);
+}
+
+void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote)
+{
+    for(int i=0;i<taille_enum_pion;i++)
+    {
+        if(decompte_unite[i]==0)continue; //on n'affiche rien si le decompte egale a 0; continue ignore la suite jusqu'a la fin de la boucle
+
+        printf("%dx",decompte_unite[i]);
+        switch(i)
+        {
+            case type_bombardier:printf("Bombardier");break;
+            case type_char:printf("Char");break;
+            case type_chasseur:printf("Chasseur");break;
+            case type_destroyer:printf("Destroyeur");break;
+            case type_croiseur:printf("Croiseur");break;
+            case type_megamissile:printf("Mega-missile");break;
+            case type_regiment:printf("Regiment");break;
+            case type_soldat:printf("Soldat");break;
+            case type_tank:printf("Tank");break;
+            default:assert(0);
+        }
+        if(numerote)
+        {
+            printf("   -%d-",i); //afficher la numerotation d'un pion ou pas
+        }
+        printf("\n");
+    }
+}
+

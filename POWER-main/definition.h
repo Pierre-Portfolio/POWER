@@ -1,5 +1,6 @@
 #ifndef DEFINITION_H_INCLUDED
 #define DEFINITION_H_INCLUDED
+#include <stdbool.h>
 
 #define CBC 3 //nombre de croiseurs, bombardiers, chars par joueur
 #define NBMEGAMISSILE 1
@@ -32,7 +33,7 @@ typedef struct coordonnees S_coordonees;
 
 typedef enum
 {
-    type_chasseur,
+    type_chasseur=0, //int 0 <==> chasseur
     type_destroyer,
     type_bombardier,
     type_croiseur,
@@ -41,7 +42,19 @@ typedef enum
     type_char,
     type_megamissile,
     type_regiment,
+    taille_enum_pion, //=9
 }enum_type_pion;
+
+static const bool pion_type_eau[taille_enum_pion]= {false, //chasseur
+                                                    true, //destroyer
+                                                    false, //bombardier
+                                                    true, //croiseur
+                                                    false, //soldat
+                                                    false, //tank
+                                                    false, //char
+                                                    false, //megamissile
+                                                    false, //regiment
+                                                    }; //static const : on definit le tableau de boolean
 
 struct pions{
     //char type_pion[DIMSTR];
@@ -108,18 +121,27 @@ struct cases{
 };
 typedef struct cases S_cases;
 */
+typedef enum{
+    type_deplacement,
+    type_achat,
+    type_echange,
+    type_sortie,
+}enum_types_ordre;
 
 struct feuille_ordre{
-
-    //char type_ordre[DIMSTR];
-    int position_depart_x;
-    int position_depart_y;
-    int position_arrive_x;
-    int position_arrive_y;
-
+    void * ordre[NBORDRES]; //pointeur de type inconnu
+    enum_types_ordre type[NBORDRES];
 };
 typedef struct feuille_ordre S_ordres;
 
+struct ordre_deplacement{
+    int position_arrive_x;
+    int position_arrive_y;
+    bool valide; //0=false et 1=true
+    int num_joueur;
+    int num_pion;
+};
+typedef struct ordre_deplacement S_ordre_deplacement;
 
 
 //S_joueur tabinfos[NBjoueurs];   //deja dans le main.c
