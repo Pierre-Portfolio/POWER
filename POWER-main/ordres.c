@@ -9,7 +9,7 @@
 #include "ordres.h"
 
 
-void saisir_ordres(S_ordres tab_ordres[]){
+//void saisir_ordres(S_ordres tab_ordres[]){
 
 
 
@@ -19,4 +19,4 @@ void saisir_ordres(S_ordres tab_ordres[]){
 
 
 
-}
+//}

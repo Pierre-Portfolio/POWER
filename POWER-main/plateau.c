@@ -234,6 +234,7 @@ void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote)
             case type_regiment:printf("Regiment");break;
             case type_soldat:printf("Soldat");break;
             case type_tank:printf("Tank");break;
+            case type_piece_inexistante:break; //ne fait rien
             default:assert(0);
         }
         if(numerote)

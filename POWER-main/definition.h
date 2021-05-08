@@ -42,7 +42,8 @@ typedef enum
     type_char,
     type_megamissile,
     type_regiment,
-    taille_enum_pion, //=9
+    type_piece_inexistante,
+    taille_enum_pion, //=10
 }enum_type_pion;
 
 static const bool pion_type_eau[taille_enum_pion]= {false, //chasseur
@@ -54,7 +55,22 @@ static const bool pion_type_eau[taille_enum_pion]= {false, //chasseur
                                                     false, //char
                                                     false, //megamissile
                                                     false, //regiment
+                                                    false, //inexstante -> non applicable
                                                     }; //static const : on definit le tableau de boolean
+
+
+
+static const int pion_limite_deplacement[taille_enum_pion]= {5, //chasseur
+                                                             1, //destroyer
+                                                             5, //bombardier
+                                                             1, //croiseur
+                                                             2, //soldat
+                                                             3, //tank
+                                                             3, //char
+                                                             -1, //megamissile -> non applicable, illimité
+                                                             2, //regiment
+                                                             -1, //inexstante -> non applicable, pas de deplacement
+                                                             }; //static const : on definit le tableau de boolean
 
 struct pions{
     //char type_pion[DIMSTR];
@@ -131,15 +147,16 @@ typedef enum{
 struct feuille_ordre{
     void * ordre[NBORDRES]; //pointeur de type inconnu
     enum_types_ordre type[NBORDRES];
+    int nb_ordre;
 };
-typedef struct feuille_ordre S_ordres;
+typedef struct feuille_ordre S_feuille_ordres;
 
 struct ordre_deplacement{
     int position_arrive_x;
     int position_arrive_y;
     bool valide; //0=false et 1=true
     int num_joueur;
-    int num_pion;
+    int num_pion; // 5   0 1 2 -> supprimés
 };
 typedef struct ordre_deplacement S_ordre_deplacement;
 
@@ -147,6 +164,6 @@ typedef struct ordre_deplacement S_ordre_deplacement;
 //S_joueur tabinfos[NBjoueurs];   //deja dans le main.c
 //S_unitjoueur tabpions[NBjoueurs];
 
-S_ordres tab_ordres[NBJOUEURS][NBORDRES];
+//S_ordres tab_ordres[NBJOUEURS][NBORDRES];
 
 #endif // DEFINITION_H_INCLUDED
