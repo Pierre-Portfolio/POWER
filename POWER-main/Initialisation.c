@@ -181,6 +181,26 @@ S_pions megamissile(int position_x,int position_y)
     return resultat;
 }
 
+S_pions creer_pion_de_type(enum_type_pion type_pion){
+
+    switch(type_pion){
+
+        case type_chasseur : return chasseur(100,100);
+        case type_destroyer : return destroyer(100,100);
+        case type_tank : return tank(100,100);
+        case type_regiment : return regiment(100,100);
+        case type_bombardier : return bombardier(100,100);
+        case type_croiseur : return croiseur(100,100);
+        case type_char : return un_char(100,100);
+        case type_soldat : return soldat(100,100);
+        case type_megamissile : return megamissile(100,100);
+
+        default : assert(0); //== assert(false)
+
+    }
+}
+
+
 S_pions * initialisation_pieces(int num_joueur)
 {
     S_pions * tabpions=(S_pions*)malloc (sizeof(S_pions)*NBPIECESJOUEUR);           //declaration d'un tableau de pions pour chaque joueur

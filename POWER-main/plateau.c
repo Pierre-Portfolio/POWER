@@ -92,8 +92,21 @@ int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int 
     return resultat;
 }
 
+void affiche_barre_status(S_joueur * joueur_partie){
 
+    printf("\n");
+    printf("Unites dans plateau/reserve :");
+    printf("\n");
+    for(int i=0;i<NBJOUEURS;i++){
 
+            print_color(i);
+
+            printf("\t%2d/%2d %4d Power\t",joueur_partie[i].nbpions,joueur_partie[i].nbpions_reserve,joueur_partie[i].power);
+            print_color(-1);
+
+    }
+    printf("%c\n\n",255);
+}
 
 
 
@@ -142,6 +155,8 @@ void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie)
         }
         printf("%c\n",255);
     }
+
+    affiche_barre_status(joueurs_partie);
 }
 void print_case_num(int num_case){
     printf("       %d        ",num_case);

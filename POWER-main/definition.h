@@ -138,7 +138,7 @@ struct cases{
 typedef struct cases S_cases;
 */
 typedef enum{
-    type_deplacement,
+    type_deplacement=0,
     type_achat,
     type_echange,
     type_sortie,
@@ -159,6 +159,25 @@ struct ordre_deplacement{
     int num_pion; // 5   0 1 2 -> supprimés
 };
 typedef struct ordre_deplacement S_ordre_deplacement;
+
+struct ordre_achat{
+    bool valide;
+    int num_joueur;
+    enum_type_pion type_pion;
+};
+typedef struct ordre_achat S_ordre_achat;
+
+static const int prix[taille_enum_pion]={5, //chasseur
+                                         10, //destroyer
+                                         -1, //non applicable
+                                         -1, ////non applicable
+                                         2, //soldat
+                                         3, //tank
+                                         -1, ////non applicable
+                                         -1, ////non applicable
+                                         -1, ////non applicable
+                                         -1, //inexstante -> non applicable
+                                         }; //static const : on definit le tableau de boolean
 
 
 //S_joueur tabinfos[NBjoueurs];   //deja dans le main.c
