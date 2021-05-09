@@ -192,7 +192,11 @@ int affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur){  //S_joueur* 
         return decompte;
 }
 
+<<<<<<< HEAD
 int affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
+=======
+void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
+>>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 
     printf("Voici vos unites en reserve\n");
 
@@ -201,8 +205,17 @@ int affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <
         for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<le_joueur.nbpions_reserve;j++)
         {
-            decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
+            decompte = decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
         }
+
+        if(decompte!=0){
+
+            affiche_decompte_unite(decompte_unites,numerote);
+        }
+        else{
+            printf("Vous n'avez aucunes unites dans votre reserve.\n");
+        }
+<<<<<<< HEAD
         for(int j=0;j<taille_enum_pion;j++)
             if(decompte_unites[j]>0)
                 decompte++;
@@ -215,6 +228,8 @@ int affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <
             printf("Vous n'avez aucune unite dans votre reserve.\n");
         }
         return decompte;
+=======
+>>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 }
 
 void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote){
