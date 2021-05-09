@@ -7,6 +7,6 @@ S_joueur * initialisation_joueurs();
 S_pions * initialisation_pieces(int num_joueur);
 S_cases ** initialisation_cases();
 
-S_pions creer_pion_de_type(enum_type_pion type_pion);
+S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y);
 
 #endif // INITIALISATION_H_INCLUDED

@@ -8,26 +8,37 @@
 #include "affichage.h"
 #include "plateau.h"
 #include "game.h"
+#include "util.h"
 
 //initialisation de la partie
 S_game creer_game()
 {
-    S_plateau p1={initialisation_cases()};
+    S_plateau p1= {initialisation_cases()};
     //affiche_plateau(p1);
     S_joueur * joueurs=initialisation_joueurs();
-    return (S_game){-1,p1,joueurs};
+    return (S_game)
+    {
+        -1,p1,joueurs
+        };
 }
 
 //environnement de tests
 int saisieAction(int nbcoup)
 {
-    if(nbcoup==0) return 3;
+    if(nbcoup==0) return 6;
 
     //demander a l'utilisateur ce qu'il souhaite faire
     int nombreEntre = -1;
-    while ((nombreEntre != 0) && (nombreEntre != 1) && (nombreEntre != 2) && (nombreEntre != 3))
+    while ((nombreEntre < 0) || (nombreEntre > 6))
     {
-        printf("Quelle action souhaitez vous faire ?\n0 : zoom sur les unite d'une case ou la reserve\n1 : deplacer un pion\n2 : achat de pions\n3 : Fin de tour\n");
+        printf("Quelle action souhaitez vous faire ?\n");
+        printf("0 : zoom sur les unite d'une case ou la reserve\n");
+        printf("1 : deplacer un pion\n");
+        printf("2 : achat de pions\n");
+        printf("3 : sortie de pions\n");
+        printf("4 : fusion de pions\n");
+        printf("5 : lancement de missile\n");
+        printf("6 : Fin de tour\n");
         scanf("%d", &nombreEntre);
     }
     return nombreEntre;
@@ -40,17 +51,21 @@ bool verifier_case_juste(int x, int y, S_plateau plateau, S_pions pion)
 
     if(pion_type_eau[pion.type_pion]!=(plateau.cases[y-1][x-1].terrain==eau)) // pion eau sur terre ou pion terre sur eau
     {
-        if(!pion_type_eau[pion.type_pion]) { //pion type terre
+        if(!pion_type_eau[pion.type_pion])   //pion type terre
+        {
             //printf("Pion terre sur eau\n");
             return false;
         }
-        else { //pion type eau
-            if( (x ==3 && y ==3) || (x ==3 && y ==7) || (x ==7 && y ==3) || (x ==7 && y ==7)){ //les centres des iles
+        else   //pion type eau
+        {
+            if( (x ==3 && y ==3) || (x ==3 && y ==7) || (x ==7 && y ==3) || (x ==7 && y ==7))  //les centres des iles
+            {
                 //printf("Pion eau sur terre\n");
 
                 return false;
             }
-            else {
+            else
+            {
                 //printf("Pion eau sur cote\n");
                 //ne fait rien -> case cotière autorisé
             }
@@ -76,7 +91,9 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
 {
     printf("verifier_chemin type %d; x%d, y%d, destx %d, desty%d\n",pion.type_pion,pion.positions.position_x,pion.positions.position_y,x_destination,y_destination);
 
-    if(pion.type_pion == type_megamissile) return true; // megamissile n'ont pas de conditino
+    if(pion.type_pion == type_megamissile){
+        return true; // megamissile n'ont pas de conditino
+    }
 
     int x1 = pion.positions.position_x; //x de départ
     int y1 = pion.positions.position_y; //y de départ
@@ -124,40 +141,48 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
         bool case_juste = verifier_case_juste(actuellement_x,actuellement_y,plateau,pion);
         printf("resultat case juste initial -> %d\n",case_juste);
 
-        if(!case_juste) {
+        if(!case_juste)
+        {
 
             printf("Cas faux, tentative d'alternatifs...\n");
             //cas alternatifs
             int alt_actuellement_x = -1; // -1 n'en n'as pas
             int round_x_plus = round(actuellement_x_float+0.25f);
-            if(round_x_plus != actuellement_x) {
+            if(round_x_plus != actuellement_x)
+            {
                 alt_actuellement_x = round_x_plus;
             }
             int round_x_moins = round(actuellement_x_float-0.25f);
-            if(round_x_moins != actuellement_x) {
+            if(round_x_moins != actuellement_x)
+            {
                 alt_actuellement_x = round_x_moins;
             }
 
             int alt_actuellement_y = -1; // -1 n'en n'as pas
             int round_y_plus = round(actuellement_y_float+0.25f);
-            if(round_y_plus != actuellement_y) {
+            if(round_y_plus != actuellement_y)
+            {
                 alt_actuellement_y = round_y_plus;
             }
             int round_y_moins = round(actuellement_y_float-0.25f);
-            if(round_y_moins != actuellement_y) {
+            if(round_y_moins != actuellement_y)
+            {
                 alt_actuellement_y = round_y_moins;
             }
 
             assert(alt_actuellement_x == -1 || alt_actuellement_y == -1); // necessite 4 cases d'eau cotes a cotes -> impossible
 
-            if(alt_actuellement_x != -1) {
+            if(alt_actuellement_x != -1)
+            {
                 case_juste = verifier_case_juste(alt_actuellement_x,actuellement_y,plateau,pion);
                 nouvelle_couleur=plateau.cases[actuellement_y-1][alt_actuellement_x-1].joueur;
                 printf("Alternative X trouvee, resultat %d...\n",case_juste);
             }
 
-            if(!case_juste) {
-                if(alt_actuellement_y != -1) {
+            if(!case_juste)
+            {
+                if(alt_actuellement_y != -1)
+                {
                     case_juste = verifier_case_juste(actuellement_x,alt_actuellement_y,plateau,pion);
                     nouvelle_couleur=plateau.cases[alt_actuellement_y-1][actuellement_x-1].joueur;
                     printf("Alternative Y trouvee, resultat %d...\n",case_juste);
@@ -186,7 +211,8 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
                 printf("Pion trop de changement de couleur\n");
                 return false;
             }
-            else {
+            else
+            {
                 printf("Case jsute\n");
             }
         }
@@ -207,13 +233,13 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
     scanf("%d",&y);
     affiche_mes_unites_numerotees(x,y,le_joueur);
     printf("Quel pion voulez-vous deplacer ?\n");
-    scanf("%d",&type_pion);
+    scanf("%d",(int*)(&type_pion));
     int indice_pion=-1;
     for(int i=0; i<le_joueur.nbpions; i++)
     {
         if(le_joueur.tabpion[i].positions.position_x==x && le_joueur.tabpion[i].positions.position_y==y && le_joueur.tabpion[i].type_pion==type_pion)
         {
-            if(!possede_deja_ordre(feuille_ordre, num_joueur, i))
+            if(!possede_deja_ordre(feuille_ordre, num_joueur, i, false))
             {
                 indice_pion=i;
                 break; //n'avoir qu'un seul pion qui repond aux conditions du if
@@ -221,7 +247,7 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
         }
 
     }
-    printf("%d",indice_pion);
+    printf("indice choisis : %d\n",indice_pion);
 
     int dest_x, dest_y; //dest -> destination
     printf("Ou souhaitez-vous aller ?\nEn x (horizontal) : \n");
@@ -237,6 +263,10 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
 
         printf("verifier chemin -> %d \n", juste);
 
+    }
+
+    if(type_pion == type_megamissile){ //missile non deplacable
+        juste = false;
     }
 
 
@@ -256,61 +286,97 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
     return ordre;
 }
 
+void * lancer_missile(S_feuille_ordres feuille_ordre, S_joueur le_joueur, int num_joueur)
+{
+    bool vers_reserve = false;
+    int joueur_reserve_cible = -1;
+    int x, y;
+    printf("Dans quelle case est le missile que vous souhaitez lancer ?\nEn x (horizontal) : \n");
+    scanf("%d",&x);
+    printf("En y (vertical) : \n");
+    scanf("%d",&y);
+
+
+    int indice_pion=-1;
+    for(int i=0; i<le_joueur.nbpions; i++)
+    {
+        if(le_joueur.tabpion[i].positions.position_x==x && le_joueur.tabpion[i].positions.position_y==y && le_joueur.tabpion[i].type_pion==type_megamissile )
+        {
+            if(!possede_deja_ordre(feuille_ordre, num_joueur, i, false))
+            {
+                indice_pion=i;
+                break; //n'avoir qu'un seul pion qui repond aux conditions du if
+            }
+        }
+
+    }
+    printf("indice choisis : %d\n",indice_pion);
+
+    int dest_x, dest_y; //dest -> destination
+    printf("Ou souhaitez-vous le lancer (Ou R pour viser une reserve) ?\nEn x (horizontal) : \n");
+    int num = scanf("%d",&dest_x);
+    if(num!=1)  // R
+    {
+        fflush(stdin);
+        vers_reserve = true;
+        printf("Joueur cible ? \n");
+        scanf("%d",&joueur_reserve_cible);
+    }
+    else
+    {
+        printf("En y (vertical) : \n");
+        scanf("%d",&dest_y);
+    }
+    S_ordre_lancement * ordre = (S_ordre_lancement *) malloc(sizeof(S_ordre_lancement));
+    if(ordre == NULL)
+    {
+        printf("Erreur memoire\n");
+        exit(1);
+    }
+
+    joueur_reserve_cible--; //commence de 1, conversion vers debut à 0
+
+    bool valide = (indice_pion!=-1);
+    if(vers_reserve && (joueur_reserve_cible < 0 || joueur_reserve_cible >= NBJOUEURS)){
+        valide = false;
+    }
+
+    ordre->num_joueur = num_joueur;
+    ordre->num_pion = indice_pion;
+    ordre->position_arrive_x = dest_x;
+    ordre->position_arrive_y = dest_y;
+    ordre->vers_reserve = vers_reserve;
+    ordre->joueur_reserve_cible = joueur_reserve_cible;
+    ordre->valide = valide;
+
+    return ordre;
+}
+
 
 void* achat(S_joueur joueur, int num_joueur)
 {
     enum_type_pion type;
 
-    for(int i=0;i<taille_enum_pion-1;i++){
 
-        switch(i){
-            case type_chasseur:
-                printf("chasseur");
-                break;
-            case type_bombardier:
-                printf("bombardier");
-                break;
-            case type_destroyer:
-                printf("destroyer");
-                break;
-            case type_regiment:
-                printf("regiment");
-                break;
-            case type_char:
-                printf("char");
-                break;
-            case type_soldat:
-                printf("soldat");
-                break;
-            case type_tank:
-                printf("tank");
-                break;
-            case type_croiseur:
-                printf("croiseur");
-                break;
-            case type_megamissile:
-                printf("megamissile");
-                break;
-        default: assert(false);
-        }
-        printf(" %d\n",i);
-    }
 
-    printf("Quelle piece voulez-vous acheter avec vos powers ? ");
-    scanf("%d",&type);
+    printf("Quelle piece voulez-vous acheter avec vos powers ? \n");
+    scanf("%d",(int*)(&type));
     S_ordre_achat * ordre = (S_ordre_achat *) malloc(sizeof(S_ordre_achat));
 
-    if(ordre==NULL){
-                printf("erreur memoire\n");
-                exit(1); //arret d'urgence
-            }
+    if(ordre==NULL)
+    {
+        printf("erreur memoire\n");
+        exit(1); //arret d'urgence
+    }
 
     ordre->type_pion=type;
     ordre->num_joueur=num_joueur;
 
-    if(type>=0&&type<taille_enum_pion&&prix[type]!=-1){//s'assure que l'utilisateur rentre un bon numéro de type
+    if(type>=0&&type<taille_enum_pion&&prix[type]!=-1) //s'assure que l'utilisateur rentre un bon numéro de type
+    {
 
-        if(joueur.power>=prix[type]){
+        if(joueur.power>=prix[type])
+        {
 
             ordre->valide=true;
             return ordre;
@@ -320,32 +386,167 @@ void* achat(S_joueur joueur, int num_joueur)
     ordre->valide=false;
     return ordre;
 }
+void* sortie(S_joueur joueur,S_feuille_ordres feuille_ordre, int num_joueur)
+{
+    enum_type_pion type;
 
-bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indice_pion)
+    affiche_mes_unites_reserve(joueur,true);
+
+    printf("Quelle piece voulez-vous sortir ? \n");
+    scanf("%d",(int*)(&type));
+
+    S_ordre_sortie * ordre = (S_ordre_sortie *) malloc(sizeof(S_ordre_sortie));
+
+    if(ordre==NULL)
+    {
+        printf("erreur memoire\n");
+        exit(1); //arret d'urgence
+    }
+
+    ordre->num_joueur=num_joueur;
+    ordre->valide=false;
+
+    for(int i = 0 ; i < joueur.nbpions_reserve ; i++)
+    {
+        if(joueur.tabpion_reserve[i].type_pion == type)
+        {
+            if(!possede_deja_ordre(feuille_ordre, num_joueur, i, true))
+            {
+                ordre->valide=true;
+                ordre->indice_pion=i;
+                break;
+            }
+        }
+    }
+
+
+    return ordre;
+}
+void* echange(S_joueur joueur,S_feuille_ordres feuille_ordre, int num_joueur)
+{
+    int x, y;
+    enum_type_pion type_pion;
+    bool depuis_reserve = false;
+    printf("De quelle case sont les pion que vous souhaitez pour fusion (R pour la reserve) ?\nEn x (horizontal) : \n");
+    int num = scanf("%d",&x); //scanf renvoie le nb de nombres(%..)qu'il a reussi a scaner. si %d%d, il renvoie 2 par exemple si scan de 2 %d reussi
+    if(num!=1)  // R
+    {
+        fflush(stdin);
+        affiche_mes_unites_reserve(joueur,true);
+        depuis_reserve = true;
+    }
+    else
+    {
+        printf("En y (vertical) : \n");
+        scanf("%d",&y);
+        affiche_mes_unites_numerotees(x,y,joueur);
+    }
+    printf("Quel pion voulez-vous faire fusion ?\n");
+    scanf("%d",(int*)(&type_pion));
+
+    int indice_pion[3];
+    for(int i = 0 ; i < 3 ; i++) indice_pion[i]=-1;
+
+    for(int z=0 ; z < 3 ; z++)
+    {
+        S_pions * tab = joueur.tabpion;
+        int nb = joueur.nbpions;
+        if(depuis_reserve)
+        {
+            tab = joueur.tabpion_reserve;
+            nb = joueur.nbpions_reserve;
+        }
+
+        for(int i=0; i<nb; i++)
+        {
+            if((depuis_reserve || (tab[i].positions.position_x==x && tab[i].positions.position_y==y)) && tab[i].type_pion==type_pion)
+            {
+                bool deja_en_indice = false;
+                for(int j = 0 ; j < 3 ; j++)
+                {
+                    if(i == indice_pion[j])
+                    {
+                        deja_en_indice = true;
+                    }
+                }
+                if(!possede_deja_ordre(feuille_ordre, num_joueur, i, depuis_reserve) && !deja_en_indice)
+                {
+                    indice_pion[z]=i;
+                    break; //n'avoir qu'un seul pion qui repond aux conditions du if
+                }
+            }
+        }
+    }
+    printf("indices choisis :%d %d %d\n",indice_pion[0],indice_pion[1],indice_pion[2]);
+
+
+    S_ordre_echange * ordre = (S_ordre_echange *) malloc(sizeof(S_ordre_echange));
+    if(ordre == NULL)
+    {
+        printf("Erreur memoire\n");
+        exit(1);
+    }
+
+    ordre->valide = false;
+    if(indice_pion[2]!=-1 && pion_type_amelioration[type_pion] != type_piece_inexistante)
+    {
+        ordre->valide = true;
+        ordre->type_pion = pion_type_amelioration[type_pion];
+    }
+
+    ordre->num_joueur = num_joueur;
+    ordre->indice_pion1 = indice_pion[0];
+    ordre->indice_pion2 = indice_pion[1];
+    ordre->indice_pion3 = indice_pion[2];
+    ordre->depuis_reserve = depuis_reserve;
+
+    return ordre;
+}
+
+bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indice_pion, bool en_reserve)
 {
     printf("verif deja ordre\n");
     for(int i=0; i<feuille_ordre.nb_ordre; i++)
     {
         printf("ordre %d\n",i);
         S_ordre_deplacement * deplacement;
-        S_ordre_achat * l_achat;
+//        S_ordre_achat * l_achat;
+        S_ordre_sortie * sortie;
+        S_ordre_echange * echange;
 
         switch(feuille_ordre.type[i])
         {
         case type_achat:
-            l_achat = (S_ordre_achat *) feuille_ordre.ordre[i]; //convertir l'ordre en ordre de deplacement
+            //l_achat = (S_ordre_achat *) feuille_ordre.ordre[i]; //convertir l'ordre en ordre de deplacement
             //maintenant on a notre deplacement
             //****************//il n'y a pas de pion dans un achat car il apparait apres, au tour suivant. il ne peut donc pas deja avoir un ordre
             break;
         case type_deplacement:
             deplacement = (S_ordre_deplacement *) feuille_ordre.ordre[i]; //convertir l'ordre en ordre de deplacement
             //maintenant on a notre deplacement
-            if(deplacement->num_joueur==num_joueur&&deplacement->num_pion==indice_pion){
+            if(!en_reserve && deplacement->num_joueur==num_joueur&&deplacement->num_pion==indice_pion)
+            {
                 return true;
             } //return en vrai ou faux
+            break;
         case type_sortie:
+            sortie = (S_ordre_sortie *) feuille_ordre.ordre[i]; //convertir l'ordre en ordre de deplacement
+            //maintenant on a notre deplacement
+            if(en_reserve && sortie->num_joueur==num_joueur&&sortie->indice_pion==indice_pion)
+            {
+                return true;
+            } //return en vrai ou faux
             break;
         case type_echange:
+            echange = (S_ordre_echange *) feuille_ordre.ordre[i]; //convertir l'ordre en ordre de deplacement
+            //maintenant on a notre deplacement
+            if(en_reserve == echange->depuis_reserve && echange->num_joueur==num_joueur)
+            {
+                if(echange->indice_pion1 == indice_pion || echange->indice_pion2 == indice_pion || echange->indice_pion3 == indice_pion)
+                {
+                    return true;
+                }
+            } //return en vrai ou faux
             break;
         default :
             assert(0);
@@ -355,64 +556,209 @@ bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indic
     return false;
 }
 
-void executer_ordre_deplacement(S_game * g1, S_ordre_deplacement * deplacement){
+bool executer_ordre_deplacement(S_game * g1, S_ordre_deplacement * deplacement)
+{
     if(!deplacement->valide) //s'il n'est pas valide
     {
-        printf("Ordre invalide");return;
+        printf("Ordre deplacement invalide\n");
+        return false;
     }
     g1->joueurs_partie[deplacement->num_joueur].tabpion[deplacement->num_pion].positions.position_x = deplacement->position_arrive_x;
     g1->joueurs_partie[deplacement->num_joueur].tabpion[deplacement->num_pion].positions.position_y = deplacement->position_arrive_y;
+
+    return true;
 }
 
-void executer_ordre_achat(S_game * g1, S_ordre_achat * l_achat){
 
-    if(!l_achat->valide){ //vrai si valide faux et vrai sinon
+bool executer_ordre_lancement(S_game * g1, S_ordre_lancement * lancement)
+{
+    if(!lancement->valide) //s'il n'est pas valide
+    {
+        printf("Ordre lancement invalide\n");
+        return false;
+    }
+    g1->joueurs_partie[lancement->num_joueur].tabpion[lancement->num_pion].type_pion = type_piece_inexistante;
 
-        printf("Ordre invalide");
-        return;
+    if(!lancement->vers_reserve)
+    {
+        printf("MISSILE : Tout le monde meurt en %d %d\n",lancement->position_arrive_x,lancement->position_arrive_y);
+        for(int i=0; i<NBJOUEURS; i++) //calcul du nombre d'egalites par case
+            for(int j = 0 ; j < g1->joueurs_partie[i].nbpions ; j++)
+                if(g1->joueurs_partie[i].tabpion[j].positions.position_x == lancement->position_arrive_x &&
+                g1->joueurs_partie[i].tabpion[j].positions.position_y == lancement->position_arrive_y)
+                    g1->joueurs_partie[i].tabpion[j].type_pion = type_piece_inexistante;
+
+    }
+    else
+    {
+        printf("MISSILE : Tout le monde meurt dans la reserve du joueur %d\n",lancement->joueur_reserve_cible+1);
+        for(int j = 0 ; j < g1->joueurs_partie[lancement->joueur_reserve_cible].nbpions_reserve ; j++)
+            g1->joueurs_partie[lancement->joueur_reserve_cible].tabpion_reserve[j].type_pion = type_piece_inexistante;
+
+    }
+
+
+    return true;
+}
+
+bool executer_ordre_achat(S_game * g1, S_ordre_achat * l_achat)
+{
+
+    if(!l_achat->valide)  //vrai si valide faux et vrai sinon
+    {
+
+        printf("Ordre d'achat invalide\n");
+        return false;
     }
 
     g1->joueurs_partie[l_achat->num_joueur].power-=prix[l_achat->type_pion];      //equivaut a x=x-...
 
-    S_pions pion = creer_pion_de_type(l_achat->type_pion);
+    S_pions pion = creer_pion_de_type(l_achat->type_pion,100,100);
 
-    rajouter(&g1->joueurs_partie[l_achat->num_joueur].tabpion_reserve,sizeof(S_pions),
+    rajouter((void*)&g1->joueurs_partie[l_achat->num_joueur].tabpion_reserve,sizeof(S_pions),
              &g1->joueurs_partie[l_achat->num_joueur].nbpions_reserve,
-             pion);
+             (void*)&pion);
+
+    return true;
+}
+
+// Retourne false en cas d'ordre invalide
+bool executer_ordre_echange(S_game * g1, S_ordre_echange * echange)
+{
+    if(!echange->valide)  //vrai si valide faux et vrai sinon
+    {
+
+        printf("Ordre d'echange invalide\n");
+        return false;
+    }
+
+    S_pions ** tab;
+    int * nb;
+
+    if(echange->depuis_reserve)
+    {
+        tab = &g1->joueurs_partie[echange->num_joueur].tabpion_reserve;
+        nb = &g1->joueurs_partie[echange->num_joueur].nbpions_reserve;
+    }
+    else
+    {
+        tab = &g1->joueurs_partie[echange->num_joueur].tabpion;
+        nb = &g1->joueurs_partie[echange->num_joueur].nbpions;
+    }
+
+    S_pions pion = creer_pion_de_type(echange->type_pion,(*tab)[echange->indice_pion1].positions.position_x,(*tab)[echange->indice_pion1].positions.position_y);
+
+    printf("Rajouter sur le tableau par fusion un pion de type %d, pos %d %d\n",
+           echange->type_pion,
+           (*tab)[echange->indice_pion1].positions.position_x,
+           (*tab)[echange->indice_pion1].positions.position_y);
+
+    rajouter((void*)tab,sizeof(S_pions),
+             nb,
+             (void*)&pion);
+
+    printf("Marquer pour supprimer pion 1, indice %d\n",echange->indice_pion1);
+    (*tab)[echange->indice_pion1].type_pion = type_piece_inexistante;
+
+    printf("Marquer pour supprimer pion 2, indice %d\n",echange->indice_pion2);
+    (*tab)[echange->indice_pion2].type_pion = type_piece_inexistante;
+
+    printf("Marquer pour supprimer pion 3, indice %d\n",echange->indice_pion3);
+    (*tab)[echange->indice_pion3].type_pion = type_piece_inexistante;
+
+    return true;
+}
+
+bool executer_ordre_sortie(S_game * g1, S_ordre_sortie * sortie)
+{
+
+    if(!sortie->valide)  //vrai si valide faux et vrai sinon
+    {
+
+        printf("Ordre de sortie invalide\n");
+        return false;
+    }
+
+    g1->joueurs_partie[sortie->num_joueur].tabpion_reserve[sortie->indice_pion].positions.position_x = hq_x[sortie->num_joueur];
+    g1->joueurs_partie[sortie->num_joueur].tabpion_reserve[sortie->indice_pion].positions.position_y = hq_y[sortie->num_joueur];
+
+    printf("Rajouter sur le tableau un pion, pos %d %d\n",
+           g1->joueurs_partie[sortie->num_joueur].tabpion_reserve[sortie->indice_pion].positions.position_x,
+           g1->joueurs_partie[sortie->num_joueur].tabpion_reserve[sortie->indice_pion].positions.position_y);
+
+    rajouter((void*)&g1->joueurs_partie[sortie->num_joueur].tabpion,sizeof(S_pions),
+             &g1->joueurs_partie[sortie->num_joueur].nbpions,
+             (void*)&g1->joueurs_partie[sortie->num_joueur].tabpion_reserve[sortie->indice_pion]);
+
+    printf("Le supprimer, indice %d (joueur %d)\n",sortie->indice_pion,sortie->num_joueur);
+    supprimer(g1->joueurs_partie[sortie->num_joueur].tabpion_reserve,sizeof(S_pions),
+              &g1->joueurs_partie[sortie->num_joueur].nbpions_reserve,
+              sortie->indice_pion);
+
+    return true;
 }
 
 
 void executer_ordre(S_game * g1, S_feuille_ordres feuille_ordre[NBJOUEURS])
 {
-    for(int i = 0 ; i < NBJOUEURS ; i++){
-        for(int j = 0 ; j < feuille_ordre[i].nb_ordre ; j++){
+    for(int i = 0 ; i < NBJOUEURS ; i++)
+    {
+        int nb_ordre_valide = 0;
+        for(int j = 0 ; j < feuille_ordre[i].nb_ordre ; j++)
+        {
             printf("%d %d %d\n",i,j,feuille_ordre[i].nb_ordre);
 
-                S_ordre_deplacement * deplacement;
-                S_ordre_achat * l_achat;
+            S_ordre_deplacement * deplacement;
+            S_ordre_achat * l_achat;
+            S_ordre_sortie * sortie;
+            S_ordre_echange * echange;
+            S_ordre_lancement * lancement;
+            bool valide = false;
 
-            switch(feuille_ordre[i].type[j]){
-                case type_achat:
-                    l_achat = (S_ordre_achat *) feuille_ordre[i].ordre[j]; //convertir l'ordre en ordre de deplacement
-                    //maintenant on a notre deplacement
-                    executer_ordre_achat(g1,l_achat);
-                    break;
-                case type_deplacement:
-                    deplacement = (S_ordre_deplacement *) feuille_ordre[i].ordre[j]; //convertir l'ordre en ordre de deplacement
-                    //maintenant on a notre deplacement
-                    executer_ordre_deplacement(g1,deplacement);
-                    break;
-                case type_sortie: break;
-                case type_echange: break;
-                default : assert(0);
+            switch(feuille_ordre[i].type[j])
+            {
+            case type_achat:
+                l_achat = (S_ordre_achat *) feuille_ordre[i].ordre[j]; //convertir l'ordre en ordre de deplacement
+                //maintenant on a notre deplacement
+                valide=executer_ordre_achat(g1,l_achat);
+                break;
+            case type_deplacement:
+                deplacement = (S_ordre_deplacement *) feuille_ordre[i].ordre[j]; //convertir l'ordre en ordre de deplacement
+                //maintenant on a notre deplacement
+                valide=executer_ordre_deplacement(g1,deplacement);
+                break;
+            case type_sortie:
+                sortie = (S_ordre_sortie *) feuille_ordre[i].ordre[j]; //convertir l'ordre en ordre de deplacement
+                valide=executer_ordre_sortie(g1,sortie);
+                break;
+            case type_echange:
+                echange = (S_ordre_echange *) feuille_ordre[i].ordre[j];
+                valide=executer_ordre_echange(g1,echange);
+                break;
+            case type_lancement:
+                lancement = (S_ordre_lancement *) feuille_ordre[i].ordre[j];
+                valide=executer_ordre_lancement(g1,lancement);
+                break;
+            default :
+                assert(0);
             }
             free(feuille_ordre[i].ordre[j]); //liberer l'espace memoire
+
+            if(valide){
+                nb_ordre_valide++;
+            }
+        }
+        if(nb_ordre_valide == 0){
+            printf("%d perd un power pour ne pas avoir agit (ou que des ordres faux)\n",i);
+            g1->joueurs_partie[i].power -= 1;
+            if(g1->joueurs_partie[i].power < 0) g1->joueurs_partie[i].power = 0;
         }
     }
 
 }
 
-void supprimer_pieces_inexistantes(S_game * g1){
+void supprimer_pieces_inexistantes(S_game * g1)
+{
 
     for(int i=0; i<NBJOUEURS; i++)
     {
@@ -429,10 +775,10 @@ void supprimer_pieces_inexistantes(S_game * g1){
             }
 
         }
-        printf("verification inexistance reserve joueur %d et %d\n",i,g1->joueurs_partie[i].nbpions_reserve);
+        printf("verification inexistance reserve joueur %d (%d en réserve)\n",i,g1->joueurs_partie[i].nbpions_reserve);
         for(int j=0; j<g1->joueurs_partie[i].nbpions_reserve; j++)
         {
-            printf("%d\n",j);
+            printf("regarde l'indice %d\n",j);
             if(g1->joueurs_partie[i].tabpion_reserve[j].type_pion==type_piece_inexistante)
             {
 
@@ -487,13 +833,12 @@ bool multiple_gagnants_combat(S_game * g1,int x, int y, int * power_max, int * i
 
 void resolution_des_combats(S_game*g1)
 {
-    for(int x=0; x<NBCASES; x++)
+    for(int x=1; x<=NBCASES; x++)
     {
-        for(int y=0; y<NBCASES; y++)
+        for(int y=1; y<=NBCASES; y++)
         {
-            printf("\tnous sommes a la case %d %d\n",x,y);
-            if(somme_powers_a(x,y,g1->joueurs_partie,0)+somme_powers_a(x,y,g1->joueurs_partie,1)
-                    +somme_powers_a(x,y,g1->joueurs_partie,2)+somme_powers_a(x,y,g1->joueurs_partie,3)>0)
+            printf("\tnous sommes a la case %d %d  -- %d %d %d %d\n",x,y,somme_powers_a(x,y,g1->joueurs_partie,0),somme_powers_a(x,y,g1->joueurs_partie,1),somme_powers_a(x,y,g1->joueurs_partie,2),somme_powers_a(x,y,g1->joueurs_partie,3));
+            if((somme_powers_a(x,y,g1->joueurs_partie,0)+somme_powers_a(x,y,g1->joueurs_partie,1)+somme_powers_a(x,y,g1->joueurs_partie,2)+somme_powers_a(x,y,g1->joueurs_partie,3))>0)
             {
                 printf("\tcombat trouve\n");
                 int power_max,indice_max;
@@ -532,11 +877,11 @@ void resolution_des_combats(S_game*g1)
 
                             for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
                             {
-                               if(g1->joueurs_partie[i].tabpion[j].positions.position_x==x && g1->joueurs_partie[i].tabpion[j].positions.position_y==y)
+                                if(g1->joueurs_partie[i].tabpion[j].positions.position_x==x && g1->joueurs_partie[i].tabpion[j].positions.position_y==y)
                                 {
                                     printf("\tpiece %d est perdue\n",j);
 
-                                    rajouter(&g1->joueurs_partie[indice_max].tabpion_reserve,sizeof(S_pions),&g1->joueurs_partie[indice_max].nbpions_reserve,g1->joueurs_partie[indice_max].tabpion+j); //dernier truc==&g1->joueurs_partie[indice_max].tabpion[j]
+                                    rajouter((void*)&g1->joueurs_partie[indice_max].tabpion_reserve,sizeof(S_pions),&g1->joueurs_partie[indice_max].nbpions_reserve,(void*)g1->joueurs_partie[indice_max].tabpion+j); //dernier truc==&g1->joueurs_partie[indice_max].tabpion[j]
                                     g1->joueurs_partie[i].tabpion[j].type_pion=type_piece_inexistante;
 
                                 }
@@ -545,12 +890,62 @@ void resolution_des_combats(S_game*g1)
                         }
                     }
                 }
-                else{
+                else
+                {
                     printf("\trien apres duplicata\n");
+                }
             }
         }
     }
 }
+
+void actions_du_tour(S_game * g1)
+{
+    //ajout des power
+
+    for(int i = 0 ; i < NBJOUEURS ; i++){
+        bool present[NBJOUEURS];
+        for(int z = 0 ; z < NBJOUEURS ; z++) present[z] = false;
+
+        for(int x = 1 ; x <= NBCASES ; x++){
+            for(int y = 1 ; y <= NBCASES ; y++){
+
+                int joueur_case = g1->plateau_partie.cases[y-1][x-1].joueur;
+                if(joueur_case != -1 && joueur_case != i)
+                { //case ennemi
+                    if(somme_powers_a(x,y,g1->joueurs_partie,i) > 0)
+                    {
+                        present[joueur_case] = true;
+                    }
+                }
+            }
+        }
+        for(int z = 0 ; z < NBJOUEURS ; z++){
+            if(present[z]){
+                printf("Joueur %d gagne 1 power en occupant le territoire de %d\n",i,z);
+                g1->joueurs_partie[i].power+=1;
+            }
+        }
+    }
+}
+
+void verifier_victoire(S_game * g1)
+{
+    for(int i = 0 ; i < NBJOUEURS ; i++){
+        for(int j = 0 ; j < NBJOUEURS ; j++){
+            int x = hq_x[j];
+            int y = hq_y[j];
+            if(j != i) //case ennemi
+            {
+                if(somme_powers_a(x,y,g1->joueurs_partie,i) > 0)
+                {
+                    printf("Le joueur %d gagne\n",i);
+                    g1->gagnant_partie = i;
+                    return; // le premier dans l'ordre des aiguilles d'une montre, pas d'ex aequo
+                }
+            }
+        }
+    }
 }
 
 S_game jouer_game(S_game g1)
@@ -598,6 +993,28 @@ S_game jouer_game(S_game g1)
                     feuille_ordre[i].nb_ordre = 5-action_restante;
                     break;
                 case 3:
+                    ordre = sortie(g1.joueurs_partie[i], feuille_ordre[i], i);
+                    feuille_ordre[i].ordre[5-action_restante] = ordre;
+                    feuille_ordre[i].type[5-action_restante] = type_sortie;
+                    action_restante--;
+                    feuille_ordre[i].nb_ordre = 5-action_restante;
+                    break;
+                case 4:
+                    ordre = echange(g1.joueurs_partie[i], feuille_ordre[i], i);
+                    feuille_ordre[i].ordre[5-action_restante] = ordre;
+                    feuille_ordre[i].type[5-action_restante] = type_echange;
+                    action_restante--;
+                    feuille_ordre[i].nb_ordre = 5-action_restante;
+                    break;
+                case 5:
+                    ordre = lancer_missile(feuille_ordre[i], g1.joueurs_partie[i], i);
+                    feuille_ordre[i].ordre[5-action_restante] = ordre;
+                    feuille_ordre[i].type[5-action_restante] = type_lancement;
+                    action_restante--;
+                    feuille_ordre[i].nb_ordre = 5-action_restante;
+                    break;
+
+                case 6:
                     printf("Votre tour est fini\n");
                     break;
                 default:
@@ -605,7 +1022,7 @@ S_game jouer_game(S_game g1)
                 }
 
             }
-            while(result!=3);
+            while(result!=6);
 
             // on reset le nbr d'action
             //g1.joueurs_partie.nbactionTour = 5;
@@ -620,13 +1037,17 @@ S_game jouer_game(S_game g1)
         //resolution
         resolution_des_combats(&g1);
 
-        //exectuer les actions de tout les tours
-        //actions_du_tour(&g1);
-
+        //nettoyage
         supprimer_pieces_inexistantes(&g1);
+
+        //exectuer les actions de tout les tours
+        actions_du_tour(&g1); //power
+
         // on verifie si c'est la fin de la partie
-        //verifier_victoire(&g1);
+        verifier_victoire(&g1);
     }
+
+    affiche_plateau2(g1.plateau_partie,g1.joueurs_partie);
     return g1;
 }
 
@@ -635,7 +1056,8 @@ void zoom(S_joueur * joueurs_partie,int num_joueur) //Zoom de la case demandee
     int x,y;
     printf("Quelle case souhaitez-vous agrandir? (tapez R pour la reserve)\nEn x (horizontal) : \n");
     int num = scanf("%d",&x); //scanf renvoie le nb de nombres(%..)qu'il a reussi a scaner. si %d%d, il renvoie 2 par exemple si scan de 2 %d reussi
-    if(num!=1){
+    if(num!=1)
+    {
 
         affiche_mes_unites_reserve(joueurs_partie[num_joueur],false);
         fflush(stdin);

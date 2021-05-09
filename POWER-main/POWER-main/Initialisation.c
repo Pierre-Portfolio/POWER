@@ -7,6 +7,7 @@
 #include "cases.h"
 #include "plateau.h"
 #include <assert.h>
+#include "util.h"
 
 
 
@@ -15,33 +16,6 @@
 
 //******************************************INITIALISATIONS_joueurs***********************************************//
 
-S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous forme de tableau 1D
-{
-    //system("CLS");
-    S_joueur * tabjoueur = (S_joueur * ) malloc (sizeof(S_joueur)*NBJOUEURS);
-    if(tabjoueur==NULL)                                                            //verifier que le pointeur n pas nul : eviter les crashs
-    {
-        printf("ERREUR MEMOIRE : veillez relancer une partie\n");
-        exit(1); //arret d'urgence
-    }
-
-    for(int i=0; i<NBJOUEURS; i++)
-    {
-        tabjoueur[i].etat=1;
-        tabjoueur[i].numero_joueur=i+1;
-        tabjoueur[i].power=10;
-        tabjoueur[i].tabpion=initialisation_pieces(i); //chaque joueur recoit ses pions
-        tabjoueur[i].nbpions=NBPIECESJOUEUR;
-        tabjoueur[i].tabpion_reserve=NULL;
-        tabjoueur[i].nbpions_reserve=0;
-        tabjoueur[i].nbactionTour = 5;
-
-        //printf("\n\njoueur %d initialise**********************************",i+1);
-        //printf("\n\tle numero du joueur est :%d",tabjoueur[i].numero_joueur);
-        //printf("\n\tSon nombre de power est :%d",tabjoueur[i].power);
-    }
-    return tabjoueur;
-}
 
 
 //******************************************INITIALISATIONS_pieces***********************************************//
@@ -181,85 +155,100 @@ S_pions megamissile(int position_x,int position_y)
     return resultat;
 }
 
-S_pions creer_pion_de_type(enum_type_pion type_pion){
+S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y){
 
     switch(type_pion){
 
-        case type_chasseur : return chasseur(100,100);
-        case type_destroyer : return destroyer(100,100);
-        case type_tank : return tank(100,100);
-        case type_regiment : return regiment(100,100);
-        case type_bombardier : return bombardier(100,100);
-        case type_croiseur : return croiseur(100,100);
-        case type_char : return un_char(100,100);
-        case type_soldat : return soldat(100,100);
-        case type_megamissile : return megamissile(100,100);
+        case type_chasseur : return chasseur(x,x);
+        case type_destroyer : return destroyer(x,y);
+        case type_tank : return tank(x,y);
+        case type_regiment : return regiment(x,y);
+        case type_bombardier : return bombardier(x,y);
+        case type_croiseur : return croiseur(x,y);
+        case type_char : return un_char(x,y);
+        case type_soldat : return soldat(x,y);
+        case type_megamissile : return megamissile(x,y);
 
         default : assert(0); //== assert(false)
 
     }
+
+    assert(0);
+    return chasseur(0,0);
 }
+
+S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous forme de tableau 1D
+{
+    //system("CLS");
+    S_joueur * tabjoueur = (S_joueur * ) malloc (sizeof(S_joueur)*NBJOUEURS);
+    if(tabjoueur==NULL)                                                            //verifier que le pointeur n pas nul : eviter les crashs
+    {
+        printf("ERREUR MEMOIRE : veillez relancer une partie\n");
+        exit(1); //arret d'urgence
+    }
+
+    for(int i=0; i<NBJOUEURS; i++)
+    {
+        tabjoueur[i].etat=1;
+        tabjoueur[i].numero_joueur=i+1;
+        tabjoueur[i].power=10;
+        tabjoueur[i].tabpion=initialisation_pieces(i); //chaque joueur recoit ses pions
+        tabjoueur[i].nbpions=NBPIONTOTALDEBUT;
+        tabjoueur[i].tabpion_reserve=NULL;
+        tabjoueur[i].nbpions_reserve=0;
+        tabjoueur[i].nbactionTour = 5;
+
+        // DEBUG
+        S_pions pion = megamissile(2,2);
+        rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
+        rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
+        rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
+
+
+        //printf("\n\njoueur %d initialise**********************************",i+1);
+        //printf("\n\tle numero du joueur est :%d",tabjoueur[i].numero_joueur);
+        //printf("\n\tSon nombre de power est :%d",tabjoueur[i].power);
+    }
+    return tabjoueur;
+}
+
 
 
 S_pions * initialisation_pieces(int num_joueur)
 {
-    S_pions * tabpions=(S_pions*)malloc (sizeof(S_pions)*NBPIECESJOUEUR);           //declaration d'un tableau de pions pour chaque joueur
+    S_pions * tabpions=(S_pions*)malloc (sizeof(S_pions)*NBPIONTOTALDEBUT);           //declaration d'un tableau de pions pour chaque joueur
     if(tabpions==NULL)                                                            //verifier que le pointeur ne soit pas nul : eviter les crashs
     {
         printf("ERREUR MEMOIRE : veillez relancer une partie\n");
         exit(1); //arret d'urgence
     }
-    int position_x, position_y;
-    switch(num_joueur)
-    {
-        case 0: position_x=1; position_y=1; break;
-        case 1: position_x=2; position_y=2; break;
-        case 2: position_x=3; position_y=3; break;
-        case 3: position_x=4; position_y=4; break;
-        default: assert(0); //assert n'est pas 1, donc fausse ==> crash propre
-    }
+
+    assert(num_joueur >= 0 && num_joueur < NBJOUEURS);
+    int position_x = hq_x[num_joueur], position_y = hq_y[num_joueur];
+
     int k=0;                            //garder l'indice pour faire la liste
-    for(int i=0;i<2;i++)
+    for(int i=0;i<NBPIONDEBUT;i++)
     {
         tabpions[k]=chasseur(position_x,position_y);
         k++;
     }
-    for(int i=0;i<CDT;i++)
-    {
-        tabpions[k]=destroyer(position_x,position_y);
-        k++;
-    }
-    for(int i=0;i<CDT;i++)
-    {
-        tabpions[k]=tank(position_x,position_y);
-        k++;
-    }
-    for(int i=0;i<CBC;i++)
-    {
-        tabpions[k]=bombardier(position_x,position_y);
-        k++;
-    }
-    for(int i=0;i<CBC;i++)
-    {
-        tabpions[k]=croiseur(position_x,position_y);
-        k++;
-    }
-    for(int i=0;i<CBC;i++)
-    {
-        tabpions[k]=un_char(position_x,position_y);
-        k++;
-    }
-    for(int i=0;i<NBSOLDATS;i++)
+    for(int i=0;i<NBPIONDEBUT;i++)
     {
         tabpions[k]=soldat(position_x,position_y);
         k++;
     }
-    for(int i=0;i<NBMEGAMISSILE;i++)
+    for(int i=0;i<NBPIONDEBUT;i++)
     {
-        tabpions[k]=megamissile(position_x,position_y);
+        tabpions[k]=destroyer(position_x,position_y);
         k++;
     }
-    assert(k==NBPIECESJOUEUR); //verifier que toutes les cases des pieces du joueur sont remplies
+    for(int i=0;i<NBPIONDEBUT;i++)
+    {
+        tabpions[k]=tank(position_x,position_y);
+        k++;
+    }
+
+    assert(k==NBPIONTOTALDEBUT); //verifier que toutes les cases des pieces du joueur sont remplies
     return tabpions;
 
 }
@@ -269,7 +258,7 @@ S_pions * initialisation_pieces(int num_joueur)
 S_cases ** initialisation_cases()
 {
     //initialisation du tableau de cases
-    S_cases  **Tabcases =  (S_cases*)malloc(9 * sizeof(S_cases**));
+    S_cases  **Tabcases =  (S_cases**)malloc(9 * sizeof(S_cases**));
     for (int i = 0; i < 9; ++i) {
         Tabcases[i] = (S_cases*)malloc(9 * sizeof(S_cases));
     }

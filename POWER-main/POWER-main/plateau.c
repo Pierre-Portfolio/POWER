@@ -5,7 +5,7 @@
 #include <assert.h>
 
 
-void affiche_plateau(S_plateau p1,S_joueur* joueurs_partie )
+void affiche_plateau(S_joueur* joueurs_partie )
 {
     printf("\n\t       1            2        3        4            5           6        7        8            9");
     printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
@@ -204,7 +204,8 @@ void affiche_unites(int x,int y,S_joueur* joueurs_partie)
 
     for(int i=0;i<NBJOUEURS;i++)
     {
-        int decompte_unites[taille_enum_pion]={0}; //initialisation du tableau à 0
+        int decompte_unites[taille_enum_pion];
+        for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<joueurs_partie[i].nbpions;j++)
         {
             if(joueurs_partie[i].tabpion[j].positions.position_x==x && joueurs_partie[i].tabpion[j].positions.position_y==y)
@@ -223,7 +224,8 @@ void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur)  //S_joueur* 
 {
     printf("Voici les unites presentes sur la case %d.%d\n",x,y);
 
-        int decompte_unites[taille_enum_pion]={0}; //initialisation du tableau à 0
+        int decompte_unites[taille_enum_pion]; //initialisation du tableau à 0
+        for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<le_joueur.nbpions;j++)
         {
             if(le_joueur.tabpion[j].positions.position_x==x && le_joueur.tabpion[j].positions.position_y==y)
@@ -238,7 +240,8 @@ void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote)  //S_joueur* <
 {
     printf("Voici vos unites en reserve\n");
 
-        int decompte_unites[taille_enum_pion]={0}; //initialisation du tableau à 0
+        int decompte_unites[taille_enum_pion];
+        for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<le_joueur.nbpions_reserve;j++)
         {
             decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case

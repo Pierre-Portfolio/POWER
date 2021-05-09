@@ -16,7 +16,7 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
 void echangePower();
 S_game jouer_game(S_game g1);
 
-bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indice_pion);
+bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indice_pion, bool en_reserve);
 void zoom(S_joueur * joueurs_partie,int num_joueur);
 
 #endif // GAME_H_INCLUDED

@@ -16,20 +16,19 @@
 #define NB_TYPE_UNITE 9
 #define DIMSTRLONG 50
 #define NBORDRES 5
-#define NBPIECESJOUEUR 37-4
+#define NBPIONTOTALDEBUT 8
+#define NBPIONDEBUT 2
 
 
 
 
-
-struct coordonnees{
+typedef struct {
     int position_x;
     int position_y;
     int positionfutur_x;
     int positionfutur_y;
 
-};
-typedef struct coordonnees S_coordonees;
+} S_coordonees;
 
 typedef enum
 {
@@ -72,7 +71,20 @@ static const int pion_limite_deplacement[taille_enum_pion]= {5, //chasseur
                                                              -1, //inexstante -> non applicable, pas de deplacement
                                                              }; //static const : on definit le tableau de boolean
 
-struct pions{
+static const enum_type_pion pion_type_amelioration[taille_enum_pion]= {type_bombardier, //chasseur
+                                                                       type_croiseur, //destroyer
+                                                                       type_piece_inexistante, //bombardier DEJA GROUPE 2
+                                                                       type_piece_inexistante, //croiseur DEJA GROUPE 2
+                                                                       type_regiment, //soldat
+                                                                       type_char, //tank
+                                                                       type_piece_inexistante, //char DEJA GROUPE 2
+                                                                       type_piece_inexistante, //megamissile -> non applicable
+                                                                       type_piece_inexistante, //regiment DEJA GROUPE 2
+                                                                       type_piece_inexistante, //inexstante -> non applicable
+                                                                       }; //static const : on definit le tableau de boolean
+
+
+typedef struct {
     //char type_pion[DIMSTR];
     enum_type_pion type_pion; //type des pions est fixe de type enum_type_pion
     S_coordonees positions;
@@ -80,8 +92,7 @@ struct pions{
     int deja_deplace;  //1=oui, 0=non
     int dans_reserve;  //1=oui, 0=non
     int rcbc_pion;     // 1=oui rcbc in game, 0=non pion normal ou rcbc pas en game
-};
-typedef struct pions S_pions;
+} S_pions;
 
 
 /*struct unitjoueur{
@@ -113,9 +124,9 @@ struct unitjoueur{  //ancien prog juste je garde au cas ou
 };
 typedef struct reservedepart S_unitjoueur;*/
 
-static const int joueur_vers_couleur[]={4,10,8,1};
+static const int joueur_vers_couleur[]={4,10,6,1};
 
-struct joueur{
+typedef struct {
     int power;
     int numero_joueur;  //1=rouge, 2=vert, 3=jaune; 4=bleu
     int etat;     //1=en jeu, 0=hors jeu
@@ -125,8 +136,7 @@ struct joueur{
     S_pions * tabpion; //declaration d'un tableau de pions
     int nbpions_reserve;
     S_pions* tabpion_reserve;
-};
-typedef struct joueur S_joueur;
+} S_joueur;
 
 /*
 struct cases{
@@ -142,30 +152,55 @@ typedef enum{
     type_achat,
     type_echange,
     type_sortie,
+    type_lancement,
 }enum_types_ordre;
 
-struct feuille_ordre{
+typedef struct {
     void * ordre[NBORDRES]; //pointeur de type inconnu
     enum_types_ordre type[NBORDRES];
     int nb_ordre;
-};
-typedef struct feuille_ordre S_feuille_ordres;
+} S_feuille_ordres;
 
-struct ordre_deplacement{
+typedef struct{
     int position_arrive_x;
     int position_arrive_y;
     bool valide; //0=false et 1=true
     int num_joueur;
     int num_pion; // 5   0 1 2 -> supprimés
-};
-typedef struct ordre_deplacement S_ordre_deplacement;
+} S_ordre_deplacement;
 
-struct ordre_achat{
+typedef struct{
+    int position_arrive_x;
+    int position_arrive_y;
+    bool valide; //0=false et 1=true
+    int num_joueur;
+    int num_pion; // 5   0 1 2 -> supprimés
+    bool vers_reserve;
+    int joueur_reserve_cible;
+} S_ordre_lancement;
+
+typedef struct {
     bool valide;
     int num_joueur;
     enum_type_pion type_pion;
-};
-typedef struct ordre_achat S_ordre_achat;
+} S_ordre_achat;
+
+typedef struct {
+    bool valide;
+    int num_joueur;
+    int indice_pion;
+    int indice_reserve;
+} S_ordre_sortie;
+
+typedef struct {
+    bool valide;
+    int num_joueur;
+    int indice_pion1;
+    int indice_pion2;
+    int indice_pion3;
+    enum_type_pion type_pion;
+    bool depuis_reserve;
+} S_ordre_echange;
 
 static const int prix[taille_enum_pion]={5, //chasseur
                                          10, //destroyer
@@ -178,6 +213,19 @@ static const int prix[taille_enum_pion]={5, //chasseur
                                          -1, ////non applicable
                                          -1, //inexstante -> non applicable
                                          }; //static const : on definit le tableau de boolean
+
+
+static const int hq_x[NBJOUEURS] = {1,    //haut gauche
+                                    9,    //haut droite
+                                    9,    //bas droite
+                                    1,    //bas gauche
+};
+static const int hq_y[NBJOUEURS] = {1,    //haut gauche
+                                    1,    //haut droite
+                                    9,    //bas droite
+                                    9,    //bas gauche
+};
+
 
 
 //S_joueur tabinfos[NBjoueurs];   //deja dans le main.c
