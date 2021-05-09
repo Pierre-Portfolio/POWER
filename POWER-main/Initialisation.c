@@ -4,6 +4,10 @@
 
 #include "definition.h"
 #include "Initialisation.h"
+#include "cases.h"
+#include "plateau.h"
+#include <assert.h>
+#include "util.h"
 
 
 
@@ -12,210 +16,275 @@
 
 //******************************************INITIALISATIONS_joueurs***********************************************//
 
-void initialisation_joueurs(S_joueur tabinfos[])
-{
-
-    int i;
-
-    system("CLS");
-
-    for(i=0; i<NBjoueurs; i++)
-    {
-        tabinfos[i].etat=1;
-        tabinfos[i].numero_joueur=i+1;
-        tabinfos[i].power=10;
-
-        printf("\n\njoueur %d initialise**********************************",i+1);
-        if (tabinfos[i].etat==1)
-        {
-            printf("\n\tle joueur est toujours en jeu");
-        }
-        else
-        {
-            printf("\n\tle joueur n'est plus en jeu");
-        }
-
-        printf("\n\tle numero du joueur est :%d",tabinfos[i].numero_joueur);
-        printf("\n\tSon nombre de power est :%d",tabinfos[i].power);
-    }
-
-}
 
 
 //******************************************INITIALISATIONS_pieces***********************************************//
-
-
-void initialisation_pieces(S_unitjoueur tabpions[])
+S_pions chasseur(int position_x,int position_y) //initialisation d'un pion de type chasseur
 {
+    S_pions resultat;
+    resultat.type_pion=type_chasseur;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=5;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-    system("CLS");
-    int j,k;
+    return resultat;
+}
+S_pions destroyer(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_destroyer;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=10;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-    for(j=0;j<NBjoueurs;j++){
+    return resultat;
+}
+S_pions tank(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_tank;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=3;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-        for(k=0; k<CDT;k++){
-            tabpions[j].chasseurs[k].num_piece=k+1;
-            strcpy(tabpions[j].chasseurs[k].type_pion,"C");
-            tabpions[j].chasseurs[k].positions.position_x=100;
-            tabpions[j].chasseurs[k].positions.position_y=100;
-            tabpions[j].chasseurs[k].positions.positionfutur_x=0;
-            tabpions[j].chasseurs[k].positions.positionfutur_y=0;
-            tabpions[j].chasseurs[k].num_joueur=j+1;
-            tabpions[j].chasseurs[k].puissance=5;
-            tabpions[j].chasseurs[k].deja_deplace=0;
-            tabpions[j].chasseurs[k].dans_reserve=1;
-            tabpions[j].chasseurs[k].rcbc_pion=0; //pas sur encore si la variable servira
+    return resultat;
+}
+S_pions regiment(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_regiment;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=20;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-            printf("\nchasseur %d INITIALISE************:",tabpions[j].chasseurs[k].num_piece);
+    return resultat;
+}
+S_pions bombardier(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_bombardier;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=25;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-            printf("\npositions chasseurs :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].chasseurs[k].positions.position_x,tabpions[j].chasseurs[k].positions.position_y,tabpions[j].chasseurs[k].positions.positionfutur_x,tabpions[j].chasseurs[k].positions.positionfutur_y);
-            printf("\n\n\t\tle chasseur %d appartient au joueur %d\n\n",tabpions[j].chasseurs[k].num_piece,tabpions[j].chasseurs[k].num_joueur);
+    return resultat;
+}
+S_pions croiseur(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_croiseur;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=50;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-            tabpions[j].destroyers[k].num_piece=k+1;
-            strcpy(tabpions[j].destroyers[k].type_pion,"D");
-            tabpions[j].destroyers[k].positions.position_x=100;
-            tabpions[j].destroyers[k].positions.position_y=100;
-            tabpions[j].destroyers[k].positions.positionfutur_x=0;
-            tabpions[j].destroyers[k].positions.positionfutur_y=0;
-            tabpions[j].destroyers[k].num_joueur=j+1;
-            tabpions[j].destroyers[k].puissance=10;
-            tabpions[j].destroyers[k].deja_deplace=0;
-            tabpions[j].destroyers[k].dans_reserve=1;
-            tabpions[j].destroyers[k].rcbc_pion=0;
+    return resultat;
+}
+S_pions un_char(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_char;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=30;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-            printf("\ndestroyer %d INITIALISE************:",tabpions[j].destroyers[k].num_piece);
+    return resultat;
+}
+S_pions soldat(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_soldat;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=2;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-            printf("\npositions destroyers :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].destroyers[k].positions.position_x,tabpions[j].destroyers[k].positions.position_y,tabpions[j].destroyers[k].positions.positionfutur_x,tabpions[j].destroyers[k].positions.positionfutur_y);
-            printf("\n\n\t\tle destroyer %d appartient au joueur %d\n\n",tabpions[j].destroyers[k].num_piece,tabpions[j].destroyers[k].num_joueur);
+    return resultat;
+}
+S_pions megamissile(int position_x,int position_y)
+{
+    S_pions resultat;
+    resultat.type_pion=type_megamissile;
+    resultat.positions.position_x=position_x;
+    resultat.positions.position_y=position_y;
+    resultat.positions.positionfutur_x=0;
+    resultat.positions.positionfutur_y=0;
+    resultat.puissance=1000;
+    resultat.deja_deplace=0;
+    resultat.dans_reserve=1;
+    resultat.rcbc_pion=0;
 
-            tabpions[j].tanks[k].num_piece=k+1;
-            strcpy(tabpions[j].tanks[k].type_pion,"T");
-            tabpions[j].tanks[k].positions.position_x=100;
-            tabpions[j].tanks[k].positions.position_y=100;
-            tabpions[j].tanks[k].positions.positionfutur_x=0;
-            tabpions[j].tanks[k].positions.positionfutur_y=0;
-            tabpions[j].tanks[k].num_joueur=j+1;
-            tabpions[j].tanks[k].puissance=3;
-            tabpions[j].tanks[k].deja_deplace=0;
-            tabpions[j].tanks[k].dans_reserve=1;
-            tabpions[j].tanks[k].rcbc_pion=0;
-            printf("\ntank %d INITIALISE************:",tabpions[j].tanks[k].num_piece);
+    return resultat;
+}
 
-            printf("\npositions tanks :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].tanks[k].positions.position_x,tabpions[j].tanks[k].positions.position_y,tabpions[j].tanks[k].positions.positionfutur_x,tabpions[j].tanks[k].positions.positionfutur_y);
-            printf("\n\n\t\tle tank %d appartient au joueur %d\n\n",tabpions[j].tanks[k].num_piece,tabpions[j].tanks[k].num_joueur);
+S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y){
 
-        }
+    switch(type_pion){
 
+        case type_chasseur : return chasseur(x,x);
+        case type_destroyer : return destroyer(x,y);
+        case type_tank : return tank(x,y);
+        case type_regiment : return regiment(x,y);
+        case type_bombardier : return bombardier(x,y);
+        case type_croiseur : return croiseur(x,y);
+        case type_char : return un_char(x,y);
+        case type_soldat : return soldat(x,y);
+        case type_megamissile : return megamissile(x,y);
 
-        for(k=0; k<RCBC;k++){
-            tabpions[j].regiments[k].num_piece=k+1;
-            strcpy(tabpions[j].regiments[k].type_pion,"R");
-            tabpions[j].regiments[k].positions.position_x=101;
-            tabpions[j].regiments[k].positions.position_y=101;
-            tabpions[j].regiments[k].positions.positionfutur_x=0;
-            tabpions[j].regiments[k].positions.positionfutur_y=0;
-            tabpions[j].regiments[k].num_joueur=j+1;
-            tabpions[j].regiments[k].puissance=20;
-            tabpions[j].regiments[k].deja_deplace=0;
-            tabpions[j].regiments[k].dans_reserve=1;
-            tabpions[j].regiments[k].rcbc_pion=0;
-            printf("\nregiment %d INITIALISE************:",tabpions[j].regiments[k].num_piece);
-
-            printf("\npositions regiments :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].regiments[k].positions.position_x,tabpions[j].regiments[k].positions.position_y,tabpions[j].regiments[k].positions.positionfutur_x,tabpions[j].regiments[k].positions.positionfutur_y);
-            printf("\n\n\t\tle regiment %d appartient au joueur %d\n\n",tabpions[j].regiments[k].num_piece,tabpions[j].regiments[k].num_joueur);
-
-            tabpions[j].bombardiers[k].num_piece=k+1;
-            strcpy(tabpions[j].bombardiers[k].type_pion,"B");
-            tabpions[j].bombardiers[k].positions.position_x=101;
-            tabpions[j].bombardiers[k].positions.position_y=101;
-            tabpions[j].bombardiers[k].positions.positionfutur_x=0;
-            tabpions[j].bombardiers[k].positions.positionfutur_y=0;
-            tabpions[j].bombardiers[k].num_joueur=j+1;
-            tabpions[j].bombardiers[k].puissance=25;
-            tabpions[j].bombardiers[k].deja_deplace=0;
-            tabpions[j].bombardiers[k].dans_reserve=1;
-            tabpions[j].bombardiers[k].rcbc_pion=0;
-            printf("\nbombardier %d INITIALISE************:",tabpions[j].bombardiers[k].num_piece);
-
-            printf("\npositions bombardiers :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].bombardiers[k].positions.position_x,tabpions[j].bombardiers[k].positions.position_y,tabpions[j].bombardiers[k].positions.positionfutur_x,tabpions[j].bombardiers[k].positions.positionfutur_y);
-            printf("\n\n\t\tle bombardier %d appartient au joueur %d\n\n",tabpions[j].bombardiers[k].num_piece,tabpions[j].bombardiers[k].num_joueur);
-
-            tabpions[j].croiseurs[k].num_piece=k+1;
-            strcpy(tabpions[j].croiseurs[k].type_pion,"CR");
-            tabpions[j].croiseurs[k].positions.position_x=101;
-            tabpions[j].croiseurs[k].positions.position_y=101;
-            tabpions[j].croiseurs[k].positions.positionfutur_x=0;
-            tabpions[j].croiseurs[k].positions.positionfutur_y=0;
-            tabpions[j].croiseurs[k].num_joueur=j+1;
-            tabpions[j].croiseurs[k].puissance=50;
-            tabpions[j].croiseurs[k].deja_deplace=0;
-            tabpions[j].croiseurs[k].dans_reserve=1;
-            tabpions[j].croiseurs[k].rcbc_pion=0;
-            printf("\ncroiseur %d INITIALISE************:",tabpions[j].croiseurs[k].num_piece);
-
-            printf("\npositions croiseurs :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].croiseurs[k].positions.position_x,tabpions[j].croiseurs[k].positions.position_y,tabpions[j].croiseurs[k].positions.positionfutur_x,tabpions[j].croiseurs[k].positions.positionfutur_y);
-            printf("\n\n\t\tle croiseur %d appartient au joueur %d\n\n",tabpions[j].croiseurs[k].num_piece,tabpions[j].croiseurs[k].num_joueur);
-
-            tabpions[j].chars[k].num_piece=k+1;
-            strcpy(tabpions[j].chars[k].type_pion,"A");
-            tabpions[j].chars[k].positions.position_x=101;
-            tabpions[j].chars[k].positions.position_y=101;
-            tabpions[j].chars[k].positions.positionfutur_x=0;
-            tabpions[j].chars[k].positions.positionfutur_y=0;
-            tabpions[j].chars[k].num_joueur=j+1;
-            tabpions[j].chars[k].puissance=30;
-            tabpions[j].chars[k].deja_deplace=0;
-            tabpions[j].chars[k].dans_reserve=1;
-            tabpions[j].chars[k].rcbc_pion=0;
-            printf("\nchar %d INITIALISE************:",tabpions[j].chars[k].num_piece);
-
-            printf("\npositions chars :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].chars[k].positions.position_x,tabpions[j].chars[k].positions.position_y,tabpions[j].chars[k].positions.positionfutur_x,tabpions[j].chars[k].positions.positionfutur_y);
-            printf("\n\n\t\tle char %d appartient au joueur %d\n\n",tabpions[j].chars[k].num_piece,tabpions[j].chars[k].num_joueur);
-
-
-        }
-        for(k=0; k<NBsoldats;k++){
-            tabpions[j].soldats[k].num_piece=k+1;
-            strcpy(tabpions[j].soldats[k].type_pion,"S");
-            tabpions[j].soldats[k].positions.position_x=100;
-            tabpions[j].soldats[k].positions.position_y=100;
-            tabpions[j].soldats[k].positions.positionfutur_x=0;
-            tabpions[j].soldats[k].positions.positionfutur_y=0;
-            tabpions[j].soldats[k].num_joueur=j+1;
-            tabpions[j].soldats[k].puissance=2;
-            tabpions[j].soldats[k].deja_deplace=0;
-            tabpions[j].soldats[k].dans_reserve=1;
-            tabpions[j].soldats[k].rcbc_pion=0; //pas sur encore si la variable servira
-
-            printf("\nsoldat %d INITIALISE************:",tabpions[j].soldats[k].num_piece);
-
-            printf("\npositions soldats :\t\nposition en x : %d\nposition en y : %d\nposition_Futur en x : %d\nposition_Futur en y : %d",tabpions[j].soldats[k].positions.position_x,tabpions[j].soldats[k].positions.position_y,tabpions[j].soldats[k].positions.positionfutur_x,tabpions[j].soldats[k].positions.positionfutur_y);
-            printf("\n\n\t\tle soldat %d appartient au joueur %d\n\n",tabpions[j].soldats[k].num_piece,tabpions[j].soldats[k].num_joueur);
-
-
-        }
-
-            tabpions[j].missile.num_piece=666;
-            strcpy(tabpions[j].missile.type_pion,"M");
-            tabpions[j].missile.positions.position_x=100;
-            tabpions[j].missile.positions.position_y=100;
-            tabpions[j].missile.positions.positionfutur_x=0;
-            tabpions[j].missile.positions.positionfutur_y=0;
-            tabpions[j].missile.num_joueur=j+1;
-            tabpions[j].missile.puissance=1000;
-            tabpions[j].missile.deja_deplace=0;
-            tabpions[j].missile.dans_reserve=1;
-
-            printf("\n\n\t\tle missile %d appartient au joueur %d\n\n",tabpions[j].missile.num_piece,tabpions[j].missile.num_joueur);
-
+        default : assert(0); //== assert(false)
 
     }
+
+    assert(0);
+    return chasseur(0,0);
+}
+
+S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous forme de tableau 1D
+{
+    //system("CLS");
+    S_joueur * tabjoueur = (S_joueur * ) malloc (sizeof(S_joueur)*NBJOUEURS);
+    if(tabjoueur==NULL)                                                            //verifier que le pointeur n pas nul : eviter les crashs
+    {
+        printf("ERREUR MEMOIRE : veillez relancer une partie\n");
+        exit(1); //arret d'urgence
+    }
+
+    for(int i=0; i<NBJOUEURS; i++)
+    {
+        tabjoueur[i].etat=1;
+        tabjoueur[i].numero_joueur=i+1;
+        tabjoueur[i].power=10;
+        tabjoueur[i].tabpion=initialisation_pieces(i); //chaque joueur recoit ses pions
+        tabjoueur[i].nbpions=NBPIONTOTALDEBUT;
+        tabjoueur[i].tabpion_reserve=NULL;
+        tabjoueur[i].nbpions_reserve=0;
+        tabjoueur[i].nbactionTour = 5;
+
+
+        /*
+        // DEBUG
+        S_pions pion = megamissile(2,2);
+        rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
+        rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
+        rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
+        */
+
+        //printf("\n\njoueur %d initialise**********************************",i+1);
+        //printf("\n\tle numero du joueur est :%d",tabjoueur[i].numero_joueur);
+        //printf("\n\tSon nombre de power est :%d",tabjoueur[i].power);
+    }
+    return tabjoueur;
+}
+
+
+
+S_pions * initialisation_pieces(int num_joueur)
+{
+    S_pions * tabpions=(S_pions*)malloc (sizeof(S_pions)*NBPIONTOTALDEBUT);           //declaration d'un tableau de pions pour chaque joueur
+    if(tabpions==NULL)                                                            //verifier que le pointeur ne soit pas nul : eviter les crashs
+    {
+        printf("ERREUR MEMOIRE : veillez relancer une partie\n");
+        exit(1); //arret d'urgence
+    }
+
+    assert(num_joueur >= 0 && num_joueur < NBJOUEURS);
+    int position_x = hq_x[num_joueur], position_y = hq_y[num_joueur];
+
+    int k=0;                            //garder l'indice pour faire la liste
+    for(int i=0;i<NBPIONDEBUT;i++)
+    {
+        tabpions[k]=chasseur(position_x,position_y);
+        k++;
+    }
+    for(int i=0;i<NBPIONDEBUT;i++)
+    {
+        tabpions[k]=soldat(position_x,position_y);
+        k++;
+    }
+    for(int i=0;i<NBPIONDEBUT;i++)
+    {
+        tabpions[k]=destroyer(position_x,position_y);
+        k++;
+    }
+    for(int i=0;i<NBPIONDEBUT;i++)
+    {
+        tabpions[k]=tank(position_x,position_y);
+        k++;
+    }
+
+    assert(k==NBPIONTOTALDEBUT); //verifier que toutes les cases des pieces du joueur sont remplies
+    return tabpions;
 
 }
 
 //******************************************INITIALISATIONS_cases***********************************************//
+//S_plateau initialisation_cases()
+S_cases ** initialisation_cases()
+{
+    //initialisation du tableau de cases
+    S_cases  **Tabcases =  (S_cases**)malloc(9 * sizeof(S_cases**));
+    for (int i = 0; i < 9; ++i) {
+        Tabcases[i] = (S_cases*)malloc(9 * sizeof(S_cases));
+    }
 
-//je remplirai ici avec toi car tu à fais le tableau et moi le système de coordonnées...
+    S_cases TabcasesOrigine[9][9]= {{{HG,0},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,1}},
+                                            {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
+                                            {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
+                                            {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
+                                            {{ile,-1},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{ile,-1}},
+                                            {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
+                                            {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
+                                            {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
+                                            {{HG,3},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,2}}};
 
-//****************************************
+    for(int i=0; i<9;i++)
+    {
+        for(int j=0;j<9;j++)
+        {
+            Tabcases[i][j]=TabcasesOrigine[i][j];
+        }
+    }
+    //printf("DANS MAIN : %d \n",Tabcases[8][0].terrain);
 
+    //S_plateau p1={**Tabcases};
+    //printf("%s",p1.plateaux[8][8].terrain);
+    return Tabcases;
+}

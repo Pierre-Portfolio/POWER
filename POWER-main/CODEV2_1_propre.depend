@@ -149,3 +149,708 @@
 1619880890 c:\users\petil\onedrive\documents\github\power\plateau.h
 	"cases.h"
 
+1620477648 source:d:\estaca\1a\algoprogrammation\projet\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620547734 d:\estaca\1a\algoprogrammation\projet\power-main\definition.h
+	<stdbool.h>
+
+1620547734 d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620477648 d:\estaca\1a\algoprogrammation\projet\power-main\affichage.h
+
+1620477648 source:d:\estaca\1a\algoprogrammation\projet\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620477648 d:\estaca\1a\algoprogrammation\projet\power-main\cases.h
+
+1620547734 source:d:\estaca\1a\algoprogrammation\projet\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+	<assert.h>
+	"util.h"
+
+1620477648 source:d:\estaca\1a\algoprogrammation\projet\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620477648 source:d:\estaca\1a\algoprogrammation\projet\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620477648 d:\estaca\1a\algoprogrammation\projet\power-main\ordres.h
+
+1620547734 source:d:\estaca\1a\algoprogrammation\projet\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+	<assert.h>
+
+1620547734 d:\estaca\1a\algoprogrammation\projet\power-main\plateau.h
+	"cases.h"
+	"definition.h"
+
+1620477648 source:d:\estaca\1a\algoprogrammation\projet\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620547734 d:\estaca\1a\algoprogrammation\projet\power-main\game.h
+
+1620547734 source:d:\estaca\1a\algoprogrammation\projet\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+	"util.h"
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620157273 c:\users\petil\onedrive\documents\github\power\power-main\definition.h
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\plateau.h
+	"cases.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\cases.h
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\affichage.h
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\game.h
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620157305 source:c:\users\petil\onedrive\documents\github\power\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620156181 c:\users\petil\onedrive\documents\github\power\power-main\ordres.h
+
+1620156181 source:c:\users\petil\onedrive\documents\github\power\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+
+1620157639 source:c:\users\petil\onedrive\documents\github\power\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+
+1620547734 source:d:\estaca\1a\algoprogrammation\projet\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620547734 d:\estaca\1a\algoprogrammation\projet\power-main\util.h
+
+1620484048 source:c:\users\lucy\documents\github\power\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620492734 c:\users\lucy\documents\github\power\power-main\definition.h
+	<stdbool.h>
+
+1620484048 c:\users\lucy\documents\github\power\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620484048 c:\users\lucy\documents\github\power\power-main\plateau.h
+	"cases.h"
+	"definition.h"
+
+1620484048 c:\users\lucy\documents\github\power\power-main\cases.h
+
+1620484048 c:\users\lucy\documents\github\power\power-main\affichage.h
+
+1620484048 source:c:\users\lucy\documents\github\power\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620492768 source:c:\users\lucy\documents\github\power\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
+1620492559 c:\users\lucy\documents\github\power\power-main\game.h
+
+1620484048 source:c:\users\lucy\documents\github\power\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620484048 source:c:\users\lucy\documents\github\power\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+	<assert.h>
+
+1620492688 source:c:\users\lucy\documents\github\power\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620484048 c:\users\lucy\documents\github\power\power-main\util.h
+
+1620492783 source:c:\users\lucy\documents\github\power\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620492776 c:\users\lucy\documents\github\power\power-main\ordres.h
+
+1620492034 source:c:\users\lucy\documents\github\power\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+	<assert.h>
+
+1620484048 source:c:\users\lucy\documents\github\power\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620495174 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\definition.h
+	<stdbool.h>
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\plateau.h
+	"cases.h"
+	"definition.h"
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\cases.h
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\affichage.h
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+	<assert.h>
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\game.h
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\util.h
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620460710 d:\estaca\1a\algoprogrammation\projet\power-main\power-main\ordres.h
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+	<assert.h>
+
+1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620498074 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
+1620460710 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620501538 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\definition.h
+	<stdbool.h>
+
+1620503398 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620460710 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\plateau.h
+	"cases.h"
+	"definition.h"
+
+1620460710 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\cases.h
+
+1620460710 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\affichage.h
+
+1620460710 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620460710 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620460710 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620460710 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\game.h
+
+1620504230 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\util.h
+
+1620460710 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620460710 c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\ordres.h
+
+1620506245 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+	<assert.h>
+
+1620504283 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620503558 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+	<assert.h>
+
+1620504936 source:c:\users\cbo70\documents\documents\estaca\algo\projet\code alan\dernierv\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
+1620513742 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620523787 c:\users\cbo70\documents\documents\github\power\power-main\power-main\definition.h
+	<stdbool.h>
+
+1620513742 c:\users\cbo70\documents\documents\github\power\power-main\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620513742 c:\users\cbo70\documents\documents\github\power\power-main\power-main\plateau.h
+	"cases.h"
+	"definition.h"
+
+1620513742 c:\users\cbo70\documents\documents\github\power\power-main\power-main\cases.h
+
+1620513742 c:\users\cbo70\documents\documents\github\power\power-main\power-main\affichage.h
+
+1620513742 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620513742 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620523787 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+	<assert.h>
+
+1620513742 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620525754 c:\users\cbo70\documents\documents\github\power\power-main\power-main\game.h
+
+1620520254 c:\users\cbo70\documents\documents\github\power\power-main\power-main\util.h
+
+1620513742 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620513742 c:\users\cbo70\documents\documents\github\power\power-main\power-main\ordres.h
+
+1620520389 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620525820 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+	<assert.h>
+
+1620525765 source:c:\users\cbo70\documents\documents\github\power\power-main\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+
+1620477648 source:c:\users\alanb\documents\github\power\power-main\power-main\affichage.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<unistd.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+
+1620547732 c:\users\alanb\documents\github\power\power-main\power-main\definition.h
+	<stdbool.h>
+
+1620547732 c:\users\alanb\documents\github\power\power-main\power-main\initialisation.h
+	"plateau.h"
+	"cases.h"
+
+1620547733 c:\users\alanb\documents\github\power\power-main\power-main\plateau.h
+	"cases.h"
+	"definition.h"
+
+1620477648 c:\users\alanb\documents\github\power\power-main\power-main\cases.h
+
+1620477648 c:\users\alanb\documents\github\power\power-main\power-main\affichage.h
+
+1620477648 source:c:\users\alanb\documents\github\power\power-main\power-main\cases.c
+	<stdio.h>
+	<stdlib.h>
+	"cases.h"
+
+1620547732 source:c:\users\alanb\documents\github\power\power-main\power-main\game.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"game.h"
+	"util.h"
+
+1620547732 c:\users\alanb\documents\github\power\power-main\power-main\game.h
+
+1620547733 c:\users\alanb\documents\github\power\power-main\power-main\util.h
+
+1620477648 source:c:\users\alanb\documents\github\power\power-main\power-main\ihm.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+
+1620547732 source:c:\users\alanb\documents\github\power\power-main\power-main\initialisation.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"cases.h"
+	"plateau.h"
+	<assert.h>
+	"util.h"
+
+1620477648 source:c:\users\alanb\documents\github\power\power-main\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+
+1620477648 source:c:\users\alanb\documents\github\power\power-main\power-main\ordres.c
+	"stdio.h"
+	<stdlib.h>
+	<string.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"ordres.h"
+
+1620477648 c:\users\alanb\documents\github\power\power-main\power-main\ordres.h
+
+1620547733 source:c:\users\alanb\documents\github\power\power-main\power-main\plateau.c
+	<stdio.h>
+	<stdlib.h>
+	"plateau.h"
+	<windows.h>
+	<assert.h>
+
+1620547733 source:c:\users\alanb\documents\github\power\power-main\power-main\util.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+

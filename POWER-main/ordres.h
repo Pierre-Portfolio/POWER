@@ -3,7 +3,7 @@
 
 
 
-void saisir_ordres(S_ordres tab_ordres[]);
+//void saisir_ordres(S_ordres tab_ordres[]);
 //void verifier_ordres();
 //void effectuer_ordres();
 
