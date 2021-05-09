@@ -14,11 +14,8 @@
 //******************************************************************INITIALISATIONS******************************************************************//
 
 
-//******************************************INITIALISATIONS_joueurs***********************************************//
 
-
-
-//******************************************INITIALISATIONS_pieces***********************************************//
+//******************************************INITIALISATION DES PIONS ***********************************************//
 S_pions chasseur(int position_x,int position_y) //initialisation d'un pion de type chasseur
 {
     S_pions resultat;
@@ -155,8 +152,8 @@ S_pions megamissile(int position_x,int position_y)
     return resultat;
 }
 
-S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y){
-
+S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y)
+{
     switch(type_pion){
 
         case type_chasseur : return chasseur(x,x);
@@ -176,6 +173,10 @@ S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y){
     assert(0);
     return chasseur(0,0);
 }
+
+
+
+//******************************************INITIALISATION DES JOUEURS***********************************************//
 
 S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous forme de tableau 1D
 {
@@ -213,8 +214,6 @@ S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous fo
     }
     return tabjoueur;
 }
-
-
 
 S_pions * initialisation_pieces(int num_joueur)
 {
@@ -255,7 +254,9 @@ S_pions * initialisation_pieces(int num_joueur)
 
 }
 
-//******************************************INITIALISATIONS_cases***********************************************//
+
+
+//******************************************INITIALISATION DES CASES ***********************************************//
 //S_plateau initialisation_cases()
 S_cases ** initialisation_cases()
 {

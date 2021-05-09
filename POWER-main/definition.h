@@ -20,7 +20,7 @@
 #define NBPIONDEBUT 2
 
 
-
+//************************ DEFINITION DES PIONS ************************
 
 typedef struct {
     int position_x;
@@ -94,37 +94,10 @@ typedef struct {
     int rcbc_pion;     // 1=oui rcbc in game, 0=non pion normal ou rcbc pas en game
 } S_pions;
 
-
-/*struct unitjoueur{
-
-    S_pions chasseurs[CDT+18];
-    S_pions destroyers[CDT+18];
-    S_pions tanks[CDT+18];
-    S_pions regiments[RCBC+9];
-    S_pions bombardiers[RCBC+9];
-    S_pions croiseurs[RCBC+9];
-    S_pions chars[RCBC+9];
-    S_pions soldats[NBSOLDATS+27];
-    S_pions missile;
-
-};
-typedef struct unitjoueur S_unitjoueur;
-
-struct unitjoueur{  //ancien prog juste je garde au cas ou
-    S_pions chasseursD[CDT];
-    S_pions destroyersD[CDT];
-    S_pions tanksD[CDT];
-    S_pions regimentD[RCBC];
-    S_pions bombardierD[RCBC];
-    S_pions croiseurD[RCBC];
-    S_pions charsD[RCBC];
-    S_pions soldatsD[NBsoldats];
-    S_pions missileD[MM];
-
-};
-typedef struct reservedepart S_unitjoueur;*/
-
 static const int joueur_vers_couleur[]={4,10,6,1};
+
+
+//************************ DEFINITION DES JOUEURS ************************
 
 typedef struct {
     int power;
@@ -138,15 +111,9 @@ typedef struct {
     S_pions* tabpion_reserve;
 } S_joueur;
 
-/*
-struct cases{
 
-    char type_case[DIMnom_case];
-    int couleur_case; //1=rouge, 2=vert, 3=jaune; 4=bleu
+//************************ DEFINITION DES ORDRES ************************
 
-};
-typedef struct cases S_cases;
-*/
 typedef enum{
     type_deplacement=0,
     type_achat,
@@ -156,7 +123,7 @@ typedef enum{
 }enum_types_ordre;
 
 typedef struct {
-    void * ordre[NBORDRES]; //pointeur de type inconnu
+    void * ordre[NBORDRES]; //void* = pointeur de type inconnu
     enum_types_ordre type[NBORDRES];
     int nb_ordre;
 } S_feuille_ordres;
@@ -225,12 +192,5 @@ static const int hq_y[NBJOUEURS] = {1,    //haut gauche
                                     9,    //bas droite
                                     9,    //bas gauche
 };
-
-
-
-//S_joueur tabinfos[NBjoueurs];   //deja dans le main.c
-//S_unitjoueur tabpions[NBjoueurs];
-
-//S_ordres tab_ordres[NBJOUEURS][NBORDRES];
 
 #endif // DEFINITION_H_INCLUDED

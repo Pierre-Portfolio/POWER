@@ -5,8 +5,7 @@
 #include <assert.h>
 
 
-void affiche_plateau(S_joueur* joueurs_partie )
-{
+void affiche_plateau(S_joueur* joueurs_partie ){
     printf("\n\t       1            2        3        4            5           6        7        8            9");
     printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
     printf("\n\t  %c",186);color(15,2);printf("%03d  %03d",somme_powers_a(1,1,joueurs_partie,0),somme_powers_a(1,1,joueurs_partie,1));color(15,0);printf("%c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,1);printf("   08   ");color(15,0);printf("%c",186);
@@ -54,8 +53,7 @@ void affiche_plateau(S_joueur* joueurs_partie )
     printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188);
 }
 
-void color (int couleurDuTexte, int couleurDuFond)
-{
+void color (int couleurDuTexte, int couleurDuFond){
      HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
      SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
 }
@@ -76,8 +74,7 @@ void color (int couleurDuTexte, int couleurDuFond)
 // 14.Jaune
 // 15.Blanc*/
 
-int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int num_joueur)
-{
+int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int num_joueur){
     //printf("---numero joueur :%d\n",num_joueur);
     int resultat=0;
     for(int k=0; k<joueurs_partie[num_joueur].nbpions; k++)
@@ -109,10 +106,8 @@ void affiche_barre_status(S_joueur * joueur_partie){
     printf("%c\n\n",255);
 }
 
+void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie){
 
-
-void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie)
-{
     printf("  ");
     for(int x=1;x<=9;x++){
 
@@ -159,9 +154,11 @@ void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie)
 
     affiche_barre_status(joueurs_partie);
 }
+
 void print_case_num(int num_case){
     printf("       %d        ",num_case);
 }
+
 void print_case_dessus (){
     printf(" %c%c%c%c%c%c%c%c%c%c%c%c%c%c ",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
 }
@@ -169,6 +166,7 @@ void print_case_dessus (){
 void print_case_power1(S_joueur* joueurs_partie, int x, int y){
     printf(" %c%04d    %04d%c ",186,somme_powers_a(x,y,joueurs_partie,0),somme_powers_a(x,y,joueurs_partie,1),186);
 }
+
 void print_case_power2(S_joueur* joueurs_partie, int x, int y){
     printf(" %c%04d    %04d%c ",186,somme_powers_a(x,y,joueurs_partie,3),somme_powers_a(x,y,joueurs_partie,2),186);
 }
@@ -183,8 +181,7 @@ void print_case_terrain (S_cases c){
     }
 }
 
-void print_color(int num_joueur)
-{
+void print_color(int num_joueur){
     if(num_joueur==-1)
     {
         color(15,0);
@@ -197,9 +194,7 @@ void print_case_dessous (){
     printf(" %c%c%c%c%c%c%c%c%c%c%c%c%c%c ",200,205,205,205,205,205,205,205,205,205,205,205,205,188);
 }
 
-
-void affiche_unites(int x,int y,S_joueur* joueurs_partie)
-{
+void affiche_unites(int x,int y,S_joueur* joueurs_partie){
     printf("Voici les unites presentes sur la case %d.%d\n",x,y);
 
     for(int i=0;i<NBJOUEURS;i++)
@@ -219,9 +214,7 @@ void affiche_unites(int x,int y,S_joueur* joueurs_partie)
     }
 }
 
-
-void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur)  //S_joueur* <==> S_joueur[]
-{
+void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur){  //S_joueur* <==> S_joueur[]
     printf("Voici les unites presentes sur la case %d.%d\n",x,y);
 
         int decompte_unites[taille_enum_pion]; //initialisation du tableau à 0
@@ -236,8 +229,7 @@ void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur)  //S_joueur* 
         affiche_decompte_unite(decompte_unites,true);
 }
 
-void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote)  //S_joueur* <==> S_joueur[]
-{
+void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
     printf("Voici vos unites en reserve\n");
 
         int decompte_unites[taille_enum_pion];
@@ -248,8 +240,8 @@ void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote)  //S_joueur* <
         }
         affiche_decompte_unite(decompte_unites,numerote);
 }
-void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote)
-{
+
+void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote){
     for(int i=0;i<taille_enum_pion;i++)
     {
         if(decompte_unite[i]==0)continue; //on n'affiche rien si le decompte egale a 0; continue ignore la suite jusqu'a la fin de la boucle

@@ -10,11 +10,17 @@
 #include "game.h"
 #include "util.h"
 
+#define round(a) ((int)((a)+0.5f))
+
+#define max(a,b) \
+   ({ __typeof__ (a) _a = (a); \
+       __typeof__ (b) _b = (b); \
+     _a > _b ? _a : _b; })
+
 //initialisation de la partie
 S_game creer_game()
 {
     S_plateau p1= {initialisation_cases()};
-    //affiche_plateau(p1);
     S_joueur * joueurs=initialisation_joueurs();
     return (S_game)
     {
@@ -22,7 +28,6 @@ S_game creer_game()
         };
 }
 
-//environnement de tests
 int saisieAction(int nbcoup)
 {
     if(nbcoup==0) return 6;
@@ -43,7 +48,6 @@ int saisieAction(int nbcoup)
     }
     return nombreEntre;
 }
-
 
 bool verifier_case_juste(int x, int y, S_plateau plateau, S_pions pion)
 {
@@ -78,14 +82,6 @@ bool verifier_case_juste(int x, int y, S_plateau plateau, S_pions pion)
 
     return true;
 }
-
-
-#define round(a) ((int)((a)+0.5f))
-
-#define max(a,b) \
-   ({ __typeof__ (a) _a = (a); \
-       __typeof__ (b) _b = (b); \
-     _a > _b ? _a : _b; })
 
 bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_destination)
 {
@@ -223,6 +219,8 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
     return true;
 }
 
+
+
 void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur le_joueur, int num_joueur)
 {
     int x, y;
@@ -356,9 +354,9 @@ void * lancer_missile(S_feuille_ordres feuille_ordre, S_joueur le_joueur, int nu
     return ordre;
 }
 
-
 void* achat(S_joueur joueur, int num_joueur)
 {
+
     enum_type_pion type;
 
     //afficher les types de pions pouvant etre achetes
@@ -389,6 +387,7 @@ void* achat(S_joueur joueur, int num_joueur)
 }
 void* sortie(S_joueur joueur,S_feuille_ordres feuille_ordre, int num_joueur)
 {
+
     enum_type_pion type;
 
     affiche_mes_unites_reserve(joueur,true);
@@ -504,8 +503,13 @@ void* echange(S_joueur joueur,S_feuille_ordres feuille_ordre, int num_joueur)
     return ordre;
 }
 
+
+
 bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indice_pion, bool en_reserve)
 {
+
+
+
     printf("verif deja ordre\n");
     for(int i=0; i<feuille_ordre.nb_ordre; i++)
     {
@@ -556,7 +560,6 @@ bool possede_deja_ordre(S_feuille_ordres feuille_ordre,int num_joueur, int indic
     printf("pas deja ordre\n");
     return false;
 }
-
 bool executer_ordre_deplacement(S_game * g1, S_ordre_deplacement * deplacement)
 {
     if(!deplacement->valide) //s'il n'est pas valide
@@ -569,7 +572,6 @@ bool executer_ordre_deplacement(S_game * g1, S_ordre_deplacement * deplacement)
 
     return true;
 }
-
 
 bool executer_ordre_lancement(S_game * g1, S_ordre_lancement * lancement)
 {
@@ -698,7 +700,6 @@ bool executer_ordre_sortie(S_game * g1, S_ordre_sortie * sortie)
 
     return true;
 }
-
 
 void executer_ordre(S_game * g1, S_feuille_ordres feuille_ordre[NBJOUEURS])
 {
@@ -969,6 +970,8 @@ void zoom(S_joueur * joueurs_partie,int num_joueur) //Zoom de la case demandee
 
 S_game jouer_game(S_game g1)
 {
+    printf("********************************Bienvenue dans une partie de POWER********************************\n\nNous vous invitons a etendre la console en plein ecran, afin de profiter d'une experience totale de la partie\n\n");
+    system("PAUSE");
     while(g1.gagnant_partie == -1)                     //boucle du jeu
     {
         // pour le tour de chaque joueur
@@ -1069,4 +1072,3 @@ S_game jouer_game(S_game g1)
     affiche_plateau2(g1.plateau_partie,g1.joueurs_partie);
     return g1;
 }
-
