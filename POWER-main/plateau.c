@@ -5,55 +5,7 @@
 #include <assert.h>
 
 
-void affiche_plateau(S_joueur* joueurs_partie ){
-    printf("\n\t       1            2        3        4            5           6        7        8            9");
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
-    printf("\n\t  %c",186);color(15,2);printf("%03d  %03d",somme_powers_a(1,1,joueurs_partie,0),somme_powers_a(1,1,joueurs_partie,1));color(15,0);printf("%c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,1);printf("   08   ");color(15,0);printf("%c",186);
-    printf("\n\t1 %c",186);color(15,2);printf("  HQ.V  ");color(15,0);printf("%c   %c    E   %c    E   %c    E   %c   %c   IN   %c   %c    E   %c    E   %c    E   %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,1);printf("  HQ.B  ");color(15,0);printf("%c",186);
-    printf("\n\t  %c",186);color(15,2);printf("%03d  %03d",somme_powers_a(1,1,joueurs_partie,2),somme_powers_a(1,1,joueurs_partie,3));color(15,0);printf("%c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188);
-
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",218,196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,191);
-    printf("\n\t  %c%03d  %03d%c   %c",179,somme_powers_a(1,2,joueurs_partie,0),somme_powers_a(1,2,joueurs_partie,1),179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t2 %c    E   %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c    E   %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c    E   %c",186,  179,179);
-    printf("\n\t  %c%03d  %03d%c   %c",179,somme_powers_a(1,2,joueurs_partie,2),somme_powers_a(1,2,joueurs_partie,3),179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,            195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,  195,196,196,196,196,196,196,196,196,180);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t3 %c    E   %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c    E   %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c    E   %c",186,  179,179);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,            195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,  195,196,196,196,196,196,196,196,196,180);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t4 %c    E   %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c    E   %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c    E   %c",186,  179,179);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c",186);color(15,2);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c",186);color(15,1);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",192,196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,217);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
-    printf("\n\t  %c        %c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c        %c",186,186,179,179,179,179,186,186,179,179,179,179,186,186);
-    printf("\n\t5 %c   IW   %c   %c    E   %c    E   %c    E   %c   %c   IX   %c   %c    E   %c    E   %c    E   %c   %c   IE   %c",186,186,179,179,179,179,186,186,179,179,179,179,186,186);
-    printf("\n\t  %c        %c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c        %c",186,186,179,179,179,179,186,186,179,179,179,179,186,186);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188);
-
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",218,196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,203,  205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,191);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t6 %c    E   %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c    E   %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c    E   %c",186,  179,179);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,            195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,  195,196,196,196,196,196,196,196,196,180);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t7 %c    E   %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c    E   %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c    E   %c",186,  179,179);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,            195,196,196,196,196,196,196,196,196,180,  204,205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,206,  205,205,205,205,205,205,205,205,185,  195,196,196,196,196,196,196,196,196,180);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t8 %c    E   %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c    E   %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c    E   %c",186,  179,179);
-    printf("\n\t  %c        %c   %c",179,179,186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c   %c",186,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c",186);color(15,6);printf("        ");color(15,0);printf("%c   %c        %c",186,  179,179);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",192,196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,202,  205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,217);
-
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c",201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187,  218,196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,194,  196,196,196,196,196,196,196,196,191,  201,205,205,205,205,205,205,205,205,187);
-    printf("\n\t  %c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);
-    printf("\n\t9 %c",186);color(15,4);printf("  HQ.R  ");color(15,0);printf("%c   %c    E   %c    E   %c    E   %c   %c   IS   %c   %c    E   %c    E   %c    E   %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,6);printf("  HQ.J  ");color(15,0);printf("%c",186);
-    printf("\n\t  %c",186);color(15,4);printf("        ");color(15,0);printf("%c   %c        %c        %c        %c   %c        %c   %c        %c        %c        %c   %c",186,179,179,179,179,186,186,179,179,179,179,186);color(15,6);printf("        ");color(15,0);printf("%c",186);
-    printf("\n\t  %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c   %c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188,  192,196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,193,  196,196,196,196,196,196,196,196,217,  200,205,205,205,205,205,205,205,205,188);
-}
-
-void color (int couleurDuTexte, int couleurDuFond){
+void color (int couleurDuTexte, int couleurDuFond){  //programme couleurs present sur OS
      HANDLE H = GetStdHandle(STD_OUTPUT_HANDLE);
      SetConsoleTextAttribute(H, couleurDuFond*16+couleurDuTexte);
 }
@@ -75,16 +27,16 @@ void color (int couleurDuTexte, int couleurDuFond){
 // 15.Blanc*/
 
 int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int num_joueur){
-    //printf("---numero joueur :%d\n",num_joueur);
+    //[INSTRUMENTALISATION DE DEBUG]printf("---numero joueur :%d\n",num_joueur);
     int resultat=0;
     for(int k=0; k<joueurs_partie[num_joueur].nbpions; k++)
     {
-        //printf("---numero de pieces k= %d\n",k);
+        //[INSTRUMENTALISATION DE DEBUG] printf("---numero de pieces k= %d\n",k);
         if(joueurs_partie[num_joueur].tabpion[k].positions.position_x==position_x &&
             joueurs_partie[num_joueur].tabpion[k].positions.position_y==position_y &&
             joueurs_partie[num_joueur].tabpion[k].type_pion!=type_piece_inexistante)
         {
-            resultat+=joueurs_partie[num_joueur].tabpion[k].puissance; //resultat+= : rajouter à resultat
+            resultat+=joueurs_partie[num_joueur].tabpion[k].puissance; //resultat+= : rajouter à resultat <==> X=X+Y
         }
     }
     return resultat;
@@ -93,8 +45,8 @@ int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int 
 void affiche_barre_status(S_joueur * joueur_partie){
 
     printf("\n");
-    printf("Unites dans plateau/reserve :");
-    printf("\n");
+    printf("Unites dans le plateau/reserve :");
+    printf("\n\n\t");
     for(int i=0;i<NBJOUEURS;i++){
 
             print_color(i);
@@ -109,42 +61,42 @@ void affiche_barre_status(S_joueur * joueur_partie){
 void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie){
 
     printf("  ");
-    for(int x=1;x<=9;x++){
+    for(int x=1;x<=NBCASES;x++){
 
             print_case_num(x);
         }
         printf("\n");
-    for(int y=1;y<=9;y++){
+    for(int y=1;y<=NBCASES;y++){
         printf("  ");
-        for(int x=1;x<=9;x++){
+        for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
             print_case_dessus();
             print_color(-1);
         }
         printf("%c\n",255);
         printf("  ");
-        for(int x=1;x<=9;x++){
+        for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
             print_case_power1(joueurs_partie,x,y);
             print_color(-1);
         }
         printf("%c\n",255);
         printf("%d ",y);
-        for(int x=1;x<=9;x++){
+        for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
             print_case_terrain(p1.cases[y-1][x-1]);
             print_color(-1);
         }
         printf("%c\n",255);
         printf("  ");
-        for(int x=1;x<=9;x++){
+        for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
             print_case_power2(joueurs_partie,x,y);
             print_color(-1);
         }
         printf("%c\n",255);
         printf("  ");
-        for(int x=1;x<=9;x++){
+        for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
             print_case_dessous();
             print_color(-1);
@@ -214,10 +166,11 @@ void affiche_unites(int x,int y,S_joueur* joueurs_partie){
     }
 }
 
-void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur){  //S_joueur* <==> S_joueur[]
+int affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur){  //S_joueur* <==> S_joueur[]
     printf("Voici les unites presentes sur la case %d.%d\n",x,y);
 
         int decompte_unites[taille_enum_pion]; //initialisation du tableau à 0
+        int decompte=0;
         for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<le_joueur.nbpions;j++)
         {
@@ -226,19 +179,42 @@ void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur){  //S_joueur*
                 decompte_unites[le_joueur.tabpion[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
             }
         }
-        affiche_decompte_unite(decompte_unites,true);
+        for(int j=0;j<taille_enum_pion;j++)
+            if(decompte_unites[j]>0)
+                decompte++;
+        if(decompte!=0){
+
+            affiche_decompte_unite(decompte_unites,true);
+        }
+        else{
+            printf("Vous n'avez aucune unite dans la case %d.%d\n",x,y);
+        }
+        return decompte;
 }
 
-void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
+int affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
+
     printf("Voici vos unites en reserve\n");
 
+        int decompte = 0;
         int decompte_unites[taille_enum_pion];
         for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<le_joueur.nbpions_reserve;j++)
         {
             decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
         }
-        affiche_decompte_unite(decompte_unites,numerote);
+        for(int j=0;j<taille_enum_pion;j++)
+            if(decompte_unites[j]>0)
+                decompte++;
+
+        if(decompte!=0){
+
+            affiche_decompte_unite(decompte_unites,numerote);
+        }
+        else{
+            printf("Vous n'avez aucune unite dans votre reserve.\n");
+        }
+        return decompte;
 }
 
 void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote){
