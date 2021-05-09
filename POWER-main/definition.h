@@ -3,18 +3,9 @@
 #include <stdbool.h>
 
 #define CBC 3 //nombre de croiseurs, bombardiers, chars par joueur
-#define NBMEGAMISSILE 1
 #define NBJOUEURS 4
 #define NBCASES 9
 #define CDT 6 //nombre de chasseurs, Destroyers, tanks par joueur
-#define NBSOLDATS 9
-#define NBPOWERS 10
-//#define DIMJpions 100
-#define DIMSTR 2
-#define DIM_RESERVE_JOUEUR 4
-#define DIM_NOM_CASES 2
-#define NB_TYPE_UNITE 9
-#define DIMSTRLONG 50
 #define NBORDRES 5
 #define NBPIONTOTALDEBUT 8
 #define NBPIONDEBUT 2
@@ -22,13 +13,14 @@
 
 //************************ DEFINITION DES PIONS ************************
 
-typedef struct {
+struct coordonees {
     int position_x;
     int position_y;
     int positionfutur_x;
     int positionfutur_y;
 
-} S_coordonees;
+};
+typedef struct coordonees S_coordonees;
 
 typedef enum
 {
@@ -55,7 +47,7 @@ static const bool pion_type_eau[taille_enum_pion]= {false, //chasseur
                                                     false, //megamissile
                                                     false, //regiment
                                                     false, //inexstante -> non applicable
-                                                    }; //static const : on definit le tableau de boolean
+                                                    }; //static const : on definit le tableau de boolean comme un define qui ne bouge plus
 
 
 
@@ -69,7 +61,7 @@ static const int pion_limite_deplacement[taille_enum_pion]= {5, //chasseur
                                                              -1, //megamissile -> non applicable, illimité
                                                              2, //regiment
                                                              -1, //inexstante -> non applicable, pas de deplacement
-                                                             }; //static const : on definit le tableau de boolean
+                                                             }; //static const : on definit le tableau de int comme un define qui ne bouge plus
 
 static const enum_type_pion pion_type_amelioration[taille_enum_pion]= {type_bombardier, //chasseur
                                                                        type_croiseur, //destroyer
@@ -81,21 +73,22 @@ static const enum_type_pion pion_type_amelioration[taille_enum_pion]= {type_bomb
                                                                        type_piece_inexistante, //megamissile -> non applicable
                                                                        type_piece_inexistante, //regiment DEJA GROUPE 2
                                                                        type_piece_inexistante, //inexstante -> non applicable
-                                                                       }; //static const : on definit le tableau de boolean
+                                                                       }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
 
 
-typedef struct {
-    //char type_pion[DIMSTR];
+ struct pions{
+
     enum_type_pion type_pion; //type des pions est fixe de type enum_type_pion
     S_coordonees positions;
     int puissance;
     int deja_deplace;  //1=oui, 0=non
     int dans_reserve;  //1=oui, 0=non
-    int rcbc_pion;     // 1=oui rcbc in game, 0=non pion normal ou rcbc pas en game
-} S_pions;
+
+};
+typedef struct pions S_pions;
+
 
 static const int joueur_vers_couleur[]={4,10,6,1};
-
 
 //************************ DEFINITION DES JOUEURS ************************
 

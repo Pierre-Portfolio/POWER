@@ -27,7 +27,6 @@ S_pions chasseur(int position_x,int position_y) //initialisation d'un pion de ty
     resultat.puissance=5;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
 
     return resultat;
 }
@@ -42,7 +41,7 @@ S_pions destroyer(int position_x,int position_y)
     resultat.puissance=10;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -57,7 +56,7 @@ S_pions tank(int position_x,int position_y)
     resultat.puissance=3;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -72,7 +71,7 @@ S_pions regiment(int position_x,int position_y)
     resultat.puissance=20;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -87,7 +86,7 @@ S_pions bombardier(int position_x,int position_y)
     resultat.puissance=25;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -102,7 +101,7 @@ S_pions croiseur(int position_x,int position_y)
     resultat.puissance=50;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -117,7 +116,7 @@ S_pions un_char(int position_x,int position_y)
     resultat.puissance=30;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -132,7 +131,7 @@ S_pions soldat(int position_x,int position_y)
     resultat.puissance=2;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -147,7 +146,7 @@ S_pions megamissile(int position_x,int position_y)
     resultat.puissance=1000;
     resultat.deja_deplace=0;
     resultat.dans_reserve=1;
-    resultat.rcbc_pion=0;
+
 
     return resultat;
 }
@@ -182,7 +181,7 @@ S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous fo
 {
     //system("CLS");
     S_joueur * tabjoueur = (S_joueur * ) malloc (sizeof(S_joueur)*NBJOUEURS);
-    if(tabjoueur==NULL)                                                            //verifier que le pointeur n pas nul : eviter les crashs
+    if(tabjoueur==NULL)                                                            //verifier que le pointeur n'est pas nul : eviter les crashs
     {
         printf("ERREUR MEMOIRE : veillez relancer une partie\n");
         exit(1); //arret d'urgence
@@ -261,12 +260,12 @@ S_pions * initialisation_pieces(int num_joueur)
 S_cases ** initialisation_cases()
 {
     //initialisation du tableau de cases
-    S_cases  **Tabcases =  (S_cases**)malloc(9 * sizeof(S_cases**));
-    for (int i = 0; i < 9; ++i) {
-        Tabcases[i] = (S_cases*)malloc(9 * sizeof(S_cases));
+    S_cases  **Tabcases =  (S_cases**)malloc(NBCASES * sizeof(S_cases**));
+    for (int i = 0; i < NBCASES; ++i) {
+        Tabcases[i] = (S_cases*)malloc(NBCASES * sizeof(S_cases));
     }
 
-    S_cases TabcasesOrigine[9][9]= {{{HG,0},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,1}},
+    S_cases TabcasesOrigine[NBCASES][NBCASES]= {{{HG,0},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,1}},
                                             {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
                                             {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
                                             {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},

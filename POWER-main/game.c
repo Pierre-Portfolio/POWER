@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
+#include <unistd.h>
 
 #include "definition.h"
 #include "Initialisation.h"
@@ -45,6 +46,7 @@ int saisieAction(int nbcoup)
         printf("5 : lancement de missile\n");
         printf("6 : Fin de tour\n");
         scanf("%d", &nombreEntre);
+        //system("CLS");
     }
     return nombreEntre;
 }
@@ -85,7 +87,7 @@ bool verifier_case_juste(int x, int y, S_plateau plateau, S_pions pion)
 
 bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_destination)
 {
-    printf("verifier_chemin type %d; x%d, y%d, destx %d, desty%d\n",pion.type_pion,pion.positions.position_x,pion.positions.position_y,x_destination,y_destination);
+    //[INSTRUMENTALISATION DE DEBUG] printf("verifier_chemin type %d; x%d, y%d, destx %d, desty%d\n",pion.type_pion,pion.positions.position_x,pion.positions.position_y,x_destination,y_destination);
 
     if(pion.type_pion == type_megamissile){
         return true; // megamissile n'ont pas de conditino
@@ -105,21 +107,21 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
     float actuellement_x_float = x1; //positon actuelle sur l'axe X SUR LA LIGNE DROITE (donc pas en case entière)
     float actuellement_y_float = y1; //positon actuelle sur l'axe Y SUR LA LIGNE DROITE (donc pas en case entière)
 
-    printf("addx%f addy%f nbrtour%d dx%d dy%d\n",add_x,add_y,nombre_de_tour,dx,dy);
+   //[INSTRUMENTALISATION DE DEBUG]  printf("addx%f addy%f nbrtour%d dx%d dy%d\n",add_x,add_y,nombre_de_tour,dx,dy);
 
     if(nombre_de_tour > pion_limite_deplacement[pion.type_pion])
     {
-        printf("Pion trop loin\n");
+        printf("Le deplacement est trop grand\n");
         return false;
     }
-    printf("apres limite deplacement\n");
+    //[INSTRUMENTALISATION DE DEBUG] printf("apres limite deplacement\n");
 
     int nb_chgmt_couleur=0;
     int actuellement_x = x1;
     int actuellement_y = y1;
     while(!(actuellement_x == x2 && actuellement_y == y2))   //tant qu'on est pas arrivé
     {
-        printf("actuellement x %d   actuellement y %d\n",actuellement_x,actuellement_y);
+        //[INSTRUMENTALISATION DE DEBUG] printf("actuellement x %d   actuellement y %d\n",actuellement_x,actuellement_y);
         int ancienne_couleur=plateau.cases[actuellement_y-1][actuellement_x-1].joueur;
         actuellement_x_float += add_x; //position actuelle en mouvement sur l'axe x
         actuellement_y_float += add_y; //position actuelle en mouvement sur l'axe y
@@ -128,19 +130,19 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
 
         assert(actuellement_x > 0 && actuellement_x < 10 && actuellement_y > 0 && actuellement_y < 10);
 
-        printf("-%d-%d-\n",actuellement_x,actuellement_y);
+        //[INSTRUMENTALISATION DE DEBUG] printf("-%d-%d-\n",actuellement_x,actuellement_y);
 
 
         int nouvelle_couleur=plateau.cases[actuellement_y-1][actuellement_x-1].joueur;
 
 
         bool case_juste = verifier_case_juste(actuellement_x,actuellement_y,plateau,pion);
-        printf("resultat case juste initial -> %d\n",case_juste);
+        //[INSTRUMENTALISATION DE DEBUG] printf("resultat case juste initial -> %d\n",case_juste);
 
         if(!case_juste)
         {
 
-            printf("Cas faux, tentative d'alternatifs...\n");
+            //[INSTRUMENTALISATION DE DEBUG] printf("Cas faux, tentative d'alternatifs...\n");
             //cas alternatifs
             int alt_actuellement_x = -1; // -1 n'en n'as pas
             int round_x_plus = round(actuellement_x_float+0.25f);
@@ -172,7 +174,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
             {
                 case_juste = verifier_case_juste(alt_actuellement_x,actuellement_y,plateau,pion);
                 nouvelle_couleur=plateau.cases[actuellement_y-1][alt_actuellement_x-1].joueur;
-                printf("Alternative X trouvee, resultat %d...\n",case_juste);
+                //[INSTRUMENTALISATION DE DEBUG] printf("Alternative X trouvee, resultat %d...\n",case_juste);
             }
 
             if(!case_juste)
@@ -181,7 +183,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
                 {
                     case_juste = verifier_case_juste(actuellement_x,alt_actuellement_y,plateau,pion);
                     nouvelle_couleur=plateau.cases[alt_actuellement_y-1][actuellement_x-1].joueur;
-                    printf("Alternative Y trouvee, resultat %d...\n",case_juste);
+                    //[INSTRUMENTALISATION DE DEBUG] printf("Alternative Y trouvee, resultat %d...\n",case_juste);
                 }
 
             }
@@ -191,7 +193,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
 
         if(!case_juste)
         {
-            printf("Case fausse %d %d\n",actuellement_x, actuellement_y);
+            //[INSTRUMENTALISATION DE DEBUG] printf("Case fausse %d %d\n",actuellement_x, actuellement_y);
             return false;
         }
         else
@@ -204,12 +206,12 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
 
             if(nb_chgmt_couleur>1)
             {
-                printf("Pion trop de changement de couleur\n");
+                printf("Le pion change trop de fois de couleur\n");
                 return false;
             }
             else
             {
-                printf("Case jsute\n");
+                //[INSTRUMENTALISATION DE DEBUG] printf("Case jsute\n");
             }
         }
 
@@ -249,7 +251,7 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
         }
 
     }
-    printf("indice choisis : %d\n",indice_pion);
+    //[INSTRUMENTALISATION DE DEBUG] printf("indice choisis : %d\n",indice_pion);
 
     int dest_x, dest_y; //dest -> destination
     printf("Ou souhaitez-vous aller ?\nEn x (horizontal) : \n");
@@ -263,7 +265,7 @@ void * deplacerPion(S_plateau plateau,S_feuille_ordres feuille_ordre, S_joueur l
 
         juste = verifier_chemin(plateau, le_joueur.tabpion[indice_pion], dest_x, dest_y);
 
-        printf("verifier chemin -> %d \n", juste);
+        printf("verification du chemin : 0 chemin invalide ou 1 chemin valide %d \n", juste);
 
     }
 
@@ -584,7 +586,7 @@ bool executer_ordre_lancement(S_game * g1, S_ordre_lancement * lancement)
 
     if(!lancement->vers_reserve)
     {
-        printf("MISSILE : Tout le monde meurt en %d %d\n",lancement->position_arrive_x,lancement->position_arrive_y);
+        printf("MISSILE : Toutes les untiees presente dans la case cible en %d %d ont ete tueees \n",lancement->position_arrive_x,lancement->position_arrive_y);
         for(int i=0; i<NBJOUEURS; i++) //calcul du nombre d'egalites par case
             for(int j = 0 ; j < g1->joueurs_partie[i].nbpions ; j++)
                 if(g1->joueurs_partie[i].tabpion[j].positions.position_x == lancement->position_arrive_x &&
@@ -660,13 +662,13 @@ bool executer_ordre_echange(S_game * g1, S_ordre_echange * echange)
              nb,
              (void*)&pion);
 
-    printf("Marquer pour supprimer pion 1, indice %d\n",echange->indice_pion1);
+    //[INSTRUMENTALISATION DE DEBUG] printf("Marquer pour supprimer pion 1, indice %d\n",echange->indice_pion1);
     (*tab)[echange->indice_pion1].type_pion = type_piece_inexistante;
 
-    printf("Marquer pour supprimer pion 2, indice %d\n",echange->indice_pion2);
+    //[INSTRUMENTALISATION DE DEBUG] printf("Marquer pour supprimer pion 2, indice %d\n",echange->indice_pion2);
     (*tab)[echange->indice_pion2].type_pion = type_piece_inexistante;
 
-    printf("Marquer pour supprimer pion 3, indice %d\n",echange->indice_pion3);
+    //[INSTRUMENTALISATION DE DEBUG] printf("Marquer pour supprimer pion 3, indice %d\n",echange->indice_pion3);
     (*tab)[echange->indice_pion3].type_pion = type_piece_inexistante;
 
     return true;
@@ -764,27 +766,27 @@ void supprimer_pieces_inexistantes(S_game * g1)
 
     for(int i=0; i<NBJOUEURS; i++)
     {
-        printf("verification inexistance joueur %d\n",i);
+        //[INSTRUMENTALISATION DE DEBUG] printf("verification inexistance joueur %d\n",i);
         for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
         {
 
             if(g1->joueurs_partie[i].tabpion[j].type_pion==type_piece_inexistante)
             {
 
-                printf("en train de sppr une piece\n");
+                //[INSTRUMENTALISATION DE DEBUG] printf("en train de sppr une piece\n");
                 supprimer(g1->joueurs_partie[i].tabpion,sizeof(S_pions),&g1->joueurs_partie[i].nbpions,j);
                 j--; //on recule tous les éléments d'une case donc reculer le compteur pour ne pas zaper un element, on supprime la case sur laquelle on est
             }
 
         }
-        printf("verification inexistance reserve joueur %d (%d en réserve)\n",i,g1->joueurs_partie[i].nbpions_reserve);
+        //[INSTRUMENTALISATION DE DEBUG] printf("verification inexistance reserve joueur %d (%d en réserve)\n",i,g1->joueurs_partie[i].nbpions_reserve);
         for(int j=0; j<g1->joueurs_partie[i].nbpions_reserve; j++)
         {
-            printf("regarde l'indice %d\n",j);
+            //[INSTRUMENTALISATION DE DEBUG] printf("regarde l'indice %d\n",j);
             if(g1->joueurs_partie[i].tabpion_reserve[j].type_pion==type_piece_inexistante)
             {
 
-                printf("en train de sppr une piece en reserve\n");
+                //[INSTRUMENTALISATION DE DEBUG] printf("en train de sppr une piece en reserve\n");
                 supprimer(g1->joueurs_partie[i].tabpion_reserve,sizeof(S_pions),&g1->joueurs_partie[i].nbpions_reserve,j);
                 j--; //on recule tous les éléments d'une case donc reculer le compteur pour ne pas zaper un element, on supprime la case sur laquelle on est
             }
@@ -839,26 +841,26 @@ void resolution_des_combats(S_game*g1)
     {
         for(int y=1; y<=NBCASES; y++)
         {
-            printf("\tnous sommes a la case %d %d  -- %d %d %d %d\n",x,y,somme_powers_a(x,y,g1->joueurs_partie,0),somme_powers_a(x,y,g1->joueurs_partie,1),somme_powers_a(x,y,g1->joueurs_partie,2),somme_powers_a(x,y,g1->joueurs_partie,3));
+            //[INSTRUMENTALISATION DE DEBUG] printf("\tnous sommes a la case %d %d  -- %d %d %d %d\n",x,y,somme_powers_a(x,y,g1->joueurs_partie,0),somme_powers_a(x,y,g1->joueurs_partie,1),somme_powers_a(x,y,g1->joueurs_partie,2),somme_powers_a(x,y,g1->joueurs_partie,3));
             if((somme_powers_a(x,y,g1->joueurs_partie,0)+somme_powers_a(x,y,g1->joueurs_partie,1)+somme_powers_a(x,y,g1->joueurs_partie,2)+somme_powers_a(x,y,g1->joueurs_partie,3))>0)
             {
-                printf("\tcombat trouve\n");
+                //[INSTRUMENTALISATION DE DEBUG] printf("\tcombat trouve\n");
                 int power_max,indice_max;
                 while(decompte_joueur_combat(g1,x,y)>0 && multiple_gagnants_combat(g1,x,y,&power_max,&indice_max))
                 {
-                    printf("\tduplicata trouve resolution en cours\n");
+                    //[INSTRUMENTALISATION DE DEBUG] printf("\tduplicata trouve resolution en cours\n");
                     for(int i=0; i<NBJOUEURS; i++)
                     {
                         if(somme_powers_a(x,y,g1->joueurs_partie,i)==power_max)
                         {
-                            printf("\tjoueur %d dans le duplicata\n",i);
+                            //[INSTRUMENTALISATION DE DEBUG] printf("\tjoueur %d dans le duplicata\n",i);
 
                             for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
                             {
 
                                 if(g1->joueurs_partie[i].tabpion[j].positions.position_x==x && g1->joueurs_partie[i].tabpion[j].positions.position_y==y)
                                 {
-                                    printf("\tpiece %d dans le duplicata\n",j);
+                                    //[INSTRUMENTALISATION DE DEBUG] printf("\tpiece %d dans le duplicata\n",j);
 
                                     g1->joueurs_partie[i].tabpion[j].type_pion=type_piece_inexistante;
                                 }
@@ -869,19 +871,19 @@ void resolution_des_combats(S_game*g1)
 
                 if(decompte_joueur_combat(g1,x,y)>1)
                 {
-                    printf("\treste apres duplicata, %d est gagnant\n",indice_max);
+                    //[INSTRUMENTALISATION DE DEBUG] printf("\treste apres duplicata, %d est gagnant\n",indice_max);
 
                     for(int i=0; i<NBJOUEURS; i++)
                     {
                         if(i!=indice_max)
                         {
-                            printf("\tjoueur %d est perdant\n",i);
+                            //[INSTRUMENTALISATION DE DEBUG] printf("\tjoueur %d est perdant\n",i);
 
                             for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
                             {
                                 if(g1->joueurs_partie[i].tabpion[j].positions.position_x==x && g1->joueurs_partie[i].tabpion[j].positions.position_y==y)
                                 {
-                                    printf("\tpiece %d est perdue\n",j);
+                                    //[INSTRUMENTALISATION DE DEBUG] printf("\tpiece %d est perdue\n",j);
 
                                     rajouter((void*)&g1->joueurs_partie[indice_max].tabpion_reserve,sizeof(S_pions),&g1->joueurs_partie[indice_max].nbpions_reserve,(void*)g1->joueurs_partie[indice_max].tabpion+j); //dernier truc==&g1->joueurs_partie[indice_max].tabpion[j]
                                     g1->joueurs_partie[i].tabpion[j].type_pion=type_piece_inexistante;
@@ -894,7 +896,7 @@ void resolution_des_combats(S_game*g1)
                 }
                 else
                 {
-                    printf("\trien apres duplicata\n");
+                    //[INSTRUMENTALISATION DE DEBUG] printf("\trien apres duplicata\n");
                 }
             }
         }
@@ -970,8 +972,10 @@ void zoom(S_joueur * joueurs_partie,int num_joueur) //Zoom de la case demandee
 
 S_game jouer_game(S_game g1)
 {
-    printf("********************************Bienvenue dans une partie de POWER********************************\n\nNous vous invitons a etendre la console en plein ecran, afin de profiter d'une experience totale de la partie\n\n");
-    system("PAUSE");
+
+
+    printf("\t\t\t********************************Bienvenue dans une partie de POWER********************************\n\nNous vous invitons a etendre la console en plein ecran, afin de profiter d'une experience totale de la partie qui va demarer dans 5sec\n\n");
+    sleep(6);
     while(g1.gagnant_partie == -1)                     //boucle du jeu
     {
         // pour le tour de chaque joueur
@@ -982,17 +986,18 @@ S_game jouer_game(S_game g1)
 
 
             int action_restante = 5;
-            printf("\n\n\n\n\n");
+            printf("\n\n\n\n");
             affiche_plateau2(g1.plateau_partie,g1.joueurs_partie);
             feuille_ordre[i].nb_ordre = 0;
-            printf("----------------Joueur %d------------------\n",i+1);
+            printf("\t\t----------------Joueur %d------------------\n",i+1);
             do
             {
                 // on demande au joueur de saisir son action
 
-                printf("-----Nombre actions tour restantes %d-----\n",action_restante);
+                printf("\t\t-----Nombre actions tour restantes %d-----\n\n",action_restante);
 
                 result = saisieAction(action_restante);
+                affiche_plateau2(g1.plateau_partie,g1.joueurs_partie);
                 //printf("action valide detectee car entree = %d\n",result);
                 void * ordre;
                 switch(result)
@@ -1059,7 +1064,7 @@ S_game jouer_game(S_game g1)
         //resolution
         resolution_des_combats(&g1);
 
-        //nettoyage
+        //nettoyage des pieces de type inexistantes des tableaux
         supprimer_pieces_inexistantes(&g1);
 
         //exectuer les actions de tout les tours
