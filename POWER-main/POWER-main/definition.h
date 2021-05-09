@@ -16,7 +16,7 @@
 #define NB_TYPE_UNITE 9
 #define DIMSTRLONG 50
 #define NBORDRES 5
-#define NBPIECESJOUEUR 37
+#define NBPIECESJOUEUR 37-4
 
 
 

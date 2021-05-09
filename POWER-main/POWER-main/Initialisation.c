@@ -213,13 +213,13 @@ S_pions * initialisation_pieces(int num_joueur)
     switch(num_joueur)
     {
         case 0: position_x=1; position_y=1; break;
-        case 1: position_x=9; position_y=1; break;
-        case 2: position_x=9; position_y=9; break;
-        case 3: position_x=1; position_y=9; break;
+        case 1: position_x=2; position_y=2; break;
+        case 2: position_x=3; position_y=3; break;
+        case 3: position_x=4; position_y=4; break;
         default: assert(0); //assert n'est pas 1, donc fausse ==> crash propre
     }
     int k=0;                            //garder l'indice pour faire la liste
-    for(int i=0;i<CDT;i++)
+    for(int i=0;i<2;i++)
     {
         tabpions[k]=chasseur(position_x,position_y);
         k++;

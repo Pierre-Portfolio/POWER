@@ -84,7 +84,8 @@ int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int 
     {
         //printf("---numero de pieces k= %d\n",k);
         if(joueurs_partie[num_joueur].tabpion[k].positions.position_x==position_x &&
-                joueurs_partie[num_joueur].tabpion[k].positions.position_y==position_y)
+            joueurs_partie[num_joueur].tabpion[k].positions.position_y==position_y &&
+            joueurs_partie[num_joueur].tabpion[k].type_pion!=type_piece_inexistante)
         {
             resultat+=joueurs_partie[num_joueur].tabpion[k].puissance; //resultat+= : rajouter à resultat
         }
@@ -216,6 +217,8 @@ void affiche_unites(int x,int y,S_joueur* joueurs_partie)
         print_color(-1);
     }
 }
+
+
 void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur)  //S_joueur* <==> S_joueur[]
 {
     printf("Voici les unites presentes sur la case %d.%d\n",x,y);
@@ -231,6 +234,17 @@ void affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur)  //S_joueur* 
         affiche_decompte_unite(decompte_unites,true);
 }
 
+void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote)  //S_joueur* <==> S_joueur[]
+{
+    printf("Voici vos unites en reserve\n");
+
+        int decompte_unites[taille_enum_pion]={0}; //initialisation du tableau à 0
+        for(int j=0;j<le_joueur.nbpions_reserve;j++)
+        {
+            decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
+        }
+        affiche_decompte_unite(decompte_unites,numerote);
+}
 void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote)
 {
     for(int i=0;i<taille_enum_pion;i++)
