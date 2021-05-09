@@ -2,6 +2,7 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< HEAD
 	<File name="ordres.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="225" topLine="0" />
@@ -10,6 +11,16 @@
 	<File name="ihm.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
+=======
+	<File name="affichage.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="plateau.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="99" topLine="0" />
+>>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 		</Cursor>
 	</File>
 	<File name="plateau.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
@@ -17,6 +28,7 @@
 			<Cursor1 position="353" topLine="3" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="affichage.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
@@ -64,6 +76,52 @@
 			<Collapse line="125" />
 			<Collapse line="135" />
 		</Folding>
+=======
+	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="448" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ihm.c" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="157" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="game.c" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7896" topLine="149" />
+		</Cursor>
+		<Folding>
+			<Collapse line="22" />
+			<Collapse line="226" />
+			<Collapse line="293" />
+			<Collapse line="359" />
+			<Collapse line="390" />
+			<Collapse line="427" />
+			<Collapse line="510" />
+			<Collapse line="565" />
+			<Collapse line="578" />
+			<Collapse line="609" />
+			<Collapse line="631" />
+			<Collapse line="677" />
+			<Collapse line="706" />
+			<Collapse line="764" />
+			<Collapse line="799" />
+			<Collapse line="808" />
+			<Collapse line="817" />
+			<Collapse line="832" />
+			<Collapse line="838" />
+			<Collapse line="906" />
+			<Collapse line="936" />
+			<Collapse line="955" />
+			<Collapse line="973" />
+		</Folding>
+	</File>
+	<File name="ordres.c" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="225" topLine="0" />
+		</Cursor>
+>>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 	</File>
 	<File name="util.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -75,6 +133,7 @@
 			<Cursor1 position="223" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="ordres.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="129" topLine="0" />
@@ -138,6 +197,46 @@
 	<File name="util.c" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="772" topLine="0" />
+=======
+	<File name="affichage.c" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="187" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="game.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="267" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="util.h" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="249" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="plateau.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1841" topLine="50" />
+		</Cursor>
+	</File>
+	<File name="Initialisation.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8287" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="ordres.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="129" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="definition.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="330" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="cases.c" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="15" topLine="0" />
+>>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
