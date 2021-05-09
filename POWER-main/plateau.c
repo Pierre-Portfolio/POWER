@@ -192,11 +192,7 @@ int affiche_mes_unites_numerotees(int x,int y,S_joueur le_joueur){  //S_joueur* 
         return decompte;
 }
 
-<<<<<<< HEAD
 int affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
-=======
-void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* <==> S_joueur[]
->>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 
     printf("Voici vos unites en reserve\n");
 
@@ -205,17 +201,9 @@ void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* 
         for(int z = 0 ; z < taille_enum_pion ; z++) decompte_unites[z] = 0;
         for(int j=0;j<le_joueur.nbpions_reserve;j++)
         {
-            decompte = decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
+            decompte_unites[le_joueur.tabpion_reserve[j].type_pion]++; //pour chaque pion de chaque joueur, on incremente si le pion est present sur la case
         }
 
-        if(decompte!=0){
-
-            affiche_decompte_unite(decompte_unites,numerote);
-        }
-        else{
-            printf("Vous n'avez aucunes unites dans votre reserve.\n");
-        }
-<<<<<<< HEAD
         for(int j=0;j<taille_enum_pion;j++)
             if(decompte_unites[j]>0)
                 decompte++;
@@ -228,8 +216,6 @@ void affiche_mes_unites_reserve(S_joueur le_joueur,bool numerote){  //S_joueur* 
             printf("Vous n'avez aucune unite dans votre reserve.\n");
         }
         return decompte;
-=======
->>>>>>> 8e1ad792f3eedfe96f2bb2a70ec64b173cf51caf
 }
 
 void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote){
@@ -237,21 +223,7 @@ void affiche_decompte_unite(int decompte_unite[taille_enum_pion],bool numerote){
     {
         if(decompte_unite[i]==0)continue; //on n'affiche rien si le decompte egale a 0; continue ignore la suite jusqu'a la fin de la boucle
 
-        printf("%dx",decompte_unite[i]);
-        switch(i)
-        {
-            case type_bombardier:printf("Bombardier");break;
-            case type_char:printf("Char");break;
-            case type_chasseur:printf("Chasseur");break;
-            case type_destroyer:printf("Destroyeur");break;
-            case type_croiseur:printf("Croiseur");break;
-            case type_megamissile:printf("Mega-missile");break;
-            case type_regiment:printf("Regiment");break;
-            case type_soldat:printf("Soldat");break;
-            case type_tank:printf("Tank");break;
-            case type_piece_inexistante:break; //ne fait rien
-            default:assert(0);
-        }
+        printf("%dx%s",decompte_unite[i],nom_type_pions[i]);
         if(numerote)
         {
             printf("   -%d-",i); //afficher la numerotation d'un pion ou pas

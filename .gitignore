@@ -1,0 +1,6 @@
+# Specify filepatterns you want git to ignore.
+*.cscope_file_list
+*.o
+*.exe
+*.save-failed
+*.depend

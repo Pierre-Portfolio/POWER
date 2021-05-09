@@ -76,6 +76,29 @@ static const enum_type_pion pion_type_amelioration[taille_enum_pion]= {type_bomb
                                                                        }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
 
 
+ static const char * nom_type_pions[taille_enum_pion]= {"Chasseur", //chasseur
+                                                        "Destroyeur", //destroyer
+                                                        "Bombardier", //bombardier DEJA GROUPE 2
+                                                        "Croiseur", //croiseur DEJA GROUPE 2
+                                                        "Soldat", //soldat
+                                                        "Tank", //tank
+                                                        "Char", //char DEJA GROUPE 2
+                                                        "Mega-missile", //megamissile -> non applicable
+                                                        "Regiment", //regiment DEJA GROUPE 2
+                                                        "[PIECE_INEXISTANTE]", //inexstante -> non applicable
+                                                        }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
+
+
+
+typedef enum{
+    type_deplacement=0,
+    type_achat,
+    type_echange,
+    type_sortie,
+    type_lancement,
+    type_aucun_ordre,
+}enum_types_ordre;
+
  struct pions{
 
     enum_type_pion type_pion; //type des pions est fixe de type enum_type_pion
@@ -83,7 +106,7 @@ static const enum_type_pion pion_type_amelioration[taille_enum_pion]= {type_bomb
     int puissance;
     int deja_deplace;  //1=oui, 0=non
     int dans_reserve;  //1=oui, 0=non
-
+    enum_types_ordre dernier_ordre_du_tour;
 };
 typedef struct pions S_pions;
 
@@ -107,13 +130,7 @@ typedef struct {
 
 //************************ DEFINITION DES ORDRES ************************
 
-typedef enum{
-    type_deplacement=0,
-    type_achat,
-    type_echange,
-    type_sortie,
-    type_lancement,
-}enum_types_ordre;
+
 
 typedef struct {
     void * ordre[NBORDRES]; //void* = pointeur de type inconnu
@@ -122,44 +139,43 @@ typedef struct {
 } S_feuille_ordres;
 
 typedef struct{
+    int position_x;
+    int position_y;
+    enum_type_pion type_pion;
     int position_arrive_x;
     int position_arrive_y;
-    bool valide; //0=false et 1=true
     int num_joueur;
-    int num_pion; // 5   0 1 2 -> supprimés
 } S_ordre_deplacement;
 
 typedef struct{
+    int position_x;
+    int position_y;
+    enum_type_pion type_pion;
     int position_arrive_x;
     int position_arrive_y;
-    bool valide; //0=false et 1=true
-    int num_joueur;
-    int num_pion; // 5   0 1 2 -> supprimés
     bool vers_reserve;
     int joueur_reserve_cible;
+    int num_joueur;
 } S_ordre_lancement;
 
 typedef struct {
-    bool valide;
     int num_joueur;
     enum_type_pion type_pion;
 } S_ordre_achat;
 
 typedef struct {
-    bool valide;
+    int position_x;
+    int position_y;
+    enum_type_pion type_pion;
     int num_joueur;
-    int indice_pion;
-    int indice_reserve;
 } S_ordre_sortie;
 
 typedef struct {
-    bool valide;
-    int num_joueur;
-    int indice_pion1;
-    int indice_pion2;
-    int indice_pion3;
+    int position_x;
+    int position_y;
     enum_type_pion type_pion;
     bool depuis_reserve;
+    int num_joueur;
 } S_ordre_echange;
 
 static const int prix[taille_enum_pion]={5, //chasseur

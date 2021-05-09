@@ -199,13 +199,13 @@ S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous fo
         tabjoueur[i].nbactionTour = 5;
 
 
-        /*
+
         // DEBUG
         S_pions pion = megamissile(2,2);
         rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
         rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
         rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
-        */
+
 
         //printf("\n\njoueur %d initialise**********************************",i+1);
         //printf("\n\tle numero du joueur est :%d",tabjoueur[i].numero_joueur);
