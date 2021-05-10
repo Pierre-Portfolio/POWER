@@ -189,6 +189,7 @@ typedef struct {
     enum_type_pion type_pion;
     bool depuis_reserve;
     int num_joueur;
+    bool pour_missile;
 } S_ordre_echange;
 
 static const int prix[taille_enum_pion]={5, //chasseur
