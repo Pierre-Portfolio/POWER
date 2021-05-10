@@ -54,37 +54,34 @@ void supprimer_pieces_inexistantes(S_game * g1)
 
     for(int i=0; i<NBJOUEURS; i++)
     {
-#ifdef DEBUG
-        printf("verification inexistance joueur %d\n",i);
-#endif
+
+        printf("[DEBUG] verification inexistance joueur %d\n",i);
         for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
         {
 
             if(g1->joueurs_partie[i].tabpion[j].type_pion==type_piece_inexistante)
             {
 
-#ifdef DEBUG
-                printf("en train de sppr une piece\n");
-#endif
+
+                printf("[DEBUG] en train de sppr une piece\n");
+
                 supprimer(g1->joueurs_partie[i].tabpion,sizeof(S_pions),&g1->joueurs_partie[i].nbpions,j);
                 j--; //on recule tous les éléments d'une case donc reculer le compteur pour ne pas zaper un element, on supprime la case sur laquelle on est
             }
 
         }
-#ifdef DEBUG
-        printf("verification inexistance reserve joueur %d (%d en réserve)\n",i,g1->joueurs_partie[i].nbpions_reserve);
-#endif
+
+        printf("[DEBUG] verification inexistance reserve joueur %d (%d en réserve)\n",i,g1->joueurs_partie[i].nbpions_reserve);
+
         for(int j=0; j<g1->joueurs_partie[i].nbpions_reserve; j++)
         {
-#ifdef DEBUG
-            printf("regarde l'indice %d\n",j);
-#endif
+
+            printf("[DEBUG] regarde l'indice %d\n",j);
             if(g1->joueurs_partie[i].tabpion_reserve[j].type_pion==type_piece_inexistante)
             {
 
-#ifdef DEBUG
-                printf("en train de sppr une piece en reserve\n");
-#endif
+
+                printf("[DEBUG] en train de sppr une piece en reserve\n");
                 supprimer(g1->joueurs_partie[i].tabpion_reserve,sizeof(S_pions),&g1->joueurs_partie[i].nbpions_reserve,j);
                 j--; //on recule tous les éléments d'une case donc reculer le compteur pour ne pas zaper un element, on supprime la case sur laquelle on est
             }
@@ -139,36 +136,31 @@ void resolution_des_combats(S_game*g1)
     {
         for(int y=1; y<=NBCASES; y++)
         {
-#ifdef DEBUG
-            printf("\tnous sommes a la case %d %d  -- %d %d %d %d\n",x,y,somme_powers_a(x,y,g1->joueurs_partie,0),somme_powers_a(x,y,g1->joueurs_partie,1),somme_powers_a(x,y,g1->joueurs_partie,2),somme_powers_a(x,y,g1->joueurs_partie,3));
-#endif
+
+            printf("[DEBUG] \tnous sommes a la case %d %d  -- %d %d %d %d\n",x,y,somme_powers_a(x,y,g1->joueurs_partie,0),somme_powers_a(x,y,g1->joueurs_partie,1),somme_powers_a(x,y,g1->joueurs_partie,2),somme_powers_a(x,y,g1->joueurs_partie,3));
             if((somme_powers_a(x,y,g1->joueurs_partie,0)+somme_powers_a(x,y,g1->joueurs_partie,1)+somme_powers_a(x,y,g1->joueurs_partie,2)+somme_powers_a(x,y,g1->joueurs_partie,3))>0)
             {
-#ifdef DEBUG
-                printf("\tcombat trouve, somme %d\n",somme_powers_a(x,y,g1->joueurs_partie,0)+somme_powers_a(x,y,g1->joueurs_partie,1)+somme_powers_a(x,y,g1->joueurs_partie,2)+somme_powers_a(x,y,g1->joueurs_partie,3));
-#endif
+
+                printf("[DEBUG] \tcombat trouve, somme %d\n",somme_powers_a(x,y,g1->joueurs_partie,0)+somme_powers_a(x,y,g1->joueurs_partie,1)+somme_powers_a(x,y,g1->joueurs_partie,2)+somme_powers_a(x,y,g1->joueurs_partie,3));
                 int power_max,indice_max;
                 while(decompte_joueur_combat(g1,x,y)>0 && multiple_gagnants_combat(g1,x,y,&power_max,&indice_max))
                 {
-#ifdef DEBUG
-                    printf("\tduplicata trouve resolution en cours\n");
-#endif
+
+                    printf("[DEBUG] \tduplicata trouve resolution en cours\n");
                     for(int i=0; i<NBJOUEURS; i++)
                     {
                         if(somme_powers_a(x,y,g1->joueurs_partie,i)==power_max)
                         {
-#ifdef DEBUG
-                            printf("\tjoueur %d dans le duplicata\n",i);
-#endif
+
+                            printf("[DEBUG] \tjoueur %d dans le duplicata\n",i);
 
                             for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
                             {
 
                                 if(g1->joueurs_partie[i].tabpion[j].positions.position_x==x && g1->joueurs_partie[i].tabpion[j].positions.position_y==y)
                                 {
-#ifdef DEBUG
-                                    printf("\tpiece %d dans le duplicata\n",j);
-#endif
+
+                                    printf("[DEBUG] \tpiece %d dans le duplicata\n",j);
 
                                     g1->joueurs_partie[i].tabpion[j].type_pion=type_piece_inexistante;
                                 }
@@ -179,26 +171,23 @@ void resolution_des_combats(S_game*g1)
 
                 if(decompte_joueur_combat(g1,x,y)>1)
                 {
-#ifdef DEBUG
-                    printf("\treste apres duplicata, %d est gagnant\n",indice_max);
-#endif
+
+                    printf("[DEBUG] \treste apres duplicata, %d est gagnant\n",indice_max);
 
                     for(int i=0; i<NBJOUEURS; i++)
                     {
                         if(i!=indice_max)
                         {
-#ifdef DEBUG
-                            printf("\tjoueur %d est perdant\n",i);
-#endif
+
+                            printf("[DEBUG] \tjoueur %d est perdant\n",i);
 
                             for(int j=0; j<g1->joueurs_partie[i].nbpions; j++)
                             {
                                 if(g1->joueurs_partie[i].tabpion[j].positions.position_x==x && g1->joueurs_partie[i].tabpion[j].positions.position_y==y)
                                 {
 
-#ifdef DEBUG
-                                    printf("\tpiece %d est perdue\n",j);
-#endif
+
+                                    printf("[DEBUG] \tpiece %d est perdue\n",j);
 
                                     rajouter((void*)&g1->joueurs_partie[indice_max].tabpion_reserve,sizeof(S_pions),&g1->joueurs_partie[indice_max].nbpions_reserve,(void*)g1->joueurs_partie[indice_max].tabpion+j); //dernier truc==&g1->joueurs_partie[indice_max].tabpion[j]
                                     g1->joueurs_partie[i].tabpion[j].type_pion=type_piece_inexistante;
@@ -211,9 +200,8 @@ void resolution_des_combats(S_game*g1)
                 }
                 else
                 {
-#ifdef DEBUG
-                    printf("\trien apres duplicata\n");
-#endif // DEBUG
+
+                    printf("[DEBUG] \trien apres duplicata\n");
                 }
             }
         }
