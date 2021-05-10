@@ -338,100 +338,126 @@
 
 1620555504 d:\estaca\1a\algoprogrammation\projet\power-main\util.h
 
-1620484048 source:c:\users\lucy\documents\github\power\power-main\affichage.c
-	"stdio.h"
+1620614497 source:c:\users\lucy\documents\github\power\power-main\affichage.c
+	"affichage.h"
+	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<unistd.h>
 	<windows.h>
 	"definition.h"
 	"Initialisation.h"
-	"affichage.h"
+	"noms_pions.h"
 
-1620492734 c:\users\lucy\documents\github\power\power-main\definition.h
+1620614579 c:\users\lucy\documents\github\power\power-main\definition.h
 	<stdbool.h>
 
-1620484048 c:\users\lucy\documents\github\power\power-main\initialisation.h
+1620612904 c:\users\lucy\documents\github\power\power-main\initialisation.h
 	"plateau.h"
 	"cases.h"
-
-1620484048 c:\users\lucy\documents\github\power\power-main\plateau.h
-	"cases.h"
-	"definition.h"
-
-1620484048 c:\users\lucy\documents\github\power\power-main\cases.h
-
-1620484048 c:\users\lucy\documents\github\power\power-main\affichage.h
-
-1620484048 source:c:\users\lucy\documents\github\power\power-main\cases.c
-	<stdio.h>
-	<stdlib.h>
-	"cases.h"
-
-1620492768 source:c:\users\lucy\documents\github\power\power-main\game.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	<assert.h>
 	"definition.h"
 	"Initialisation.h"
-	"affichage.h"
-	"plateau.h"
-	"game.h"
-
-1620492559 c:\users\lucy\documents\github\power\power-main\game.h
-
-1620484048 source:c:\users\lucy\documents\github\power\power-main\ihm.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"definition.h"
-	"Initialisation.h"
-	"affichage.h"
-	"plateau.h"
-
-1620484048 source:c:\users\lucy\documents\github\power\power-main\initialisation.c
-	"stdio.h"
-	<stdlib.h>
-	<string.h>
-	"definition.h"
-	"Initialisation.h"
 	"cases.h"
 	"plateau.h"
-	<assert.h>
-
-1620492688 source:c:\users\lucy\documents\github\power\power-main\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	<assert.h>
-	<stdbool.h>
-	"definition.h"
-	"Initialisation.h"
-	"game.h"
 	"util.h"
 
-1620484048 c:\users\lucy\documents\github\power\power-main\util.h
+1620612932 c:\users\lucy\documents\github\power\power-main\plateau.h
+	"cases.h"
+	"definition.h"
 
-1620492783 source:c:\users\lucy\documents\github\power\power-main\ordres.c
-	"stdio.h"
+1620613466 c:\users\lucy\documents\github\power\power-main\cases.h
+
+1620614591 c:\users\lucy\documents\github\power\power-main\affichage.h
+	"definition.h"
+	"plateau.h"
+
+1620612275 source:c:\users\lucy\documents\github\power\power-main\cases.c
+	"cases.h"
+
+1620614504 source:c:\users\lucy\documents\github\power\power-main\game.c
+	"game.h"
+	<stdio.h>
 	<stdlib.h>
 	<string.h>
-	<windows.h>
+	<assert.h>
+	<unistd.h>
 	"definition.h"
 	"Initialisation.h"
+	"affichage.h"
+	"plateau.h"
+	"util.h"
 	"ordres.h"
+	"noms_joueurs.h"
+	"noms_pions.h"
 
-1620492776 c:\users\lucy\documents\github\power\power-main\ordres.h
+1620614609 c:\users\lucy\documents\github\power\power-main\game.h
+	"plateau.h"
 
-1620492034 source:c:\users\lucy\documents\github\power\power-main\plateau.c
+1620611829 source:c:\users\lucy\documents\github\power\power-main\ihm.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
+	"definition.h"
+	"Initialisation.h"
+	"affichage.h"
 	"plateau.h"
+
+1620614509 source:c:\users\lucy\documents\github\power\power-main\initialisation.c
+	"Initialisation.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	"definition.h"
+	"cases.h"
+	"plateau.h"
+	"util.h"
+
+1620614447 source:c:\users\lucy\documents\github\power\power-main\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<stdbool.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"game.h"
+	"util.h"
+	"noms_joueurs.h"
+
+1620613017 c:\users\lucy\documents\github\power\power-main\util.h
+
+1620614894 source:c:\users\lucy\documents\github\power\power-main\ordres.c
+	"ordres.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<assert.h>
+	<windows.h>
+	"definition.h"
+	"Initialisation.h"
+	"noms_pions.h"
+	"noms_joueurs.h"
+	"affichage.h"
+
+1620613950 c:\users\lucy\documents\github\power\power-main\ordres.h
+	"definition.h"
+	"game.h"
+
+1620614522 source:c:\users\lucy\documents\github\power\power-main\plateau.c
+	"plateau.h"
+	<stdio.h>
+	<stdlib.h>
 	<windows.h>
 	<assert.h>
 
-1620484048 source:c:\users\lucy\documents\github\power\power-main\util.c
+1620614528 source:c:\users\lucy\documents\github\power\power-main\util.c
+	"util.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -439,7 +465,6 @@
 	"definition.h"
 	"Initialisation.h"
 	"game.h"
-	"util.h"
 
 1620460710 source:d:\estaca\1a\algoprogrammation\projet\power-main\power-main\affichage.c
 	"stdio.h"
@@ -960,4 +985,8 @@
 	"Initialisation.h"
 	"game.h"
 	"util.h"
+
+1620613761 c:\users\lucy\documents\github\power\power-main\noms_pions.h
+
+1620613767 c:\users\lucy\documents\github\power\power-main\noms_joueurs.h
 

@@ -1,12 +1,13 @@
+#include "util.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <assert.h>
 
 #include "definition.h"
-#include "Initialisation.h"
+#include "initialisation.h"
 #include "game.h"
-#include "util.h"
 
 void rajouter(void** tableau,int taille_element, int* taille_tableau,void* element)
 /* taille element prend la valeur du sizeof() : c'est la taille d'un element de 'tableau'

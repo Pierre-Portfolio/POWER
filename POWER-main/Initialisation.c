@@ -1,12 +1,13 @@
-#include "stdio.h"
+#include "initialisation.h"
+
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "definition.h"
-#include "Initialisation.h"
 #include "cases.h"
 #include "plateau.h"
-#include <assert.h>
 #include "util.h"
 
 
@@ -153,19 +154,30 @@ S_pions megamissile(int position_x,int position_y)
 
 S_pions creer_pion_de_type(enum_type_pion type_pion, int x, int y)
 {
-    switch(type_pion){
+    switch(type_pion)
+    {
 
-        case type_chasseur : return chasseur(x,x);
-        case type_destroyer : return destroyer(x,y);
-        case type_tank : return tank(x,y);
-        case type_regiment : return regiment(x,y);
-        case type_bombardier : return bombardier(x,y);
-        case type_croiseur : return croiseur(x,y);
-        case type_char : return un_char(x,y);
-        case type_soldat : return soldat(x,y);
-        case type_megamissile : return megamissile(x,y);
+    case type_chasseur :
+        return chasseur(x,x);
+    case type_destroyer :
+        return destroyer(x,y);
+    case type_tank :
+        return tank(x,y);
+    case type_regiment :
+        return regiment(x,y);
+    case type_bombardier :
+        return bombardier(x,y);
+    case type_croiseur :
+        return croiseur(x,y);
+    case type_char :
+        return un_char(x,y);
+    case type_soldat :
+        return soldat(x,y);
+    case type_megamissile :
+        return megamissile(x,y);
 
-        default : assert(0); //== assert(false)
+    default :
+        assert(0); //== assert(false)
 
     }
 
@@ -189,24 +201,22 @@ S_joueur * initialisation_joueurs() //Renvoie les infos de chaque joueur sous fo
 
     for(int i=0; i<NBJOUEURS; i++)
     {
-        tabjoueur[i].etat=1;
-        tabjoueur[i].numero_joueur=i+1;
-        tabjoueur[i].power=10;
+        tabjoueur[i].power=POWERDEBUTPARTIE;
         tabjoueur[i].tabpion=initialisation_pieces(i); //chaque joueur recoit ses pions
         tabjoueur[i].nbpions=NBPIONTOTALDEBUT;
         tabjoueur[i].tabpion_reserve=NULL;
         tabjoueur[i].nbpions_reserve=0;
-        tabjoueur[i].nbactionTour = 5;
+        tabjoueur[i].nbactionTour=ACTIONPARTOUR;
 
 
 
-        #ifdef DEBUG
+#ifdef DEBUG
         // DEBUG
         S_pions pion = megamissile(2,2);
         rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
         rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
         rajouter((void*) &tabjoueur[i].tabpion_reserve, sizeof(S_pions),&tabjoueur[i].nbpions_reserve,&pion);
-        #endif
+#endif
 
         //printf("\n\njoueur %d initialise**********************************",i+1);
         //printf("\n\tle numero du joueur est :%d",tabjoueur[i].numero_joueur);
@@ -228,22 +238,22 @@ S_pions * initialisation_pieces(int num_joueur)
     int position_x = hq_x[num_joueur], position_y = hq_y[num_joueur];
 
     int k=0;                            //garder l'indice pour faire la liste
-    for(int i=0;i<NBPIONDEBUT;i++)
+    for(int i=0; i<NBPIONDEBUT; i++)
     {
         tabpions[k]=chasseur(position_x,position_y);
         k++;
     }
-    for(int i=0;i<NBPIONDEBUT;i++)
+    for(int i=0; i<NBPIONDEBUT; i++)
     {
         tabpions[k]=soldat(position_x,position_y);
         k++;
     }
-    for(int i=0;i<NBPIONDEBUT;i++)
+    for(int i=0; i<NBPIONDEBUT; i++)
     {
         tabpions[k]=destroyer(position_x,position_y);
         k++;
     }
-    for(int i=0;i<NBPIONDEBUT;i++)
+    for(int i=0; i<NBPIONDEBUT; i++)
     {
         tabpions[k]=tank(position_x,position_y);
         k++;
@@ -256,29 +266,33 @@ S_pions * initialisation_pieces(int num_joueur)
 
 
 
+static const S_cases TabcasesOrigine[NBCASES][NBCASES]= {{{HG,0},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,1}},
+    {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
+    {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
+    {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
+    {{ile,-1},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{ile,-1}},
+    {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
+    {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
+    {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
+    {{HG,3},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,2}}
+};
+
+
 //******************************************INITIALISATION DES CASES ***********************************************//
 //S_plateau initialisation_cases()
 S_cases ** initialisation_cases()
 {
     //initialisation du tableau de cases
     S_cases  **Tabcases =  (S_cases**)malloc(NBCASES * sizeof(S_cases**));
-    for (int i = 0; i < NBCASES; ++i) {
+    for (int i = 0; i < NBCASES; ++i)
+    {
         Tabcases[i] = (S_cases*)malloc(NBCASES * sizeof(S_cases));
     }
 
-    S_cases TabcasesOrigine[NBCASES][NBCASES]= {{{HG,0},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,1}},
-                                            {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
-                                            {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
-                                            {{eau,-1},{ile,0},{ile,0},{ile,0},{eau,-1},{ile,1},{ile,1},{ile,1},{eau,-1}},
-                                            {{ile,-1},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{ile,-1}},
-                                            {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
-                                            {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
-                                            {{eau,-1},{ile,3},{ile,3},{ile,3},{eau,-1},{ile,2},{ile,2},{ile,2},{eau,-1}},
-                                            {{HG,3},{eau,-1},{eau,-1},{eau,-1},{ile,-1},{eau,-1},{eau,-1},{eau,-1},{HG,2}}};
 
-    for(int i=0; i<9;i++)
+    for(int i=0; i<NBCASES; i++)
     {
-        for(int j=0;j<9;j++)
+        for(int j=0; j<NBCASES; j++)
         {
             Tabcases[i][j]=TabcasesOrigine[i][j];
         }

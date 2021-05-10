@@ -1,15 +1,16 @@
 #ifndef DEFINITION_H_INCLUDED
 #define DEFINITION_H_INCLUDED
-#include <stdbool.h>
 
-#define CBC 3 //nombre de croiseurs, bombardiers, chars par joueur
+
 #define NBJOUEURS 4
 #define NBCASES 9
-#define CDT 6 //nombre de chasseurs, Destroyers, tanks par joueur
 #define NBORDRES 5
 #define NBPIONTOTALDEBUT 8
 #define NBPIONDEBUT 2
+#define POWERDEBUTPARTIE 10
+#define ACTIONPARTOUR 5
 
+#include <stdbool.h>
 
 //************************ DEFINITION DES PIONS ************************
 
@@ -87,18 +88,6 @@ static const enum_type_pion pion_type_deamelioration[taille_enum_pion]= {type_pi
                                                                        type_piece_inexistante, //inexstante -> non applicable
                                                                        }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
 
- static const char * nom_type_pions[taille_enum_pion]= {"Chasseur", //chasseur
-                                                        "Destroyeur", //destroyer
-                                                        "Bombardier", //bombardier DEJA GROUPE 2
-                                                        "Croiseur", //croiseur DEJA GROUPE 2
-                                                        "Soldat", //soldat
-                                                        "Tank", //tank
-                                                        "Char", //char DEJA GROUPE 2
-                                                        "Mega-missile", //megamissile -> non applicable
-                                                        "Regiment", //regiment DEJA GROUPE 2
-                                                        "[PIECE_INEXISTANTE]", //inexstante -> non applicable
-                                                        }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
-
 
 
 typedef enum{
@@ -123,21 +112,18 @@ typedef struct pions S_pions;
 
 
 static const int joueur_vers_couleur[]={4,10,6,1};
-static const char * joueur_nom[]={"rouge","vert","jaune","bleu"};
-                                    //0     1       2      3
+
 
 //************************ DEFINITION DES JOUEURS ************************
 
 typedef struct {
     int power;
-    int numero_joueur;  //1=rouge, 2=vert, 3=jaune; 4=bleu
-    int etat;     //1=en jeu, 0=hors jeu
-    int deja_donne_ordre;    //1=oui, 0=non
     int nbactionTour;
     int nbpions;
     S_pions * tabpion; //declaration d'un tableau de pions
     int nbpions_reserve;
     S_pions* tabpion_reserve;
+    bool en_jeu;
 } S_joueur;
 
 
