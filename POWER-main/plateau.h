@@ -23,8 +23,8 @@ void color (int couleurDuTexte, int couleurDuFond);
 
 void print_case_num(int num_case);
 void print_case_dessus();
-void print_case_power1(S_joueur* joueurs_partie, int x, int y);
-void print_case_power2(S_joueur* joueurs_partie, int x, int y);
+void print_case_power1(S_joueur* joueurs_partie, int x, int y, int copie_couleur_case);
+void print_case_power2(S_joueur* joueurs_partie, int x, int y, int copie_couleur_case);
 void print_case_terrain (S_cases c);
 void print_color(int num_joueur);
 void print_case_dessous ();

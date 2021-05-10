@@ -24,7 +24,7 @@ int main()
     // on joue avec la partie creee
     g1=jouer_game(g1);
 
-    printf("La partie est terminee, le gagnant est : le joueur %d",g1.gagnant_partie+1);
+    printf("La partie est terminee, le gagnant est : le joueur %s",joueur_nom[g1.gagnant_partie]);
     return 0;
 }
 

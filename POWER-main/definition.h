@@ -75,6 +75,17 @@ static const enum_type_pion pion_type_amelioration[taille_enum_pion]= {type_bomb
                                                                        type_piece_inexistante, //inexstante -> non applicable
                                                                        }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
 
+static const enum_type_pion pion_type_deamelioration[taille_enum_pion]= {type_piece_inexistante, //chasseur
+                                                                       type_piece_inexistante, //destroyer
+                                                                       type_chasseur, //bombardier DEJA GROUPE 2
+                                                                       type_destroyer, //croiseur DEJA GROUPE 2
+                                                                       type_piece_inexistante, //soldat
+                                                                       type_piece_inexistante, //tank
+                                                                       type_tank, //char DEJA GROUPE 2
+                                                                       type_piece_inexistante, //megamissile -> non applicable
+                                                                       type_soldat, //regiment DEJA GROUPE 2
+                                                                       type_piece_inexistante, //inexstante -> non applicable
+                                                                       }; //static const : on definit le tableau d'enum comme un define qui ne bouge plus
 
  static const char * nom_type_pions[taille_enum_pion]= {"Chasseur", //chasseur
                                                         "Destroyeur", //destroyer
@@ -112,6 +123,8 @@ typedef struct pions S_pions;
 
 
 static const int joueur_vers_couleur[]={4,10,6,1};
+static const char * joueur_nom[]={"rouge","vert","jaune","bleu"};
+                                    //0     1       2      3
 
 //************************ DEFINITION DES JOUEURS ************************
 

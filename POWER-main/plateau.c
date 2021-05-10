@@ -45,7 +45,7 @@ int somme_powers_a(int position_x, int position_y, S_joueur* joueurs_partie,int 
 void affiche_barre_status(S_joueur * joueur_partie){
 
     printf("\n");
-    printf("Unites dans le plateau/reserve :");
+    printf("\t\t\t\t\t\t   Unites presentes dans le plateau/reserve :");
     printf("\n\n\t");
     for(int i=0;i<NBJOUEURS;i++){
 
@@ -77,7 +77,7 @@ void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie){
         printf("  ");
         for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
-            print_case_power1(joueurs_partie,x,y);
+            print_case_power1(joueurs_partie,x,y,p1.cases[y-1][x-1].joueur);
             print_color(-1);
         }
         printf("%c\n",255);
@@ -91,7 +91,7 @@ void affiche_plateau2(S_plateau p1, S_joueur* joueurs_partie){
         printf("  ");
         for(int x=1;x<=NBCASES;x++){
             print_color(p1.cases[y-1][x-1].joueur);
-            print_case_power2(joueurs_partie,x,y);
+            print_case_power2(joueurs_partie,x,y,p1.cases[y-1][x-1].joueur);
             print_color(-1);
         }
         printf("%c\n",255);
@@ -115,22 +115,52 @@ void print_case_dessus (){
     printf(" %c%c%c%c%c%c%c%c%c%c%c%c%c%c ",201,205,205,205,205,205,205,205,205,205,205,205,205,187);
 }
 
-void print_case_power1(S_joueur* joueurs_partie, int x, int y){
-    printf(" %c%04d    %04d%c ",186,somme_powers_a(x,y,joueurs_partie,0),somme_powers_a(x,y,joueurs_partie,1),186);
+void print_case_power1(S_joueur* joueurs_partie, int x, int y, int copie_color_case){
+    printf(" %c",186); //debut
+
+    if(somme_powers_a(x,y,joueurs_partie,0) > 0)
+    {
+        print_color(0);
+        printf("%04d",somme_powers_a(x,y,joueurs_partie,0));
+        print_color(copie_color_case);
+    }
+    else printf("    ");
+
+    printf("    "); //milieu
+
+    if(somme_powers_a(x,y,joueurs_partie,1) > 0)
+    {
+        print_color(1);
+        printf("%04d",somme_powers_a(x,y,joueurs_partie,1));
+        print_color(copie_color_case);
+    }
+    else printf("    ");
+
+    printf("%c ",186); //fin
 }
 
-void print_case_power2(S_joueur* joueurs_partie, int x, int y){
-    printf(" %c%04d    %04d%c ",186,somme_powers_a(x,y,joueurs_partie,3),somme_powers_a(x,y,joueurs_partie,2),186);
+void print_case_power2(S_joueur* joueurs_partie, int x, int y, int copie_color_case){
+    printf(" %c",186);
+    if(somme_powers_a(x,y,joueurs_partie,3) > 0)
+    {
+        print_color(3);
+        printf("%04d",somme_powers_a(x,y,joueurs_partie,3));
+        print_color(copie_color_case);
+    }
+    else printf("    ");
+    printf("    ");
+    if(somme_powers_a(x,y,joueurs_partie,2) > 0)
+    {
+        print_color(2);
+        printf("%04d",somme_powers_a(x,y,joueurs_partie,2));
+        print_color(copie_color_case);
+    }
+    else printf("    ");
+    printf("%c ",186);
 }
 
 void print_case_terrain (S_cases c){
-    switch(c.terrain)
-    {
-       case 1 : printf(" %c    ILE     %c ",186,186); break;
-       case 2 : printf(" %c    EAU     %c ",186,186); break;
-       case 3 : printf(" %c    HG      %c ",186,186); break;
-       default : printf("ERROR");
-    }
+    printf(" %c    %3s     %c ",186,affichage_3lettre_terrain[c.terrain],186);
 }
 
 void print_color(int num_joueur){
