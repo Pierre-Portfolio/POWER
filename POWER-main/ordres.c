@@ -26,14 +26,14 @@ void afficher_les_types_de_pion()
 bool verifier_case_terrain(int x, int y, S_plateau plateau, S_pions pion)
 {
 
-    printf("[DEBUG] type %d  at %d %d -> %d vs %d \n",pion.type_pion,x,y,pion_type_eau[pion.type_pion],plateau.cases[y-1][x-1].terrain);
+    //printf("[DEBUG] type %d  at %d %d -> %d vs %d \n",pion.type_pion,x,y,pion_type_eau[pion.type_pion],plateau.cases[y-1][x-1].terrain);
 
     if(pion_type_eau[pion.type_pion]!=(plateau.cases[y-1][x-1].terrain==eau)) // pion eau sur terre ou pion terre sur eau
     {
         if(!pion_type_eau[pion.type_pion])   //pion type terre
         {
 
-            printf("[DEBUG] Pion terre sur eau\n");
+            //printf("[DEBUG] Pion terre sur eau\n");
             return false;
         }
         else   //pion type eau
@@ -44,13 +44,13 @@ bool verifier_case_terrain(int x, int y, S_plateau plateau, S_pions pion)
                     (x ==CENTRE_ILE_HAUT && y ==CENTRE_ILE_HAUT))  //les centres des iles
             {
 
-                printf("[DEBUG] Pion eau sur terre\n");
+                //printf("[DEBUG] Pion eau sur terre\n");
                 return false;
             }
             else
             {
 
-                printf("[DEBUG] Pion eau sur cote\n");
+                //printf("[DEBUG] Pion eau sur cote\n");
                 //ne fait rien -> case cotière autorisé
             }
         }
@@ -58,7 +58,7 @@ bool verifier_case_terrain(int x, int y, S_plateau plateau, S_pions pion)
     else
     {
 
-        printf("[DEBUG] Bon type de pion pour la case\n");
+        //printf("[DEBUG] Bon type de pion pour la case\n");
     }
 
     return true;
@@ -67,7 +67,7 @@ bool verifier_case_terrain(int x, int y, S_plateau plateau, S_pions pion)
 bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_destination)
 {
 
-    printf("[DEBUG] verifier_chemin type %d; x%d, y%d, destx %d, desty%d\n",pion.type_pion,pion.positions.position_x,pion.positions.position_y,x_destination,y_destination);
+    //printf("[DEBUG] verifier_chemin type %d; x%d, y%d, destx %d, desty%d\n",pion.type_pion,pion.positions.position_x,pion.positions.position_y,x_destination,y_destination);
 
     if(pion.type_pion == type_megamissile)
     {
@@ -89,7 +89,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
     float actuellement_y_float = y1; //positon actuelle sur l'axe Y SUR LA LIGNE DROITE (donc pas en case entière)
 
 
-    printf("[DEBUG] addx%f addy%f nbrtour%d dx%d dy%d\n",add_x,add_y,nombre_de_tour,dx,dy);
+    //printf("[DEBUG] addx%f addy%f nbrtour%d dx%d dy%d\n",add_x,add_y,nombre_de_tour,dx,dy);
 
     if(nombre_de_tour > pion_limite_deplacement[pion.type_pion])
     {
@@ -97,7 +97,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
         return false;
     }
 
-    printf("[DEBUG] apres limite deplacement\n");
+    //printf("[DEBUG] apres limite deplacement\n");
 
     int nb_chgmt_couleur=0;
     int actuellement_x = x1;
@@ -105,7 +105,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
     while(!(actuellement_x == x2 && actuellement_y == y2))   //tant qu'on est pas arrivé
     {
 
-        printf("[DEBUG] actuellement x %d   actuellement y %d\n",actuellement_x,actuellement_y);
+        //printf("[DEBUG] actuellement x %d   actuellement y %d\n",actuellement_x,actuellement_y);
         int ancienne_couleur=plateau.cases[actuellement_y-1][actuellement_x-1].joueur;
         actuellement_x_float += add_x; //position actuelle en mouvement sur l'axe x
         actuellement_y_float += add_y; //position actuelle en mouvement sur l'axe y
@@ -115,7 +115,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
         assert(actuellement_x > 0 && actuellement_x <= NBCASES && actuellement_y > 0 && actuellement_y < NBCASES);
 
 
-        printf("[DEBUG] -%d-%d-\n",actuellement_x,actuellement_y);
+        //printf("[DEBUG] -%d-%d-\n",actuellement_x,actuellement_y);
 
 
         int nouvelle_couleur=plateau.cases[actuellement_y-1][actuellement_x-1].joueur;
@@ -123,13 +123,13 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
 
         bool case_bon_type_terrain = verifier_case_terrain(actuellement_x,actuellement_y,plateau,pion);
 
-        printf("[DEBUG] resultat case juste initial -> %d\n",case_bon_type_terrain);
+        //printf("[DEBUG] resultat case juste initial -> %d\n",case_bon_type_terrain);
 
         if(!case_bon_type_terrain) // la case n'est pas du bon type
         {
 
 
-            printf("[DEBUG] Cas faux, tentative d'alternatifs...\n");
+            //printf("[DEBUG] Cas faux, tentative d'alternatifs...\n");
 
             #define DECALLAGE_ALTERNATIF 0.25f
 
@@ -165,7 +165,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
                 case_bon_type_terrain = verifier_case_terrain(alt_actuellement_x,actuellement_y,plateau,pion);
                 nouvelle_couleur=plateau.cases[actuellement_y-1][alt_actuellement_x-1].joueur;
 
-                printf("[DEBUG] Alternative X trouvee, resultat %d...\n",case_bon_type_terrain);
+                //printf("[DEBUG] Alternative X trouvee, resultat %d...\n",case_bon_type_terrain);
             }
 
             if(!case_bon_type_terrain)
@@ -175,7 +175,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
                     case_bon_type_terrain = verifier_case_terrain(actuellement_x,alt_actuellement_y,plateau,pion);
                     nouvelle_couleur=plateau.cases[alt_actuellement_y-1][actuellement_x-1].joueur;
 
-                    printf("[DEBUG] Alternative Y trouvee, resultat %d...\n",case_bon_type_terrain);
+                    //printf("[DEBUG] Alternative Y trouvee, resultat %d...\n",case_bon_type_terrain);
                 }
 
             }
@@ -186,7 +186,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
         if(!case_bon_type_terrain)
         {
 
-            printf("[DEBUG] Case fausse %d %d\n",actuellement_x, actuellement_y);
+            //printf("[DEBUG] Case fausse %d %d\n",actuellement_x, actuellement_y);
             printf("Le type de terrain ne correspond pas\n");
             return false;
         }
@@ -205,7 +205,7 @@ bool verifier_chemin(S_plateau plateau, S_pions pion, int x_destination, int y_d
             }
             else
             {
-                printf("[DEBUG] Case jsute\n");
+                //printf("[DEBUG] Case jsute\n");
             }
         }
 
@@ -617,7 +617,7 @@ bool executer_ordre_echange(S_game * g1, S_ordre_echange * echange)
                 }
             }
         }
-        printf("[DEBUG]indices choisis :%d %d %d\n",indice_pion[0],indice_pion[1],indice_pion[2]);
+        //printf("[DEBUG]indices choisis :%d %d %d\n",indice_pion[0],indice_pion[1],indice_pion[2]);
 
         if(indice_pion[2] == -1)
         {
@@ -815,7 +815,7 @@ void executer_ordre(S_game * g1, S_feuille_ordres feuille_ordre[NBJOUEURS])
         for(int j = 0 ; j < feuille_ordre[i].nb_ordre ; j++)
         {
 
-            printf("[DEBUG] Feuille d'ordre, joueur %d, ordre %d/%d\n",i,j,feuille_ordre[i].nb_ordre);
+            //printf("[DEBUG] Feuille d'ordre, joueur %d, ordre %d/%d\n",i,j,feuille_ordre[i].nb_ordre);
 
             S_ordre_deplacement * deplacement;
             S_ordre_achat * l_achat;
