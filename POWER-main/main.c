@@ -16,9 +16,7 @@ int main()
 
     printf("\t\t\t********************************Bienvenue dans une partie de POWER********************************\n\nNous vous invitons a etendre la console en plein ecran, afin de profiter d'une experience totale de la partie qui va demarer dans 5sec\n\n");
 
-#ifdef RELEASE //ATTENTION !!
     Sleep(6000);
-#endif
 
     // on crée une partie
     S_game g1=creer_game();
