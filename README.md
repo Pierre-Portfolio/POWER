@@ -1,6 +1,7 @@
 <h1 align="center">
-  <img src="./Assets/header.jpg" alt="POWER" />
+  <img src="./Assets/boite_de_jeu.jpg" alt="POWER" />
 </h1>
+
 ---
 
 ## Petit résumé
@@ -9,6 +10,10 @@
 Conquérire toutes les bases ennemies. Déployer l'ensemble de vos effectifs et menez le combat sur tous les fronts: terrestre, maritime et aérien.
 Toutes vos actions doivent tendre vers un seul but: accroître la puissance de votre armée, car la victoire est à ce prix!
 Ce jeu vous met dans la peau d'un grand stratège: vous allez planifier vos manoeuvres, prévoir les attaques de l'ennemi et déjouer au mieux ses pièges.
+
+<h1 align="center">
+  <img src="./Assets/header.jpg" alt="POWER" />
+</h1>
 
 ## Objectifs
 
